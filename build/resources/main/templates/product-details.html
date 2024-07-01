@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Detail</title>
+    <th:block th:replace="~{/fragments/head :: head}"></th:block>
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/css/product-detail.css">
+
+
+</head>
+<header>
+    <th:block th:replace="~{fragments/navbar::navbar}"></th:block>
+</header>
+<body>
+<div class="container pt-5">
+    <div class="gallery border-left border-dark border-right border-dark p-4">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <a>
+                        <img   class="border border-dark rounded"  src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/14a.webp"
+                                 alt="" style="width:100%">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <a>
+                        <img     src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/14a.webp"
+                                 alt="" style="width:100%">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <a>
+                        <img     src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/14a.webp"
+                                 alt="" style="width:100%">
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="border-left border-dark border-right border-dark">
+        <div class="col-md-6">
+            <h1>Product Name</h1>
+            <p class="lead">Product Description</p>
+            <p><strong>Price: </strong>$1200</p>
+
+            <div id="bikeDetails" class="product-details" style="display: none;">
+                <h2>Bike Details</h2>
+                <p><strong>Type: </strong>Mountain</p>
+                <p><strong>Frame: </strong>21</p>
+                <p><strong>Brakes: </strong>21</p>
+                <p><strong>Wheels: </strong>21</p>
+
+            </div>
+
+            <div id="partDetails" class="product-details" style="display: none;">
+                <h2>Part Details</h2>
+                <p><strong>Part Type: </strong>Chain</p>
+                <p><strong>Manufacturer: </strong>Chain</p>
+
+                <div id="chainDetails" style="display: none;">
+                    <h3>Chain Details</h3>
+                    <p><strong>Count of speeds: </strong>5</p>
+                    <p><strong>Count of chain links: </strong>42</p>
+                </div>
+
+                <div id="wheelDetails" style="display: none;">
+                    <h3>Wheel Details</h3>
+                    <p><strong>Diameter: </strong>27.5 inches</p>
+                    <p><strong>Type: </strong>Tubeless</p>
+                </div>
+
+                <div id="framePart" style="display: none;">
+                    <h3>Frame Details</h3>
+                    <p><strong>Material: </strong>Something</p>
+                    <p><strong>Weight: </strong>35</p>
+                </div>
+            </div>
+
+            <a href="/" class="btn btn-primary mt-3">Back to Products</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

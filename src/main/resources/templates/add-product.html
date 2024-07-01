@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add-product</title>
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/css/add-product.css">
+
+    <th:block th:replace="~{/fragments/head :: head}"></th:block>
+
+</head>
+<header>
+    <th:block th:replace="~{fragments/navbar::navbar}"></th:block>
+</header>
+<body>
+
+<div class="container-fluid d-flex flex-column align-items-center">
+    <h1 class="mb-4">CHOOSE PRODUCT TO ADD:</h1>
+    <div class="buttons d-flex flex-row ">
+        <div class="mr-5">
+            <button class="btn btn-secondary btn-lg">ADD BIKE</button>
+        </div>
+        <div>
+            <form>
+                <button class="btn btn-secondary btn-lg">ADD PART</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="bikes">
+    <img src="images/bikes.png">
+</div>
+
+</body>
+</html>

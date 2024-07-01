@@ -1,11 +1,9 @@
 package softuni.bg.bikeshop.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -23,6 +21,26 @@ public class User extends BaseEntity {
     private String email;
     @ManyToMany
     private Set<Role> roles;
+    @OneToMany(mappedBy = "seller")
+    private List<Product> products;
+    @ManyToMany
+    private Set<Product> favouriteProducts;
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
+    public Set<Product> getFavouriteProducts() {
+        return favouriteProducts;
+    }
+
+    public void setFavouriteProducts(Set<Product> favouriteProducts) {
+        this.favouriteProducts = favouriteProducts;
+    }
 
     public User() {
         roles = new HashSet<>();

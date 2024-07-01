@@ -1,0 +1,15 @@
+html{
+    background-color: #e9ecef;
+
+}
+.cycle_section {
+    background-image: url("/images/parts.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-bottom: 5em;
+    padding-top: 5em;
+}
+
+
+

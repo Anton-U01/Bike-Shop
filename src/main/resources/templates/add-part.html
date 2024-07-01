@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Part</title>
+    <th:block th:replace="~{/fragments/head :: head}"></th:block>
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/css/add-part.css">
+
+</head>
+<header>
+    <th:block th:replace="~{fragments/navbar::navbar}"></th:block>
+</header>
+<body>
+
+
+<div class="cycle_section layout_padding">
+    <div class="container bg-light border border-dark rounded">
+        <h1 class="text-center cycle_taital bg-light rounded text-dark">Add Part</h1>
+        <p class="text-center cycle_text">Please fill in the form to add new part.</p>
+        <form class="welcome login" method="post" action="/">
+            <div class="cycle_section_2 layout_padding bg-light">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="label-holder textCol d-flex justify-content-center">
+                                <label for="name" class="h4 mb-2 bg-dark text-light rounded p-1">Name</label>
+                            </div>
+                            <input type="text"
+                                   class="form-control"
+                                   id="name"
+                                   name="name"
+                            />
+                            <small class="danger p-1 bg-danger text-white rounded" style="font-size: 15px">Name error message</small>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="label-holder textCol d-flex justify-content-center">
+                                <label for="description" class="h4 mb-2  bg-dark text-light rounded p-1">Description</label>
+                            </div>
+                            <input type="text"
+                                   class="form-control"
+                                   id="description"
+                                   name="description"
+                            />
+                            <small class="danger p-1 bg-danger text-white rounded" style="font-size: 15px">Description error message</small>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="label-holder textCol d-flex justify-content-center">
+                                <label for="price" class="h4 mb-2 bg-dark text-light rounded p-1">Price</label>
+                            </div>
+                            <input type="number"
+                                   class="form-control"
+                                   id="price"
+                                   name="price"
+                            />
+                            <small class="danger p-1 bg-danger text-white rounded" style="font-size: 15px">Price error message</small>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="label-holder textCol d-flex justify-content-center">
+                                <label for="manufacturer" class="h4 mb-2 bg-dark text-light rounded p-1">Manufacturer</label>
+                            </div>
+                            <input type="text"
+                                   class="form-control"
+                                   id="manufacturer"
+                                   name="manufacturer"
+                            />
+                            <small class="danger p-1 bg-danger text-white rounded" style="font-size: 15px">Manufacturer error message</small>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="text-white label-holder d-flex justify-content-center">
+                                <label for="type" class="h4 mb-2 bg-dark text-light rounded p-1">Type</label>
+                            </div>
+                            <select class="browser-default custom-select" id="type" name="type">
+                                <option>Select style</option>
+                                <option></option>
+                            </select>
+
+                            <div class="form-group">
+                                <div class="label-holder text-white textCol d-flex justify-content-center">
+                                    <label for="speedsCount" class="h4 mb-2 mt-3  bg-dark text-light rounded p-1">Count of speeds</label>
+                                </div>
+                                <input type="number"
+                                       class="form-control "
+                                       id="speedsCount"
+                                       name="speedsCount"
+                                />
+                                <small class="danger p-1 bg-danger text-white rounded" style="font-size: 15px">Count of speeds error message</small>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="label-holder text-white textCol d-flex justify-content-center">
+                                    <label for="chainLinks" class="h4 mb-2  bg-dark text-light rounded p-1">Count of chain links</label>
+                                </div>
+                                <input type="number" class="form-control" id="chainLinks" name="chainLinks"/>
+                                <small class="danger  p-1 bg-danger text-white rounded" style="font-size: 15px">Count of chain links error message</small>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="label-holder text-white textCol d-flex justify-content-center">
+                                    <label for="material" class="h4 mb-2  bg-dark text-light rounded p-1">Material</label>
+                                </div>
+                                <input type="text" class="form-control" id="material" name="material"/>
+                                <small class="danger p-1 bg-danger text-white rounded" style="font-size: 15px">Material error message</small>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="label-holder text-white textCol d-flex justify-content-center">
+                                    <label for="weight" class="h4 mb-2  bg-dark text-light rounded p-1">Weight</label>
+                                </div>
+                                <input type="number" class="form-control" id="weight" name="weight"/>
+                                <small class="danger p-1 bg-danger text-white rounded" style="font-size: 15px">Weight error message</small>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="label-holder text-white textCol d-flex justify-content-center">
+                                    <label for="size" class="h4 mb-2 bg-dark text-light rounded p-1">Size</label>
+                                </div>
+                                <input type="number" class="form-control" id="size" name="size"/>
+                                <small class="danger p-1 bg-danger text-white rounded" style="font-size: 15px">Size error message</small>
+                            </div>
+
+                            <div class="button-holder d-flex justify-content-center">
+                                <button type="submit" class="btn btn-dark btn-lg">ADD BIKE</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

@@ -12,6 +12,27 @@ public class Product extends BaseEntity{
     private String description;
     @Column(nullable = false)
     private double price;
+    @Column(name = "is_favourite",nullable = false)
+    private boolean isFavourite;
+
+    public boolean isFavourite() {
+        return isFavourite;
+    }
+
+    public void setFavourite(boolean favourite) {
+        isFavourite = favourite;
+    }
+
+    @ManyToOne(optional = false)
+    private User seller;
+
+    public User getSeller() {
+        return seller;
+    }
+
+    public void setSeller(User seller) {
+        this.seller = seller;
+    }
 
     public String getName() {
         return name;
