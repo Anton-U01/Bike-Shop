@@ -1,0 +1,52 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    background-color: rgba(84, 91, 98, 0.4);
+    font-size: 1.4em;
+    font-weight: bold;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    box-shadow: 1px 1px 4px #5a6268;
+    padding: 1em;
+}
+
+nav .menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .home ul,
+nav .links ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav .home ul {
+    gap: 1em;
+}
+
+nav .links ul {
+    gap: 1em;
+}
+
+nav li {
+    display: block;
+}
+
+nav a {
+    text-decoration: none;
+    color: inherit;
+}
+
+nav .links ul li img {
+    width: 20px;
+    height: 20px;
+}
+

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="/fragments/head" ></head>
+<body>
+<!-- Navigation -->
+<header th:replace="/fragments/header :: header"></header>
+
+<!-- Catalog Section -->
+<div class="container mt-5">
+    <h1 class="text-center mb-5">Bike Catalog</h1>
+    <div class="row">
+        <!-- Example bike product -->
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="images/img-5.png" class="card-img-top" alt="Bike 1">
+                <div class="card-body">
+                    <h5 class="card-title">Mountain Bike</h5>
+                    <p class="card-text">A high-quality mountain bike perfect for rugged trails.</p>
+                    <p class="card-text"><strong>Price: $500</strong></p>
+                    <a href="#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="images/img-6.png" class="card-img-top" alt="Road Bike">
+                <div class="card-body">
+                    <h5 class="card-title">Road Bike</h5>
+                    <p class="card-text">A sleek and fast road bike designed for speed and performance.</p>
+                    <p class="card-text"><strong>Price: $700</strong></p>
+                    <a href="#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="images/img-7.png" class="card-img-top" alt="Hybrid Bike">
+                <div class="card-body">
+                    <h5 class="card-title">Hybrid Bike</h5>
+                    <p class="card-text">Combining the best of both worlds, this bike is great for city and trail rides.</p>
+                    <p class="card-text"><strong>Price: $600</strong></p>
+                    <a href="#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="images/img-8.png" class="card-img-top" alt="Electric Bike">
+                <div class="card-body">
+                    <h5 class="card-title">Electric Bike</h5>
+                    <p class="card-text">Experience the convenience of an electric motor with this modern e-bike.</p>
+                    <p class="card-text"><strong>Price: $1200</strong></p>
+                    <a href="#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="images/img-2.png" class="card-img-top" alt="Bike Helmet">
+                <div class="card-body">
+                    <h5 class="card-title">Bike Helmet</h5>
+                    <p class="card-text">Stay safe with this lightweight and durable bike helmet.</p>
+                    <p class="card-text"><strong>Price: $80</strong></p>
+                    <a href="#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="images/img-1.png" class="card-img-top" alt="Bike Lock">
+                <div class="card-body">
+                    <h5 class="card-title">Bike Lock</h5>
+                    <p class="card-text">Secure your bike with this heavy-duty bike lock.</p>
+                    <p class="card-text"><strong>Price: $30</strong></p>
+                    <a href="#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="images/img-4.png" class="card-img-top" alt="Bike Lights">
+                <div class="card-body">
+                    <h5 class="card-title">Bike Lights</h5>
+                    <p class="card-text">Enhance your visibility with these bright and reliable bike lights.</p>
+                    <p class="card-text"><strong>Price: $40</strong></p>
+                    <a href="#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="images/img-5.png" class="card-img-top" alt="Bike 1">
+                <div class="card-body">
+                    <h5 class="card-title">Mountain Bike</h5>
+                    <p class="card-text">A high-quality mountain bike perfect for rugged trails.</p>
+                    <p class="card-text"><strong>Price: $500</strong></p>
+                    <a href="#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+        </div>
+        <!-- Example part product -->
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="images/img-2.png" class="card-img-top" alt="Bike Part 1">
+                <div class="card-body">
+                    <h5 class="card-title">Bike Chain</h5>
+                    <p class="card-text">Durable bike chain suitable for all types of bikes.</p>
+                    <p class="card-text"><strong>Price: $50</strong></p>
+                    <a href="#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+        </div>
+        <!-- Add more products as needed -->
+    </div>
+</div>
+
+<!-- Footer -->
+<footer th:replace="/fragments/copyright :: copyright">
+</footer>
+
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<div th:replace="/fragments/js" ></div>
+</body>
+</html>

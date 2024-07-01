@@ -1,0 +1,19 @@
+html{
+    background-color: #e9ecef;
+}
+.container-fluid{
+    background-color: #e9ecef;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 3em;
+}
+.about_taital{
+    padding-bottom: 2em;
+}
+.about_text{
+    font-size: 18px;
+    padding-bottom: 2em;
+    max-width: 60%;
+    text-align: center;
+}
