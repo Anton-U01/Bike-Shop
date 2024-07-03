@@ -3,10 +3,14 @@
 <head>
     <th:block th:replace="~{fragments/head :: head}"></th:block>
     <link rel="stylesheet" type="text/css" href="/css/register.css"/>
-    <link rel="stylesheet" type="text/css" href="css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
     <title>
         Register
     </title>
+    <style>
+
+        </style>
 </head>
 <body>
 <header>
@@ -20,7 +24,11 @@
         <div class="container">
             <h1 class="text-center cycle_taital">Register</h1>
             <p class="text-center cycle_text">Please fill in the form to create an account.</p>
-            <form class="welcome login" method="post" action="/">
+            <form class="welcome login"
+                  th:method="post"
+                  th:action="@{/users/register}"
+                  th:object="${userRegister}"
+            >
                 <div class="cycle_section_2 layout_padding">
                     <div class="row justify-content-center">
                         <div class="col-md-6">
@@ -32,8 +40,13 @@
                                        class="form-control"
                                        id="username"
                                        name="username"
+                                       th:field="*{username}"
                                 />
-                                <small class="danger" style="font-size: 15px">Username error message</small>
+                                <ul class="d-flex flex-column align-items-center bg-danger text-white">
+                                    <li th:each="err : ${#fields.errors('username')}"
+                                        th:text="${err}"
+                                        class="error"></li>
+                                </ul>
                             </div>
 
                             <div class="form-group">
@@ -44,8 +57,13 @@
                                        class="form-control"
                                        id="fullName"
                                        name="fullName"
+                                       th:field="*{fullName}"
                                 />
-                                <small class="danger" style="font-size: 15px">Full name error message</small>
+                                <ul class="d-flex flex-column align-items-center bg-danger text-white">
+                                    <li th:each="err : ${#fields.errors('fullName')}"
+                                        th:text="${err}"
+                                        class="error"></li>
+                                </ul>
                             </div>
 
                             <div class="form-group">
@@ -56,8 +74,13 @@
                                        class="form-control"
                                        id="age"
                                        name="age"
+                                       th:field="*{age}"
                                 />
-                                <small class="danger" style="font-size: 15px">Age error message</small>
+                                <ul class="d-flex flex-column align-items-center bg-danger text-white">
+                                    <li th:each="err : ${#fields.errors('age')}"
+                                        th:text="${err}"
+                                        class="error"></li>
+                                </ul>
                             </div>
 
                             <div class="form-group">
@@ -68,24 +91,47 @@
                                        class="form-control "
                                        id="email"
                                        name="email"
+                                       th:field="*{email}"
                                 />
-                                <small class="danger" style="font-size: 15px">Email error message</small>
+                                <ul class="d-flex flex-column align-items-center bg-danger text-white">
+                                    <li th:each="err : ${#fields.errors('email')}"
+                                        th:text="${err}"
+                                        class="error"></li>
+                                </ul>
                             </div>
 
                             <div class="form-group">
                                 <div class="label-holder text-white textCol d-flex justify-content-center">
                                     <label for="password" class="h4 mb-2 text-dark">Password</label>
                                 </div>
-                                <input type="password" class="form-control" id="password" name="password"/>
-                                <small class="danger" style="font-size: 15px">Password error message</small>
+                                <input type="password"
+                                       class="form-control"
+                                       id="password"
+                                       name="password"
+                                       th:field="*{password}"
+                                />
+                                <ul class="d-flex flex-column align-items-center bg-danger text-white">
+                                    <li th:each="err : ${#fields.errors('password')}"
+                                        th:text="${err}"
+                                        class="error"></li>
+                                </ul>
                             </div>
 
                             <div class="form-group">
                                 <div class="label-holder text-white textCol d-flex justify-content-center">
                                     <label for="confirmPassword" class="h4 mb-2 text-dark">Confirm Password</label>
                                 </div>
-                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"/>
-                                <small class="danger" style="font-size: 15px">Password error message</small>
+                                <input type="password"
+                                       class="form-control"
+                                       id="confirmPassword"
+                                       name="confirmPassword"
+                                       th:field="*{confirmPassword}"
+                                />
+                                <ul class="d-flex flex-column align-items-center bg-danger text-white">
+                                    <li th:each="err : ${#fields.errors('password')}"
+                                        th:text="${err}"
+                                        class="error"></li>
+                                </ul>
                             </div>
 
                             <div class="button-holder d-flex justify-content-center">

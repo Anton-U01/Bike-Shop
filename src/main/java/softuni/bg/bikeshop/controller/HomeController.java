@@ -1,4 +1,4 @@
-package softuni.bg.bikeshop.web;
+package softuni.bg.bikeshop.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,10 +12,6 @@ public class HomeController {
     @GetMapping("/about")
     public String about(){
         return "about";
-    }
-    @GetMapping("/register")
-    public String viewRegister(){
-        return "register";
     }
     @GetMapping("/login")
     public String viewLogin(){
