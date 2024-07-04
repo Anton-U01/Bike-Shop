@@ -14,14 +14,5 @@ public class HomeController {
     public String about(){
         return "about";
     }
-    @GetMapping("/add")
-    public String viewAdd(){return "add-product";}
-    @GetMapping("/add-bike")
-    public String viewAddBike(){return "add-bike";}
-    @GetMapping("/add-part")
-    public String viewAddPart(){return "add-part";}
-    @GetMapping("/all-products")
-    public String viewShop(){return "all-products";}
-    @GetMapping("/detail")
-    public String viewDetail(){return "product-details";}
+
 }

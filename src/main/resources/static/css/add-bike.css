@@ -10,5 +10,8 @@ html{
     padding-bottom: 5em;
     padding-top: 5em;
 }
+li{
+    display: block;
+}
 
 

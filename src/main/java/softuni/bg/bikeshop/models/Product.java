@@ -15,6 +15,12 @@ public class Product extends BaseEntity{
     @Column(name = "is_favourite",nullable = false)
     private boolean isFavourite;
 
+    @ManyToOne(optional = false)
+    private User seller;
+    public Product() {
+        isFavourite = false;
+    }
+
     public boolean isFavourite() {
         return isFavourite;
     }
@@ -22,9 +28,6 @@ public class Product extends BaseEntity{
     public void setFavourite(boolean favourite) {
         isFavourite = favourite;
     }
-
-    @ManyToOne(optional = false)
-    private User seller;
 
     public User getSeller() {
         return seller;

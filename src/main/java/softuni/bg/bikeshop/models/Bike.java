@@ -46,4 +46,5 @@ public class Bike extends Product{
     public void setWheelsSize(double wheelsSize) {
         this.wheelsSize = wheelsSize;
     }
+
 }

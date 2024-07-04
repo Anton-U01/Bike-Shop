@@ -19,18 +19,18 @@
     <div class="buttons d-flex flex-row ">
         <div class="mr-5">
             <form>
-                <button class="btn btn-secondary btn-lg">ADD BIKE</button>
+                <a th:href="@{/products/add-bike}" class="btn btn-secondary btn-lg">ADD BIKE</a>
             </form>
         </div>
         <div>
             <form>
-                <button class="btn btn-secondary btn-lg">ADD PART</button>
+                <a th:href="@{/products/add-part}" class="btn btn-secondary btn-lg">ADD PART</a>
             </form>
         </div>
     </div>
 </div>
 <div class="bikes">
-    <img src="images/bikes.png">
+    <img src="/images/bikes.png" alt="bike">
 </div>
 
 </body>

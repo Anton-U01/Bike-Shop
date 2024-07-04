@@ -18,7 +18,10 @@
     <div class="container bg-light border border-dark rounded">
         <h1 class="text-center cycle_taital bg-light rounded text-dark">Add Part</h1>
         <p class="text-center cycle_text">Please fill in the form to add new part.</p>
-        <form class="welcome login" method="post" action="/">
+        <form class="welcome login"
+              th:method="post"
+              th:action="@{/products/add-part}"
+        >
             <div class="cycle_section_2 layout_padding bg-light">
                 <div class="row justify-content-center">
                     <div class="col-md-6">
