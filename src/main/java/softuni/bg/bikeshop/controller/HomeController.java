@@ -3,6 +3,7 @@ package softuni.bg.bikeshop.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+
 @Controller
 public class HomeController {
     @GetMapping("/")
@@ -12,10 +13,6 @@ public class HomeController {
     @GetMapping("/about")
     public String about(){
         return "about";
-    }
-    @GetMapping("/login")
-    public String viewLogin(){
-        return "login";
     }
     @GetMapping("/add")
     public String viewAdd(){return "add-product";}
