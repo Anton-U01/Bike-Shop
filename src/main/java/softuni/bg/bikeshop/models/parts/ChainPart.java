@@ -12,7 +12,6 @@ public class ChainPart extends Part{
     @Column(nullable = false)
     private int speedsCount;
     @Column(nullable = false)
-
     private int chainLinks;
 
     public int getSpeedsCount() {

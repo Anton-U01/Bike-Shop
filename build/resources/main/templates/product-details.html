@@ -45,44 +45,42 @@
     </div>
     <div class="border-left border-dark border-right border-dark">
         <div class="col-md-6">
-            <h1>Product Name</h1>
-            <p class="lead">Product Description</p>
-            <p><strong>Price: </strong>$1200</p>
+            <h1 th:text="${product.name}">Product Name</h1>
+            <p class="lead" th:text="${product.description}">Product Description</p>
+            <p><strong>Price:<span th:text="${product.price}">$1200</span></strong></p>
 
-            <div id="bikeDetails" class="product-details" style="display: none;">
+            <div th:if="${isBike}" id="bikeDetails" class="product-details">
                 <h2>Bike Details</h2>
-                <p><strong>Type: </strong>Mountain</p>
-                <p><strong>Frame: </strong>21</p>
-                <p><strong>Brakes: </strong>21</p>
-                <p><strong>Wheels: </strong>21</p>
-
+                <p><strong>Type: </strong><span th:text="${bike.type}">Mountain</span></p>
+                <p><strong>Frame: </strong><span th:text="${bike.frame}">21</span></p>
+                <p><strong>Brakes: </strong><span th:text="${bike.brakes}">Standard</span></p>
+                <p><strong>Wheels: </strong><span th:text="${bike.wheelsSize}">Standard</span></p>
             </div>
 
-            <div id="partDetails" class="product-details" style="display: none;">
+            <div th:if="${isPart}" id="partDetails" class="product-details">
                 <h2>Part Details</h2>
-                <p><strong>Part Type: </strong>Chain</p>
-                <p><strong>Manufacturer: </strong>Chain</p>
+                <p><strong>Part Type: </strong><span th:text="${part.type}">Chain</span></p>
+                <p><strong>Manufacturer: </strong><span th:text="${part.manufacturer}"></span></p>
 
-                <div id="chainDetails" style="display: none;">
+                <div th:if="${isChainPart}" id="chainDetails">
                     <h3>Chain Details</h3>
-                    <p><strong>Count of speeds: </strong>5</p>
-                    <p><strong>Count of chain links: </strong>42</p>
+                    <p><strong>Count of speeds: </strong><span th:text="${chainPart.getSpeedsCount()}">5</span></p>
+                    <p><strong>Count of chain links: </strong><span th:text="${chainPart.getChainLinks()}">5</span></p>
                 </div>
 
-                <div id="wheelDetails" style="display: none;">
+                <div th:if="${isTiresPart}" id="wheelDetails">
                     <h3>Wheel Details</h3>
-                    <p><strong>Diameter: </strong>27.5 inches</p>
-                    <p><strong>Type: </strong>Tubeless</p>
+                    <p><strong>Size: </strong><span th:text="${tiresPart.getSize()}"></span></p>
                 </div>
 
-                <div id="framePart" style="display: none;">
+                <div th:if="${isFramePart}" id="framePart">
                     <h3>Frame Details</h3>
-                    <p><strong>Material: </strong>Something</p>
-                    <p><strong>Weight: </strong>35</p>
+                    <p><strong>Material: </strong><span th:text="${framePart.getMaterial()}">Something</span></p>
+                    <p><strong>Weight: </strong><span th:text="${framePart.getWeight()}">Something</span></p>
                 </div>
             </div>
 
-            <a href="/" class="btn btn-primary mt-3">Back to Products</a>
+            <a th:href="@{/products}" class="btn btn-primary mt-3">Back to Products</a>
         </div>
     </div>
 </div>
