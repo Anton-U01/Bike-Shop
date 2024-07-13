@@ -5,21 +5,21 @@ import softuni.bg.bikeshop.models.Product;
 
 @Entity
 @Table(name = "parts")
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Part extends Product {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private PartType partType;
+    private PartType type;
 
     @Column(nullable = false)
     private String manufacturer;
 
-    public PartType getPartType() {
-        return partType;
+    public PartType getType() {
+        return type;
     }
 
-    public void setPartType(PartType partType) {
-        this.partType = partType;
+    public void setType(PartType type) {
+        this.type = type;
     }
 
     public String getManufacturer() {

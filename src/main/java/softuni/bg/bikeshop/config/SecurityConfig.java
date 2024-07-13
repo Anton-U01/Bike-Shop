@@ -20,14 +20,13 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-        return httpSecurity.authorizeHttpRequests(
+         httpSecurity.authorizeHttpRequests(
                         authorizeRequests -> {
                             authorizeRequests
                                     .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                                     .requestMatchers("/", "/about").permitAll()
                                     .requestMatchers("/users/login", "/users/register","/login-error").anonymous()
                                     .anyRequest().authenticated();
-
                         })
                 .formLogin(
                         formLogin -> {
@@ -46,8 +45,10 @@ public class SecurityConfig {
                                     .logoutSuccessUrl("/")
                                     .invalidateHttpSession(true);
                         }
-                )
-                .build();
+                );
+            httpSecurity.csrf(csrf -> csrf.ignoringRequestMatchers("/products/add-part"));
+
+        return httpSecurity.build();
 
     }
 }
