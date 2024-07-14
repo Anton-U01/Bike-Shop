@@ -13,6 +13,9 @@
 </header>
 
 <div class="container">
+    <div class="bg-success border border-dark rounded-circle d-flex justify-content-center mt-4 p-3">
+        <h1 class="text-dark">ALL OFFERS</h1>
+    </div>
     <div class="row">
         <div th:each="product : ${allProducts}" class="col-md-4 mt-4">
             <div class="card h-100">
@@ -24,7 +27,7 @@
                     <div class="mt-auto">
                         <div class="buttons d-flex justify-content-between">
                             <a th:href="@{/products/details/{id}(id = ${product.id})}" class="btn btn-outline-info">Read more</a>
-                            <a href="#" class="btn btn-outline-warning">Add To Favourites</a>
+                            <a th:href="@{/products/add-to-favourites/{id}(id = ${product.id})}" class="btn btn-outline-warning">Add To Favourites</a>
                         </div>
                     </div>
                 </div>

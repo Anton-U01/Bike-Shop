@@ -80,7 +80,11 @@
                 </div>
             </div>
 
-            <a th:href="@{/products}" class="btn btn-primary mt-3">Back to Products</a>
+
+            <div>
+                <a th:href="@{/products}" class="btn btn-primary mt-3">Back to Products</a>
+                <a th:href="@{/products/add-to-favourites/{id}(id = ${product.id})}" class="btn bg-warning btn-outline-light border-dark mt-3">Add To Favourites</a>
+            </div>
         </div>
     </div>
 </div>

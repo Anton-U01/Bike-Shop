@@ -46,8 +46,8 @@
     <div class="border-left border-dark border-right border-dark">
         <div class="col-md-6">
             <h1 th:text="${product.name}">Product Name</h1>
-            <p class="lead" th:text="${product.description}">Product Description</p>
-            <p><strong>Price:<span th:text="${product.price}">$1200</span></strong></p>
+            <p><strong>Description: </strong><span th:text="${product.description}">Lorem</span></p>
+            <p><strong>Price: <span th:text="${product.price}">$1200</span>$</strong></p>
 
             <div th:if="${isBike}" id="bikeDetails" class="product-details">
                 <h2>Bike Details</h2>
@@ -70,13 +70,13 @@
 
                 <div th:if="${isTiresPart}" id="wheelDetails">
                     <h3>Wheel Details</h3>
-                    <p><strong>Size: </strong><span th:text="${tiresPart.getSize()}"></span></p>
+                    <p><strong>Size: </strong><span th:text="${tiresPart.getSize()}"></span>″</p>
                 </div>
 
                 <div th:if="${isFramePart}" id="framePart">
                     <h3>Frame Details</h3>
                     <p><strong>Material: </strong><span th:text="${framePart.getMaterial()}">Something</span></p>
-                    <p><strong>Weight: </strong><span th:text="${framePart.getWeight()}">Something</span></p>
+                    <p><strong>Weight: </strong><span th:text="${framePart.getWeight()}">Something</span> kg.</p>
                 </div>
             </div>
 
