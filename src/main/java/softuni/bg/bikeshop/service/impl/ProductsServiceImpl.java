@@ -84,4 +84,39 @@ public class ProductsServiceImpl implements ProductsService {
         user.getFavouriteProducts().remove(product);
         product.setFavourite(false);
     }
+
+    @Override
+    public List<Product> getAllCurrentUserProducts(String username) {
+        Optional<User> optionalUser = userRepository.findByUsername(username);
+        if(optionalUser.isEmpty()){
+            return new ArrayList<>();
+        }
+        User user = optionalUser.get();
+        return productRepository.getAllCurrentUserProducts(user);
+    }
+
+    @Override
+    @Transactional
+    public boolean deleteProduct(Long productId, String name) {
+        Optional<Product> optionalProduct = productRepository.findById(productId);
+        if(optionalProduct.isEmpty()){
+            return false;
+        }
+        Product product = optionalProduct.get();
+        Optional<User> optionalUser = userRepository.findByUsername(name);
+        if(optionalUser.isEmpty()){
+            return false;
+        }
+        User user = optionalUser.get();
+        if(!user.getProducts().contains(product)){
+            return false;
+        }
+        if(product.isFavourite()){
+            return false;
+        }
+        user.getProducts().remove(product);
+        productRepository.deleteById(productId);
+
+        return true;
+    }
 }

@@ -14,6 +14,8 @@
 </header>
 <body>
 <div class="container pt-5">
+    <div class="alert alert-danger" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+    <div class="alert alert-success border border-dark" th:if="${successMessage}" th:text="${successMessage}"></div>
     <div class="gallery border-left border-dark border-right border-dark p-4">
         <div class="row">
             <div class="col-md-4">

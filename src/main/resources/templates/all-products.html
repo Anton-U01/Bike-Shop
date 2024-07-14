@@ -16,6 +16,8 @@
     <div class="bg-success border border-dark rounded-circle d-flex justify-content-center mt-4 p-3">
         <h1 class="text-dark">ALL OFFERS</h1>
     </div>
+    <div class="alert alert-danger" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+    <div class="alert alert-success border border-dark" th:if="${successMessage}" th:text="${successMessage}"></div>
     <div class="row">
         <div th:each="product : ${allProducts}" class="col-md-4 mt-4">
             <div class="card h-100">

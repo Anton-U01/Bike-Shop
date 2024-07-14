@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import softuni.bg.bikeshop.models.Bike;
 import softuni.bg.bikeshop.models.Product;
 import softuni.bg.bikeshop.models.parts.ChainPart;
@@ -86,16 +87,22 @@ public class ProductController {
     @GetMapping("/products/add-to-favourites/{id}")
     public String addToFavourites(@PathVariable("id") Long id,
                                   Principal principal,
+                                  RedirectAttributes redirectAttributes,
                                   HttpServletRequest request) {
+        String referer = request.getHeader("Referer");
         boolean success = productsService.addToFavourites(id, principal);
         if(!success){
-            String referer = request.getHeader("Referer");
+            redirectAttributes.addFlashAttribute("errorMessage","This product is already added to favourites.");
             if(referer.contains("/products/details")){
                 return "redirect:" + referer;
             }
             return "redirect:/products";
         }
-        return "redirect:/products/favourites";
+        redirectAttributes.addFlashAttribute("successMessage","This product is added successfully to favourites!");
+        if(referer.contains("/products/details")){
+            return "redirect:" + referer;
+        }
+        return "redirect:/products";
     }
     @GetMapping("/products/favourites")
     public String getFavouritesPage(Model model,Principal principal){
@@ -108,5 +115,22 @@ public class ProductController {
     public String removeFromFavourites(@PathVariable("id") Long id,Principal principal){
         productsService.removeFromFavourites(id,principal.getName());
         return "redirect:/products/favourites";
+    }
+
+    @GetMapping("/products/my-offers")
+    public String viewMyOffers(Model model,Principal principal){
+        List<Product> productList = productsService.getAllCurrentUserProducts(principal.getName());
+        model.addAttribute("productList",productList);
+        return "my-offers";
+    }
+    @GetMapping("/products/delete/{id}")
+    public String deleteProduct(@PathVariable("id") Long id, Principal principal, RedirectAttributes redirectAttributes){
+        boolean success = productsService.deleteProduct(id, principal.getName());
+        if(!success){
+            redirectAttributes.addFlashAttribute("errorMessage","Unable to delete product. Тhis product may have been added to someone else's favorites list. Please try again.");
+            return "redirect:/products/my-offers";
+        }
+        redirectAttributes.addFlashAttribute("successMessage","This product is successfully deleted.");
+        return "redirect:/products/my-offers";
     }
 }

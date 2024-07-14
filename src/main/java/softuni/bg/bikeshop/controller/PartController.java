@@ -42,4 +42,6 @@ public class PartController {
         }
         return ResponseEntity.ok(Map.of("redirectUrl", "/products"));
     }
+
+
 }

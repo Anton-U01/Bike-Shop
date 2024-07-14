@@ -1,0 +1,13 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    background: url('/images/all-products.png') center center/cover no-repeat fixed;
+    display: flex;
+    flex-direction: column;
+}
+
+
+

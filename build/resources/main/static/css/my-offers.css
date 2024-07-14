@@ -4,7 +4,7 @@ html, body {
 
 body {
     min-height: 100vh;
-    background: url('/images/favourites.png') center center/cover no-repeat fixed;
+    background: url('/images/my-bike.png') center center/cover no-repeat fixed;
     display: flex;
     flex-direction: column;
 }

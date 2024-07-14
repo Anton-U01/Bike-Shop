@@ -27,6 +27,9 @@
                 <li>
                     <a th:href="@{/products/favourites}" sec:authorize="isAuthenticated()">Favourites</a>
                 </li>
+                <li>
+                    <a th:href="@{/products/my-offers}" sec:authorize="isAuthenticated()">My Offers</a>
+                </li>
                 <li href="#" sec:authorize="hasRole('ADMIN')">
                     <a>Admin</a>
                 </li>

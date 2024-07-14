@@ -19,4 +19,8 @@ public interface ProductsService{
     Set<Product> getFavourites(String username);
 
     void removeFromFavourites(Long productId, String username);
+
+    List<Product> getAllCurrentUserProducts(String username);
+
+    boolean deleteProduct(Long productId, String name);
 }
