@@ -1,5 +1,7 @@
 package softuni.bg.bikeshop.controller;
 
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,7 @@ import softuni.bg.bikeshop.service.ProductsService;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Set;
 
 
 @Controller
@@ -81,8 +84,29 @@ public class ProductController {
     }
 
     @GetMapping("/products/add-to-favourites/{id}")
-    public String addToFavourites(@PathVariable("id") Long id, Principal principal) {
-        productsService.addToFavourites(id,principal);
-        return "redirect:/products";
+    public String addToFavourites(@PathVariable("id") Long id,
+                                  Principal principal,
+                                  HttpServletRequest request) {
+        boolean success = productsService.addToFavourites(id, principal);
+        if(!success){
+            String referer = request.getHeader("Referer");
+            if(referer.contains("/products/details")){
+                return "redirect:" + referer;
+            }
+            return "redirect:/products";
+        }
+        return "redirect:/products/favourites";
+    }
+    @GetMapping("/products/favourites")
+    public String getFavouritesPage(Model model,Principal principal){
+        Set<Product> favourites = productsService.getFavourites(principal.getName());
+        model.addAttribute("favourites",favourites);
+
+        return "favourites";
+    }
+    @GetMapping("/products/remove-from-favourites/{id}")
+    public String removeFromFavourites(@PathVariable("id") Long id,Principal principal){
+        productsService.removeFromFavourites(id,principal.getName());
+        return "redirect:/products/favourites";
     }
 }
