@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Part</title>
+    <th:block th:replace="~{/fragments/head :: head}"></th:block>
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/css/add-part.css">
+    <script>
+        function submitForm(){
+            var formData = {
+                id: document.getElementById("id").value,
+                name: document.getElementById("name").value,
+                description: document.getElementById("description").value,
+                price: document.getElementById("price").value,
+                manufacturer: document.getElementById("manufacturer").value,
+                type: document.getElementById("type").value,
+                dynamicFields: {}
+            };
+
+            if (formData.type === "TIRES") {
+                formData.dynamicFields.tireSize = document.getElementById("size").value;
+            } else if (formData.type === "CHAIN") {
+                formData.dynamicFields.chainLinks = document.getElementById("chainLinks").value;
+                formData.dynamicFields.speedsCount = document.getElementById("speedsCount").value;
+            } else if (formData.type === "FRAME") {
+                formData.dynamicFields.weight = document.getElementById("weight").value;
+                formData.dynamicFields.material = document.getElementById("material").value;
+            }
+            fetch('/edit-part', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+                .then(response => {
+                    if(!response.ok){
+                        return response.json().then(errors => displayErrors(errors));
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.redirectUrl) {
+                        window.location.href = data.redirectUrl;
+                    }
+                });
+        }
+        function displayErrors(errors){
+            clearErrorMessages();
+
+            for(const field in errors){
+                const errorMessage = errors[field];
+                const errorElement = document.querySelector(`#${field} + small`);
+                if (errorElement) {
+                    errorElement.textContent = errorMessage;
+                    errorElement.classList.remove('hidden');
+                }
+            }
+        }
+        function clearErrorMessages() {
+            document.querySelectorAll('small.danger').forEach(element => {
+                element.textContent = '';
+                element.classList.add('hidden');
+            });
+        }
+    </script>
+</head>
+<header>
+    <th:block th:replace="~{fragments/navbar::navbar}"></th:block>
+</header>
+<body>
+
+<div class="cycle_section layout_padding">
+    <div class="container bg-light border border-dark rounded">
+        <h1 class="text-center cycle_taital bg-light rounded text-dark">Edit Part</h1>
+        <p class="text-center cycle_text">Please fill in the form to edit the selected part.</p>
+        <form onsubmit="submitForm()" class="welcome login"
+              th:object="${product}"
+        >
+            <input type="hidden" id="id" th:field="*{id}"/>
+            <div class="cycle_section_2 layout_padding bg-light">
+                <div class="d-flex row justify-content-center">
+                    <div class="col-md-6 ">
+                        <div class="form-group d-flex row justify-content-center">
+                            <div class="label-holder textCol d-flex justify-content-center">
+                                <label for="name" class="h4 mb-2 bg-dark text-light rounded p-1">Name</label>
+                            </div>
+                            <input
+                                    th:field="*{name}"
+                                    type="text"
+                                    class="form-control"
+                                    id="name"
+                                    name="name"
+                            />
+                            <small class="hidden danger p-1 bg-danger text-white rounded" style="font-size: 15px">Name error message</small>
+                        </div>
+
+                        <div class="form-group d-flex row justify-content-center">
+                            <div class="label-holder textCol d-flex justify-content-center">
+                                <label for="description" class="h4 mb-2  bg-dark text-light rounded p-1">Description</label>
+                            </div>
+                            <input
+                                    th:field="*{description}"
+                                    type="text"
+                                    class="form-control"
+                                    id="description"
+                                    name="description"
+                            />
+                            <small class="hidden danger p-1 bg-danger text-white rounded" style="font-size: 15px">Description error message</small>
+                        </div>
+
+                        <div class="form-group d-flex row justify-content-center">
+                            <div class="label-holder textCol d-flex justify-content-center">
+                                <label for="price" class="h4 mb-2 bg-dark text-light rounded p-1">Price</label>
+                            </div>
+                            <input
+                                    th:field="*{price}"
+                                    type="number"
+                                    class="form-control"
+                                    id="price"
+                                    name="price"
+                            />
+                            <small class="hidden danger p-1 bg-danger text-white rounded" style="font-size: 15px">Price error message</small>
+                        </div>
+
+                        <div th:if="${productType == 'PART'}" class="form-group d-flex row justify-content-center">
+                            <div class="label-holder textCol d-flex justify-content-center">
+                                <label for="manufacturer" class="h4 mb-2 bg-dark text-light rounded p-1">Manufacturer</label>
+                            </div>
+                            <input
+                                    th:field="*{manufacturer}"
+                                    type="text"
+                                    class="form-control"
+                                    id="manufacturer"
+                                    name="manufacturer"
+                            />
+                            <small class="hidden danger p-1 bg-danger text-white rounded" style="font-size: 15px">Manufacturer error message</small>
+                        </div>
+
+                        <div class="form-group d-flex row justify-content-center">
+                            <div class="text-white label-holder d-flex justify-content-center">
+                                <label for="type" class="h4 mb-2 bg-dark text-light rounded p-1">Type</label>
+                            </div>
+                            <select class="browser-default custom-select mb-3" id="type" name="type">
+                                <option th:value="*{type}" th:text="*{type}" selected>TIRES</option>
+                            </select>
+
+                        </div>
+
+                        <div th:if="${type == 'CHAIN'}" id="chainFields">
+                            <div class="form-group">
+                                <div class="label-holder text-white textCol d-flex justify-content-center">
+                                    <label for="speedsCount" class="h4 mb-2  bg-dark text-light rounded p-1">Count of speeds</label>
+                                </div>
+                                <input
+                                        th:field="*{speedsCount}"
+                                        type="number"
+                                        class="form-control "
+                                        id="speedsCount"
+                                        name="speedsCount"
+                                />
+                                <small class="hidden danger p-1 bg-danger text-white rounded" style="font-size: 15px">Count of speeds error message</small>
+                            </div>
+
+                            <div class="form-group d-flex row justify-content-center">
+                                <div class="label-holder text-white textCol d-flex justify-content-center">
+                                    <label for="chainLinks" class="h4 mb-2  bg-dark text-light rounded p-1">Count of chain links</label>
+                                </div>
+                                <input
+                                        th:field="*{chainLinks}"
+                                        type="number"
+                                        class="form-control"
+                                        id="chainLinks"
+                                        name="chainLinks"
+                                />
+                                <small class="hidden danger  p-1 bg-danger text-white rounded" style="font-size: 15px">Count of chain links error message</small>
+                            </div>
+                        </div>
+
+
+                        <div th:if="${type == 'FRAME'}" id="frameFields">
+                            <div class="form-group d-flex row justify-content-center">
+                                <div class="label-holder text-white textCol d-flex justify-content-center">
+                                    <label for="material" class="h4 mb-2  bg-dark text-light rounded p-1">Material</label>
+                                </div>
+                                <input
+                                        th:field="*{material}"
+                                        type="text"
+                                        class="form-control"
+                                        id="material"
+                                        name="material"
+                                />
+                                <small class="hidden danger p-1 bg-danger text-white rounded" style="font-size: 15px">Material error message</small>
+                            </div>
+
+                            <div class="form-group d-flex row justify-content-center">
+                                <div class="label-holder text-white textCol d-flex justify-content-center">
+                                    <label for="weight" class="h4 mb-2  bg-dark text-light rounded p-1">Weight</label>
+                                </div>
+                                <input
+                                        th:field="*{weight}"
+                                        type="number"
+                                        class="form-control"
+                                        id="weight"
+                                        name="weight"
+                                />
+                                <small class="hidden danger p-1 bg-danger text-white rounded" style="font-size: 15px">Weight error message</small>
+                            </div>
+                        </div>
+
+
+                        <div th:if="${type == 'TIRES'}" id="tiresFields">
+                            <div class="form-group d-flex row justify-content-center">
+                                <div class="label-holder text-white textCol d-flex justify-content-center">
+                                    <label for="size" class="h4 mb-2 bg-dark text-light rounded p-1">Size</label>
+                                </div>
+                                <input
+                                        th:field="*{size}"
+                                        type="number"
+                                        class="form-control"
+                                        id="size"
+                                        name="size"
+                                />
+                                <small class="hidden danger p-1 bg-danger text-white rounded" style="font-size: 15px">Size error message</small>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="button-holder d-flex justify-content-center mt-4 mb-4">
+                    <button type="submit" class="btn btn-dark btn-lg">EDIT PART</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

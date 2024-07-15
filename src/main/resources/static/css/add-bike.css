@@ -1,15 +1,18 @@
-html{
-    background-color: #e9ecef;
+html, body {
+    height: 100%;
+}
 
+body {
+    min-height: 100vh;
+    background: url('/images/img.png') center center/cover no-repeat fixed;
+    display: flex;
+    flex-direction: column;
 }
-.cycle_section {
-    background-image: url("/images/img.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding-bottom: 5em;
-    padding-top: 5em;
+
+.cycle_section{
+    margin-top: 5em;
 }
+
 li{
     display: block;
 }

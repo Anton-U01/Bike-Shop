@@ -23,4 +23,6 @@ public interface ProductsService{
     List<Product> getAllCurrentUserProducts(String username);
 
     boolean deleteProduct(Long productId, String name);
+
+    boolean editProduct(Long productId, String username);
 }

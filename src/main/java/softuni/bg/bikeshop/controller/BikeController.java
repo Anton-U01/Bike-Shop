@@ -4,12 +4,11 @@ import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import softuni.bg.bikeshop.models.BikeType;
 import softuni.bg.bikeshop.models.dto.AddBikeDto;
+import softuni.bg.bikeshop.models.dto.parts.EditBikeDto;
 import softuni.bg.bikeshop.service.BikeService;
 
 import java.security.Principal;
@@ -46,5 +45,24 @@ public class BikeController {
         }
 
         return "redirect:/products";
+    }
+    @PutMapping("/edit-bike/{id}")
+    public String editBike(@PathVariable("id") Long id,
+                           @Valid EditBikeDto editBikeDto,
+                           BindingResult bindingResult,
+                           RedirectAttributes redirectAttributes){
+        if(bindingResult.hasErrors() || !bikeService.edit(editBikeDto,id)){
+
+            redirectAttributes.addFlashAttribute("product",editBikeDto);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.product",bindingResult);
+
+            return "redirect:/products/edit-bike";
+        }
+
+        return "redirect:/products/my-offers";
+    }
+    @GetMapping("/products/edit-bike")
+    public String viewEditBike(){
+        return "edit-bike";
     }
 }

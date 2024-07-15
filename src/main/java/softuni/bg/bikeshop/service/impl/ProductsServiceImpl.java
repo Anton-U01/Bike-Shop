@@ -119,4 +119,10 @@ public class ProductsServiceImpl implements ProductsService {
 
         return true;
     }
+
+    @Override
+    public boolean editProduct(Long productId, String username) {
+
+        return false;
+    }
 }

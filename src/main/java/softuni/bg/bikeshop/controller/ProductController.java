@@ -1,18 +1,23 @@
 package softuni.bg.bikeshop.controller;
 
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
+import org.hibernate.boot.archive.scan.internal.ScanResultImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import softuni.bg.bikeshop.models.Bike;
 import softuni.bg.bikeshop.models.Product;
+import softuni.bg.bikeshop.models.dto.parts.EditPartDto;
 import softuni.bg.bikeshop.models.parts.ChainPart;
 import softuni.bg.bikeshop.models.parts.FramePart;
 import softuni.bg.bikeshop.models.parts.Part;
 import softuni.bg.bikeshop.models.parts.TiresPart;
+import softuni.bg.bikeshop.service.PartService;
 import softuni.bg.bikeshop.service.ProductsService;
 
 import java.security.Principal;
@@ -23,10 +28,12 @@ import java.util.Set;
 @Controller
 public class ProductController {
     private final ProductsService productsService;
+    private final PartService partService;
 
 
-    public ProductController(ProductsService productsService) {
+    public ProductController(ProductsService productsService, PartService partService) {
         this.productsService = productsService;
+        this.partService = partService;
     }
 
     @GetMapping("/products/add")
@@ -35,7 +42,7 @@ public class ProductController {
     }
 
     @GetMapping("/products/add-part")
-    public String viewAddPart(Model model) {
+    public String viewAddPart() {
         return "add-part";
     }
 
@@ -133,4 +140,34 @@ public class ProductController {
         redirectAttributes.addFlashAttribute("successMessage","This product is successfully deleted.");
         return "redirect:/products/my-offers";
     }
+    @GetMapping("/products/edit/{id}")
+    public String editProduct(@PathVariable("id")Long id,
+                              Model model){
+
+        Product product = productsService.getProductById(id);
+        if (product instanceof Bike bike) {
+            model.addAttribute("product", bike);
+            model.addAttribute("productType", "BIKE");
+            return "edit-bike";
+        } else if (product instanceof Part part) {
+            model.addAttribute("productType", "PART");
+            if(product instanceof FramePart framePart){
+                model.addAttribute("product", framePart);
+                model.addAttribute("type", "FRAME");
+            } else if(part instanceof ChainPart chainPart){
+                model.addAttribute("product", chainPart);
+                model.addAttribute("type", "CHAIN");
+            } else if(part instanceof TiresPart tiresPart){
+                model.addAttribute("product", tiresPart);
+                model.addAttribute("type", "TIRES");
+            }
+        }
+        return "edit-part";
+    }
+
+    @GetMapping("/products/edit-part")
+    public String viewEditPart(){
+        return "edit-part";
+    }
+
 }

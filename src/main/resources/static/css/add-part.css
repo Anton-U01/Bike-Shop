@@ -1,13 +1,14 @@
-html{
-    background-color: #e9ecef;
-
+html, body {
+    height: 100%;
 }
-.cycle_section {
-    background-image: url("/images/parts.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding-bottom: 5em;
+
+body {
+    min-height: 100vh;
+    background: url('/images/parts.png') center center/cover no-repeat fixed;
+    display: flex;
+    flex-direction: column;
+}
+.cycle_section{
     padding-top: 5em;
 }
 .hidden{
