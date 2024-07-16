@@ -5,12 +5,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import softuni.bg.bikeshop.models.BikeType;
 import softuni.bg.bikeshop.models.dto.AddBikeDto;
 import softuni.bg.bikeshop.models.dto.parts.EditBikeDto;
 import softuni.bg.bikeshop.service.BikeService;
 
+import java.io.IOException;
 import java.security.Principal;
 
 @Controller
@@ -35,14 +37,22 @@ public class BikeController {
     public String addBike(@Valid AddBikeDto addBikeDto,
                           BindingResult bindingResult,
                           RedirectAttributes redirectAttributes,
-                          Principal principal){
-        if(bindingResult.hasErrors() || !bikeService.add(addBikeDto,principal)){
+                          Principal principal,
+                          @RequestParam("bikeImage") MultipartFile file) throws IOException {
+
+        if (file.isEmpty()) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Please select a file to upload");
+            return "redirect:/products/add-bike";
+        }
+
+        if(bindingResult.hasErrors() || !bikeService.add(addBikeDto,principal,file)){
 
             redirectAttributes.addFlashAttribute("addBike",addBikeDto);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.addBike",bindingResult);
 
             return "redirect:/products/add-bike";
         }
+
 
         return "redirect:/products";
     }

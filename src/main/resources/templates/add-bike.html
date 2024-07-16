@@ -18,7 +18,7 @@
     <div class="container">
         <h1 class="text-center cycle_taital">Add Bike</h1>
         <p class="text-center cycle_text">Please fill in the form to add new bike.</p>
-        <form class="welcome login" th:method="post"
+        <form class="welcome login" enctype="multipart/form-data" th:method="post"
               th:action="@{/products/add-bike}"
               th:object="${addBike}"
         >
@@ -144,6 +144,12 @@
                                     th:text="${err}"
                                     class="error"></li>
                             </ul>
+                        </div>
+                        <div class="form-group">
+                            <div class="label-holder text-white textCol d-flex justify-content-center">
+                                <label for="bikeImage" class="h4 mb-2  text-white">Images</label>
+                            </div>
+                                <input type="file" class="form-control" id="bikeImage" name="bikeImage">
                         </div>
 
                         <div class="button-holder d-flex justify-content-center">

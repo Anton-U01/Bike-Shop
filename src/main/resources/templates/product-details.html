@@ -13,7 +13,7 @@
     <th:block th:replace="~{fragments/navbar::navbar}"></th:block>
 </header>
 <body>
-<div class="container pt-5">
+<div class="container pt-5 pb-5">
     <div class="alert alert-danger" th:if="${errorMessage}" th:text="${errorMessage}"></div>
     <div class="alert alert-success border border-dark" th:if="${successMessage}" th:text="${successMessage}"></div>
     <div class="gallery border-left border-dark border-right border-dark p-4">
@@ -87,6 +87,17 @@
                 <a th:href="@{/products}" class="btn btn-primary mt-3">Back to Products</a>
                 <a th:href="@{/products/add-to-favourites/{id}(id = ${product.id})}" class="btn bg-warning btn-outline-light border-dark mt-3">Add To Favourites</a>
             </div>
+        <div class="review-container col mt-4">
+            <a  href="#" class="bg-white font-weight-bold p-2 rounded">Show all reviews</a>
+            <form>
+            <label for="review" class="d-block h4 mt-4 mb-2 bg-primary text-light rounded p-1">Write review for this product:</label>
+            <textarea class="d-block" type="textarea" id="review" name="review" rows="4" cols="100"></textarea>
+            <div>
+                <button type="submit" class="btn btn-outline-primary btn-sm">LEAVE REVIEW</button>
+            </div>
+            </form>
+        </div>
+
         </div>
     </div>
 </div>

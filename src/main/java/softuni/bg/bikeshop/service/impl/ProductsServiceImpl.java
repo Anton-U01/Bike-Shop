@@ -3,6 +3,7 @@ package softuni.bg.bikeshop.service.impl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import softuni.bg.bikeshop.models.*;
+import softuni.bg.bikeshop.repository.PictureRepository;
 import softuni.bg.bikeshop.repository.ProductRepository;
 import softuni.bg.bikeshop.repository.UserRepository;
 import softuni.bg.bikeshop.service.ProductsService;
@@ -13,10 +14,12 @@ import java.util.*;
 public class ProductsServiceImpl implements ProductsService {
     private final ProductRepository productRepository;
     private final UserRepository userRepository;
+    private final PictureRepository pictureRepository;
 
-    public ProductsServiceImpl(ProductRepository productRepository, UserRepository userRepository) {
+    public ProductsServiceImpl(ProductRepository productRepository, UserRepository userRepository, PictureRepository pictureRepository) {
         this.productRepository = productRepository;
         this.userRepository = userRepository;
+        this.pictureRepository = pictureRepository;
     }
 
     @Override
@@ -115,6 +118,8 @@ public class ProductsServiceImpl implements ProductsService {
             return false;
         }
         user.getProducts().remove(product);
+        pictureRepository.deleteAll(product.getPictures());
+
         productRepository.deleteById(productId);
 
         return true;

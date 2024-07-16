@@ -7,7 +7,9 @@
     <link rel="stylesheet" type="text/css" href="/css/navbar.css">
     <link rel="stylesheet" type="text/css" href="/css/add-part.css">
     <script>
-        function submitForm(){
+        function submitForm(event){
+            event.preventDefault();
+
             var formData = {
                 id: document.getElementById("id").value,
                 name: document.getElementById("name").value,
@@ -38,12 +40,8 @@
                     if(!response.ok){
                         return response.json().then(errors => displayErrors(errors));
                     }
-                    return response.json();
-                })
-                .then(data => {
-                    if (data.redirectUrl) {
-                        window.location.href = data.redirectUrl;
-                    }
+                    response.json().then(data => window.location.href = data.redirectUrl);
+
                 });
         }
         function displayErrors(errors){
@@ -75,7 +73,7 @@
     <div class="container bg-light border border-dark rounded">
         <h1 class="text-center cycle_taital bg-light rounded text-dark">Edit Part</h1>
         <p class="text-center cycle_text">Please fill in the form to edit the selected part.</p>
-        <form onsubmit="submitForm()" class="welcome login"
+        <form class="welcome login"
               th:object="${product}"
         >
             <input type="hidden" id="id" th:field="*{id}"/>
@@ -229,7 +227,7 @@
                     </div>
                 </div>
                 <div class="button-holder d-flex justify-content-center mt-4 mb-4">
-                    <button type="submit" class="btn btn-dark btn-lg">EDIT PART</button>
+                    <button onclick="submitForm(event)" type="submit" class="btn btn-dark btn-lg">EDIT PART</button>
                 </div>
             </div>
         </form>
