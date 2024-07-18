@@ -147,9 +147,13 @@
                         </div>
                         <div class="form-group">
                             <div class="label-holder text-white textCol d-flex justify-content-center">
-                                <label for="bikeImage" class="h4 mb-2  text-white">Images</label>
+                                <label for="bikeImages" class="h4 mb-2  text-white">Images</label>
                             </div>
-                                <input type="file" class="form-control" id="bikeImage" name="bikeImage">
+                                <input type="file" multiple class="form-control" id="bikeImages" name="bikeImages">
+                            <ul class="d-flex flex-column align-items-center bg-danger text-white">
+                                <li th:if="${noImage}" th:text="${noImage}"
+                                    class="error"></li>
+                            </ul>
                         </div>
 
                         <div class="button-holder d-flex justify-content-center">

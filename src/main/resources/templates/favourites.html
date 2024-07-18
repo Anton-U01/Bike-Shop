@@ -19,7 +19,14 @@
     <div class="row">
         <div th:each="product : ${favourites}" class="col-md-4 mt-4">
             <div class="card h-100 border border-5 border-warning">
-                <img src="/images/img-8.png" class="card-img-top" alt="product">
+                <div class="image-container">
+                    <img th:if="${product.pictures != null and product.pictures.size() > 0}"
+                         th:src="@{'data:image/jpg;base64,' + ${product.getPictures().get(0).getUrl()}}"
+                         th:alt="${product.getPictures().get(0).getTitle()}" class="card-img-top">
+                    <img th:unless="${product.pictures != null and product.pictures.size() > 0}"
+                         src="#"
+                         alt="no image" class="card-img-top">
+                </div>
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title" th:text="${product.name}">ProductElectric Bike</h5>
                     <p class="card-text" th:text="${product.description}">Experience the convenience of an electric motor with this modern e-bike.</p>

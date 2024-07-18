@@ -18,26 +18,11 @@
     <div class="alert alert-success border border-dark" th:if="${successMessage}" th:text="${successMessage}"></div>
     <div class="gallery border-left border-dark border-right border-dark p-4">
         <div class="row">
-            <div class="col-md-4">
+            <div th:each="pic : ${product.getPictures()}" class="col-md-4 mb-3">
                 <div class="thumbnail">
                     <a>
-                        <img   class="border border-dark rounded"  src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/14a.webp"
-                                 alt="" style="width:100%">
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="thumbnail">
-                    <a>
-                        <img     src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/14a.webp"
-                                 alt="" style="width:100%">
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="thumbnail">
-                    <a>
-                        <img     src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/14a.webp"
+                        <img   class="border border-dark rounded"
+                               th:src="@{'data:image/jpg;base64,' + ${pic.getUrl()}}"
                                  alt="" style="width:100%">
                     </a>
                 </div>

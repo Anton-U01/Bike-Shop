@@ -4,8 +4,12 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AddPartDto {
@@ -16,7 +20,7 @@ public class AddPartDto {
     private String description;
     @NotNull(message = "Price should not be empty!")
     @Positive(message = "Price should be a positive number!")
-    private double price;
+    private Double price;
     @NotBlank(message = "Name should not be empty!")
     @Size(min = 4,max = 30,message = "Name should be between 4 and 30 characters!")
     private String manufacturer;
@@ -24,6 +28,7 @@ public class AddPartDto {
     private String type;
 
     private Map<String, Object> dynamicFields;
+
 
     public AddPartDto() {
         dynamicFields = new HashMap<>();

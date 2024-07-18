@@ -26,15 +26,6 @@ public class AddBikeDto {
     @Positive(message = "Wheels size should be positive number!")
     private double wheelsSize;
 
-    private String picture;
-
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
 
     public String getName() {
         return name;

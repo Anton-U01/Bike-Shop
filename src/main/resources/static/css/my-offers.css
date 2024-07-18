@@ -8,6 +8,10 @@ body {
     display: flex;
     flex-direction: column;
 }
+.card-img-top {
+    height: 200px;
+    object-fit: contain;
+}
 
 
 

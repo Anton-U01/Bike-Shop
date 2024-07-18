@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 @Table
 public class Picture extends BaseEntity{
     private String title;
-    @Column(nullable = false,columnDefinition = "TEXT")
+    @Column(nullable = false,columnDefinition = "LONGTEXT")
     private String url;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id",referencedColumnName = "id")

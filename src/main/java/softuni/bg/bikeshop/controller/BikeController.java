@@ -14,6 +14,7 @@ import softuni.bg.bikeshop.service.BikeService;
 
 import java.io.IOException;
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 public class BikeController {
@@ -38,14 +39,13 @@ public class BikeController {
                           BindingResult bindingResult,
                           RedirectAttributes redirectAttributes,
                           Principal principal,
-                          @RequestParam("bikeImage") MultipartFile file) throws IOException {
+                          @RequestParam("bikeImages") List<MultipartFile> files) throws IOException {
 
-        if (file.isEmpty()) {
-            redirectAttributes.addFlashAttribute("errorMessage", "Please select a file to upload");
-            return "redirect:/products/add-bike";
+        if (files.get(0).isEmpty()) {
+            redirectAttributes.addFlashAttribute("noImage", "Please select an image file to upload!");
         }
 
-        if(bindingResult.hasErrors() || !bikeService.add(addBikeDto,principal,file)){
+        if(bindingResult.hasErrors() || !bikeService.add(addBikeDto,principal,files) || files.get(0).isEmpty()){
 
             redirectAttributes.addFlashAttribute("addBike",addBikeDto);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.addBike",bindingResult);

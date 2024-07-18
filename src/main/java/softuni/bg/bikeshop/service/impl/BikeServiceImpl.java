@@ -20,6 +20,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
@@ -31,7 +32,6 @@ public class BikeServiceImpl implements BikeService {
     private final ModelMapper modelMapper;
     private final BikeRepository bikeRepository;
     private final PictureRepository pictureRepository;
-    public static String UPLOADED_IMAGES = "D:\\SOFTUNI\\Final Project\\BikeShop\\src\\main\\resources\\static\\images\\uploaded\\";
     public BikeServiceImpl(ProductRepository productRepository, UserRepository userRepository, ModelMapper modelMapper, BikeRepository bikeRepository, PictureRepository pictureRepository) {
         this.productRepository = productRepository;
         this.userRepository = userRepository;
@@ -42,9 +42,7 @@ public class BikeServiceImpl implements BikeService {
 
 
     @Override
-    public boolean add(AddBikeDto addBikeDto, Principal principal, MultipartFile file) throws IOException {
-        byte[] bytes = file.getBytes();
-        String image = Base64.getEncoder().encodeToString(bytes);
+    public boolean add(AddBikeDto addBikeDto, Principal principal, List<MultipartFile> files) throws IOException {
 
         Bike bike = modelMapper.map(addBikeDto, Bike.class);
         BikeType bikeType = BikeType.valueOf(addBikeDto.getType());
@@ -56,17 +54,26 @@ public class BikeServiceImpl implements BikeService {
         User seller = optional.get();
         bike.setSeller(seller);
 
-        Picture picture = new Picture();
-        picture.setTitle(file.getName());
-        picture.setUrl(image);
-        picture.setAuthor(seller);
-        pictureRepository.saveAndFlush(picture);
+        List<Picture> pictureList = new ArrayList<>();
+        for (MultipartFile file : files) {
+            byte[] bytes = file.getBytes();
+            String image = Base64.getEncoder().encodeToString(bytes);
 
-        bike.setPictures(List.of(picture));
+            Picture picture = new Picture();
+            picture.setTitle(file.getName());
+            picture.setUrl(image);
+            picture.setAuthor(seller);
+            pictureRepository.saveAndFlush(picture);
+            pictureList.add(picture);
+        }
+
+        bike.setPictures(pictureList);
 
         productRepository.saveAndFlush(bike);
-        picture.setProduct(bike);
-        pictureRepository.saveAndFlush(picture);
+        for (Picture picture : pictureList) {
+            picture.setProduct(bike);
+            pictureRepository.saveAndFlush(picture);
+        }
 
         return true;
     }

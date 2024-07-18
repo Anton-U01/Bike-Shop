@@ -1,18 +1,24 @@
 package softuni.bg.bikeshop.service.impl;
 
 import jakarta.validation.Valid;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import softuni.bg.bikeshop.models.Picture;
 import softuni.bg.bikeshop.models.User;
 import softuni.bg.bikeshop.models.dto.parts.AddPartDto;
 import softuni.bg.bikeshop.models.dto.parts.EditPartDto;
 import softuni.bg.bikeshop.models.parts.*;
 import softuni.bg.bikeshop.repository.PartRepository;
+import softuni.bg.bikeshop.repository.PictureRepository;
 import softuni.bg.bikeshop.repository.ProductRepository;
 import softuni.bg.bikeshop.repository.UserRepository;
 import softuni.bg.bikeshop.service.PartService;
 
+import java.io.IOException;
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.Base64;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,15 +26,17 @@ public class PartServiceImpl implements PartService {
     private final ProductRepository productRepository;
     private final UserRepository userRepository;
     private final PartRepository partRepository;
+    private final PictureRepository pictureRepository;
 
-    public PartServiceImpl(ProductRepository productRepository, UserRepository userRepository, PartRepository partRepository) {
+    public PartServiceImpl(ProductRepository productRepository, UserRepository userRepository, PartRepository partRepository, PictureRepository pictureRepository) {
         this.productRepository = productRepository;
         this.userRepository = userRepository;
         this.partRepository = partRepository;
+        this.pictureRepository = pictureRepository;
     }
 
     @Override
-    public boolean add(AddPartDto addPartDto, Principal principal) {
+    public boolean add(AddPartDto addPartDto, Principal principal, List<MultipartFile> files) throws IOException {
         Part part = new Part();
         PartType partType = PartType.valueOf(addPartDto.getType());
 
@@ -60,7 +68,28 @@ public class PartServiceImpl implements PartService {
         User seller = optional.get();
         setCommonPartFields(part,addPartDto,seller,partType);
 
+
+        List<Picture> pictureList = new ArrayList<>();
+        for (MultipartFile file : files) {
+            byte[] bytes = file.getBytes();
+            String image = Base64.getEncoder().encodeToString(bytes);
+
+            Picture picture = new Picture();
+            picture.setTitle(file.getName());
+            picture.setUrl(image);
+            picture.setAuthor(seller);
+            pictureRepository.saveAndFlush(picture);
+            pictureList.add(picture);
+        }
+
+        part.setPictures(pictureList);
+
         productRepository.saveAndFlush(part);
+        for (Picture picture : pictureList) {
+            picture.setProduct(part);
+            pictureRepository.saveAndFlush(picture);
+        }
+
         return true;
     }
     private void setCommonPartFields(Part part, AddPartDto addPartDto,User seller,PartType partType) {
