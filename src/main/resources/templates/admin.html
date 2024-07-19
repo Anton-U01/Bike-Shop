@@ -12,8 +12,11 @@
 </head>
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
-<div class="container-fluid d-flex row justify-content-center mt-4 mb-4">
+<div class="container-fluid d-flex flex-column justify-content-center align-items-center mt-4 mb-4">
     <h1 class="banner_taital bg-dark rounded text-light p-1">MANAGE USERS</h1>
+
+    <div class="alert alert-danger" th:if="${thisUserIsLogged}">The user you want to delete is currently logged!</div>
+    <div class="alert alert-success border border-dark" th:if="${deletedUser}" th:text=" 'User with username ' + ${deletedUser} + ' is successfully deleted!' "></div>
 
     <table class="table">
         <thead class="thead-dark">
@@ -38,7 +41,7 @@
                         </i>
                     </span>
                 </a>
-                <a  title="Remove Role">
+                <a th:href="@{/admin/remove-role/{username}(username = ${user.username})}" title="Remove Role">
                     <span class="fa-stack">
                         <i class="fa fa-square fa-stack-2x"></i>
                         <i class="fa fa-minus fa-stack-1x fa-inverse"></i>
@@ -46,12 +49,14 @@
                 </a>
             </td>
             <td>
-                <a  title="Delete User">
+                <form th:method="delete" th:action="@{/admin/delete-user/{username}(username = ${user.username})}">
+                <button type="submit" title="Delete User">
                     <span class="fa-stack">
                         <i class="fa fa-square fa-stack-2x"></i>
                         <i class="fa-regular fa-trash-can  fa-stack-1x fa-inverse"></i>
                     </span>
-                </a>
+                </button>
+                </form>
             </td>
 
         </tr>

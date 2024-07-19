@@ -26,8 +26,8 @@ public class SecurityConfig {
                             authorizeRequests
                                     .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                                     .requestMatchers("/", "/about").permitAll()
-                                    .requestMatchers("/admin/**").hasRole("ADMIN")
                                     .requestMatchers("/users/login", "/users/register","/login-error").anonymous()
+                                    .requestMatchers("/admin/**").hasRole("ADMIN")
                                     .anyRequest().authenticated();
                         })
                 .formLogin(
@@ -36,7 +36,7 @@ public class SecurityConfig {
                                     .loginPage("/users/login")
                                     .usernameParameter("username")
                                     .passwordParameter("password")
-                                    .defaultSuccessUrl("/")
+                                    .defaultSuccessUrl("/",true)
                                     .failureForwardUrl("/login-error");
                         }
                 )

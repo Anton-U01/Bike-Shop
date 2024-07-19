@@ -13,6 +13,7 @@ import softuni.bg.bikeshop.repository.RoleRepository;
 import softuni.bg.bikeshop.repository.UserRepository;
 import softuni.bg.bikeshop.service.UserService;
 
+import java.security.Principal;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -108,6 +109,30 @@ public class UserServiceImpl implements UserService {
     public User getUserByUsername(String username) {
         return userRepository.findByUsername(username)
                 .orElseThrow(NullPointerException::new);
+    }
+
+    @Override
+    @Transactional
+    public boolean removeRole(String username, String role) {
+        Optional<User> optionalUser = userRepository.findByUsername(username);
+        if(optionalUser.isEmpty()){
+            return false;
+        }
+        User user = optionalUser.get();
+        Role roleForRemove = roleRepository.findByName(UserRole.valueOf(role));
+        user.getRoles().remove(roleForRemove);
+        userRepository.saveAndFlush(user);
+        return true;
+    }
+
+    @Override
+    public void deleteUser(String username) {
+        Optional<User> optionalUser = userRepository.findByUsername(username);
+        if(optionalUser.isEmpty()){
+            return;
+        }
+        User user = optionalUser.get();
+        userRepository.delete(user);
     }
 
 

@@ -7,5 +7,7 @@ import java.util.List;
 
 public interface RoleService {
     void initRoles();
-    List<Role> getUsersRoles(User user);
+    List<Role> getUsersOtherRoles(User user);
+
+    List<Role> getUsersCurrentRoles(User myUser);
 }

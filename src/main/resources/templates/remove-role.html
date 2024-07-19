@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Remove Role</title>
+    <th:block th:replace="~{/fragments/head :: head}"></th:block>
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/css/add-role.css">
+</head>
+<body>
+<nav th:replace="fragments/navbar :: navbar"></nav>
+
+<form th:object="${userWithRole}" th:method="post" th:action="@{/admin/remove-role/{username}(username = *{username})}">
+
+    <div class="container d-flex flex-column align-items-center mt-4 mb-4">
+        <div class="header">
+            <h1>Remove role for user: <span th:text="*{username}">Username</span></h1>
+        </div>
+        <small th:if="${noRoleSelected}" class="mt-2 mb-2 danger p-1 bg-danger text-white rounded" style="font-size: 15px">No Role is selected!</small>
+        <div class="select-container">
+            <select th:field="*{role}"  class="form-select">
+                <option selected value="">Select a Role</option>
+                <option th:each="role : ${currentRoles}" th:value="${role.getName()}" th:text="${role.getName()}">One</option>
+            </select>
+            <button type="submit" class="btn btn-dark btn-sm mt-2">Confirm</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>

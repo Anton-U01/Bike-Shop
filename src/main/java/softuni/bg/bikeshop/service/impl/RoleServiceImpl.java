@@ -33,10 +33,15 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     @Transactional
-    public List<Role> getUsersRoles(User user) {
+    public List<Role> getUsersOtherRoles(User user) {
         List<Role> allRoles = roleRepository.findAll();
         Set<Role> usersRoles = user.getRoles();
         allRoles.removeAll(usersRoles);
         return allRoles;
+    }
+
+    @Override
+    public List<Role> getUsersCurrentRoles(User myUser) {
+        return myUser.getRoles().stream().toList();
     }
 }

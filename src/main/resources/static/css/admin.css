@@ -4,3 +4,18 @@ html{
 a{
     color: inherit;
 }
+button{
+    color: inherit;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+}
+button:hover .fa-square {
+    color: #2151f3;
+}
+
+.button .fa-stack-2x {
+    transition: color 0.3s ease;
+}
