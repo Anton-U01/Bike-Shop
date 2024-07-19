@@ -3,17 +3,18 @@ package softuni.bg.bikeshop.service.impl;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import softuni.bg.bikeshop.models.Role;
 import softuni.bg.bikeshop.models.User;
 import softuni.bg.bikeshop.models.UserRole;
 import softuni.bg.bikeshop.models.dto.UserRegisterDto;
+import softuni.bg.bikeshop.models.dto.ViewUserDto;
 import softuni.bg.bikeshop.repository.RoleRepository;
 import softuni.bg.bikeshop.repository.UserRepository;
 import softuni.bg.bikeshop.service.UserService;
 
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -37,7 +38,9 @@ public class UserServiceImpl implements UserService {
 
         User firstUser = new User();
         Set<Role> roles = new HashSet<>();
-        roles.add(roleRepository.findByName(UserRole.ADMIN));
+        Role adminRole = roleRepository.findByName(UserRole.ADMIN);
+        roleRepository.saveAndFlush(adminRole);
+        roles.add(adminRole);
 
         firstUser.setUsername("admin");
         firstUser.setPassword(passwordEncoder.encode("admin"));
@@ -70,4 +73,42 @@ public class UserServiceImpl implements UserService {
         userRepository.saveAndFlush(user);
         return true;
     }
+
+    @Override
+    public List<ViewUserDto> getAllUser() {
+        return userRepository
+                .findAll()
+                .stream()
+                .map(user -> modelMapper.map(user,ViewUserDto.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public User getUserById(Long id) {
+        return userRepository.findById(id).orElseThrow( () ->
+                new NullPointerException("No such user found!")
+        );
+    }
+
+    @Override
+    @Transactional
+    public boolean addRole(String username, String role) {
+        Optional<User> optionalUser = userRepository.findByUsername(username);
+        if(optionalUser.isEmpty()){
+            return false;
+        }
+        User user = optionalUser.get();
+        Role addRole = roleRepository.findByName(UserRole.valueOf(role));
+        user.getRoles().add(addRole);
+        userRepository.saveAndFlush(user);
+        return true;
+    }
+
+    @Override
+    public User getUserByUsername(String username) {
+        return userRepository.findByUsername(username)
+                .orElseThrow(NullPointerException::new);
+    }
+
+
 }

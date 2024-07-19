@@ -30,8 +30,8 @@
                 <li>
                     <a th:href="@{/products/my-offers}" sec:authorize="isAuthenticated()">My Offers</a>
                 </li>
-                <li href="#" sec:authorize="hasRole('ADMIN')">
-                    <a>Admin</a>
+                <li  sec:authorize="hasRole('ADMIN')">
+                    <a th:href="@{/admin}">Admin</a>
                 </li>
             </ul>
         </div>

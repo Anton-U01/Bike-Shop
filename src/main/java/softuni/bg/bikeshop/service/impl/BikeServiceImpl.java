@@ -16,9 +16,6 @@ import softuni.bg.bikeshop.repository.UserRepository;
 import softuni.bg.bikeshop.service.BikeService;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Base64;
