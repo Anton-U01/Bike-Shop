@@ -15,45 +15,61 @@
         <div class="home ">
             <ul>
                 <li>
-                    <a th:href="@{/}">Home</a>
+                    <form th:method="get">
+                        <label class="text-dark" for="lang" th:text="#{nav_bar_language}">Language</label>
+                        <select
+                                id="lang"
+                                name="lang"
+                                onchange="this.form.submit()">
+                            <option value="en_US" th:selected="${#locale.toString()} == 'en_US'">English</option>
+                            <option value="bg_BG" th:selected="${#locale.toString()} == 'bg_BG'">Български</option>
+                        </select>
+                    </form>
+
                 </li>
                 <li>
-                    <a th:href="@{/about}">About</a>
+                    <a th:href="@{/}" th:text="#{nav_bar_home}">Home</a>
                 </li>
                 <li>
-                    <a th:href="@{/products/add}" sec:authorize="isAuthenticated()">Add Product</a>
+                    <a th:href="@{/about}" th:text="#{nav_bar_about}">About</a>
                 </li>
                 <li>
-                    <a th:href="@{/products}" sec:authorize="isAuthenticated()">All Offers</a>
+                    <a th:href="@{/products/add}" sec:authorize="isAuthenticated()" th:text="#{nav_bar_add_product}">Add Product</a>
                 </li>
                 <li>
-                    <a th:href="@{/products/favourites}" sec:authorize="isAuthenticated()">Favourites</a>
+                    <a th:href="@{/products}" sec:authorize="isAuthenticated()" th:text="#{nav_bar_all_offers}">All Offers</a>
                 </li>
                 <li>
-                    <a th:href="@{/products/my-offers}" sec:authorize="isAuthenticated()">My Offers</a>
+                    <a th:href="@{/products/favourites}" sec:authorize="isAuthenticated()" th:text="#{nav_bar_favourites}">Favourites</a>
+                </li>
+                <li>
+                    <a th:href="@{/products/my-offers}" sec:authorize="isAuthenticated()" th:text="#{nav_bar_my_offers}">My Offers</a>
                 </li>
                 <li  sec:authorize="hasRole('ADMIN')">
-                    <a th:href="@{/admin}">Admin</a>
+                    <a th:href="@{/admin}" th:text="#{nav_bar_admin}">Admin</a>
                 </li>
             </ul>
         </div>
         <div class="links">
             <ul>
-                <li><a th:href="@{/users/login}" sec:authorize="!isAuthenticated()">Login</a></li>
-                <li><a th:href="@{/users/register}" sec:authorize="!isAuthenticated()">Register</a></li>
-                <li sec:authorize="isAuthenticated()" class="p-1 bg-success text-light rounded">Welcome, <span sec:authentication="name"></span>!</li>
+                <li><a th:href="@{/users/login}" sec:authorize="!isAuthenticated()" th:text="#{nav_bar_login}">Login</a></li>
+                <li><a th:href="@{/users/register}" sec:authorize="!isAuthenticated()" th:text="#{nav_bar_registration}">Register</a></li>
+                <li sec:authorize="isAuthenticated()">
+                    <span class="p-1 bg-success text-light rounded" th:text="#{nav_bar_welcome_message(${#authentication.name})}">Welcome, <span sec:authentication="name"></span>!</span>
+                </li>
                 <li sec:authorize="isAuthenticated()">
                     <a th:href="@{/user/profile}" class="icon-link nav-link">
                         <img class="profile-icon m-r" src="/images/profile.png" alt="profile">
-                        Profile
+                        <span th:text="#{nav_bar_profile}">Profile</span>
                     </a>
                 </li>
                 <li sec:authorize="isAuthenticated()">
                     <form th:action="@{/users/logout}"
                             th:method="post">
-                    <button class="btn btn-dark bg-light text-dark" type="submit">Logout</button>
+                    <button class="btn btn-dark bg-light text-dark" type="submit" th:text="#{nav_bar_logout}">Logout</button>
                 </form>
                 </li>
+
 
             </ul>
         </div>

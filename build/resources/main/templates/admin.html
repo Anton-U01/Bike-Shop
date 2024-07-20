@@ -15,7 +15,8 @@
 <div class="container-fluid d-flex flex-column justify-content-center align-items-center mt-4 mb-4">
     <h1 class="banner_taital bg-dark rounded text-light p-1">MANAGE USERS</h1>
 
-    <div class="alert alert-danger" th:if="${thisUserIsLogged}">The user you want to delete is currently logged!</div>
+    <div class="alert alert-danger" th:if="${thisUserIsLogged}" th:text="${thisUserIsLogged}"></div>
+    <div class="alert alert-danger" th:if="${userHasActiveProducts}" th:text="${userHasActiveProducts}"></div>
     <div class="alert alert-success border border-dark" th:if="${deletedUser}" th:text=" 'User with username ' + ${deletedUser} + ' is successfully deleted!' "></div>
 
     <table class="table">
@@ -24,7 +25,7 @@
             <th scope="col">Id</th>
             <th scope="col">Username</th>
             <th scope="col">Full Name</th>
-            <th scope="col">Roles</th>
+            <th scope="col">Manage Roles</th>
             <th scope="col">Delete</th>
         </tr>
         </thead>

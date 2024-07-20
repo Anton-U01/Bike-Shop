@@ -133,13 +133,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUser(String username) {
+    @Transactional
+    public boolean deleteUser(String username) {
         Optional<User> optionalUser = userRepository.findByUsername(username);
         if(optionalUser.isEmpty()){
-            return;
+            return false;
         }
         User user = optionalUser.get();
+        if(!user.getProducts().isEmpty()){
+            return false;
+        }
         userRepository.delete(user);
+        return true;
     }
 
     @Override

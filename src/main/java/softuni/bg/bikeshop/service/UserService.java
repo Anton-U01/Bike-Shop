@@ -21,7 +21,7 @@ public interface UserService {
 
     boolean removeRole(String username, String role);
 
-    void deleteUser(String username);
+    boolean deleteUser(String username);
 
     void editUsername(String newUsername);
 

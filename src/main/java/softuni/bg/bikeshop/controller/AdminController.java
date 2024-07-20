@@ -98,10 +98,14 @@ public class AdminController {
     public String deleteUser(@PathVariable("username")String username, Principal principal,RedirectAttributes redirectAttributes){
 
         if(username.equals(principal.getName())){
-            redirectAttributes.addFlashAttribute("thisUserIsLogged",true);
+            redirectAttributes.addFlashAttribute("thisUserIsLogged","The user you want to delete is currently logged!");
             return "redirect:/admin";
         }
-        userService.deleteUser(username);
+        boolean success = userService.deleteUser(username);
+        if(!success){
+            redirectAttributes.addFlashAttribute("userHasActiveProducts","The user you want to delete has active offers!");
+            return "redirect:/admin";
+        }
         redirectAttributes.addFlashAttribute("deletedUser",username);
         return "redirect:/admin";
     }
