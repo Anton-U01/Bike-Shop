@@ -1,11 +1,17 @@
 package softuni.bg.bikeshop.service.impl;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import softuni.bg.bikeshop.models.Role;
 import softuni.bg.bikeshop.models.User;
+import softuni.bg.bikeshop.models.UserDetailEntity;
 import softuni.bg.bikeshop.models.UserRole;
 import softuni.bg.bikeshop.models.dto.UserRegisterDto;
 import softuni.bg.bikeshop.models.dto.ViewUserDto;
@@ -13,7 +19,6 @@ import softuni.bg.bikeshop.repository.RoleRepository;
 import softuni.bg.bikeshop.repository.UserRepository;
 import softuni.bg.bikeshop.service.UserService;
 
-import java.security.Principal;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -23,12 +28,14 @@ public class UserServiceImpl implements UserService {
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
     private final ModelMapper modelMapper;
+    private final UserDetailsService userDetailsService;
 
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder, ModelMapper modelMapper) {
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder, ModelMapper modelMapper, UserDetailsService userDetailsService) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
         this.modelMapper = modelMapper;
+        this.userDetailsService = userDetailsService;
     }
 
     @Override
@@ -133,6 +140,33 @@ public class UserServiceImpl implements UserService {
         }
         User user = optionalUser.get();
         userRepository.delete(user);
+    }
+
+    @Override
+    public void editUsername(String newUsername) {
+        UserDetailEntity userDetails = (UserDetailEntity)  userDetailsService.loadUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        User user = userRepository.findByUsername(userDetails.getUsername()).orElseThrow(() -> new UsernameNotFoundException("User with the given username is not found!"));
+        user.setUsername(newUsername);
+        userDetails.setUsername(user.getUsername());
+
+        Authentication authentication = new UsernamePasswordAuthenticationToken(
+                userDetails.getUsername(),
+                userDetails.getPassword(),
+                userDetails.getAuthorities()
+        );
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        userRepository.saveAndFlush(user);
+
+    }
+
+    @Override
+    public boolean checkIfUsernameExists(String newUsername) {
+        List<String> usernames = userRepository.findAll()
+                .stream()
+                .map(User::getUsername)
+                .collect(Collectors.toList());
+        return usernames.contains(newUsername);
     }
 
 

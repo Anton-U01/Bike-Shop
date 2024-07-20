@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Profile</title>
+    <th:block th:replace="~{/fragments/head :: head}"></th:block>
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/css/profile.css">
+
+</head>
+<header>
+    <th:block th:replace="~{fragments/navbar::navbar}"></th:block>
+</header>
+<body>
+<div class="container mt-4 p-3 border border-dark">
+    <h1 class="text-center border border-dark bg-success rounded text-light p-2">Profile Details</h1>
+
+    <div class="d-flex mt-4">
+        <img src="/images/profile.png" class="profile-img border border-dark" alt="Profile Picture">
+
+        <div class="flex-grow-1 ml-4 mr-4">
+            <p class="d-flex align-items-center bg-success rounded text-light p-2 border border-dark">
+                <strong class="bg-success rounded text-light p-2">Username:</strong>
+                <span th:text="${viewUserDto.username}">username</span>
+                <button onclick="editBtnClick()" id="editBtn" class="bg-success border-0 ml-5 edit-link">
+                    <img class="edit-icon" src="/images/edit.png" alt="edit">
+                    Edit
+                </button>
+            </p>
+            <p class="bg-success rounded text-light p-2 border border-dark">
+                <strong class="bg-success rounded text-light p-2">Full Name:</strong>
+                <span th:text="${viewUserDto.fullName}">Full Name</span>
+            </p>
+            <p class="bg-success rounded text-light p-2 border border-dark">
+                <strong class="bg-success rounded text-light p-2">Age:</strong>
+                <span th:text="${viewUserDto.age}">Age</span>
+            </p>
+            <p class="bg-success rounded text-light p-2 border border-dark">
+                <strong class="bg-success rounded text-light p-2">Email:</strong>
+                <span th:text="${viewUserDto.email}">email@example.com</span>
+            </p>
+        </div>
+
+        <div id="change-username"  class="hidden border border-dark p-2 h-50">
+            <h2  class="bg-success rounded text-light p-2" >Change Username</h2>
+            <form id="form" th:action="@{/user/edit-username}" th:method="post">
+                <p id="usernameError" class="alert alert-danger" th:if="${usernameExists}" th:text="${usernameExists}"></p>
+                <p id="successfulyUpdated" class="alert alert-success" th:if="${successfulMessage}" th:text="${successfulMessage}"></p>
+                <div class="form-group">
+                    <label class="text-dark" for="newUsername"><strong>Enter new username:</strong></label>
+                    <input type="text" id="newUsername" name="newUsername" class="form-control" th:value="${viewUserDto.username}" required />
+                </div>
+                <button id="confirmBtn" type="submit" class="btn btn-outline-danger">Update Username</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const errorElement = document.getElementById('usernameError');
+        if (errorElement) {
+            editBtnClick();
+        }
+    });
+    function editBtnClick(){
+            document.getElementById('change-username').classList.remove('hidden');
+    }
+
+</script>
+</html>

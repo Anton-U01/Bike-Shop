@@ -4,7 +4,6 @@ import softuni.bg.bikeshop.models.User;
 import softuni.bg.bikeshop.models.dto.UserRegisterDto;
 import softuni.bg.bikeshop.models.dto.ViewUserDto;
 
-import java.security.Principal;
 import java.util.List;
 
 public interface UserService {
@@ -23,4 +22,8 @@ public interface UserService {
     boolean removeRole(String username, String role);
 
     void deleteUser(String username);
+
+    void editUsername(String newUsername);
+
+    boolean checkIfUsernameExists(String newUsername);
 }

@@ -1,0 +1,27 @@
+html,.container,body{
+    background-color: #e9ecef;
+}
+
+p{
+    width: 100%;
+    font-size: 18px;
+}
+
+
+
+.edit-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.edit-icon {
+    width: 20px;
+}
+
+.edit-link img {
+    vertical-align: middle; /* Align image with text */
+}
+.hidden{
+    display: none;
+}
+

@@ -16,7 +16,6 @@ import softuni.bg.bikeshop.repository.UserRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
 public class UserDetailsServiceImpl implements UserDetailsService {
     private final UserRepository userRepository;
 
@@ -35,11 +34,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     private UserDetails map(User user) {
         return new UserDetailEntity(
+                user.getId(),
+                user.getUsername(),
+                user.getPassword(),
                 user.getFullName(),
                 user.getAge(),
                 user.getEmail(),
-                user.getUsername(),
-                user.getPassword(),
                 user.getRoles().stream().map(Role::getName).map(UserDetailsServiceImpl::map).toList()
         );
     }
