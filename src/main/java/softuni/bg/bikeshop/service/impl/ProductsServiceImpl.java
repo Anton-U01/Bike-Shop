@@ -10,6 +10,7 @@ import softuni.bg.bikeshop.repository.ProductRepository;
 import softuni.bg.bikeshop.repository.UserRepository;
 import softuni.bg.bikeshop.service.ProductsService;
 import java.security.Principal;
+import java.time.LocalDate;
 import java.util.*;
 
 @Service
@@ -109,5 +110,19 @@ public class ProductsServiceImpl implements ProductsService {
         productRepository.deleteById(productId);
 
         return true;
+    }
+
+    @Override
+    public long getProductsCount() {
+        return this.productRepository.count();
+    }
+
+    @Override
+    @Transactional
+    public void deleteOldProducts() {
+        List<Product> createdOnBeforeProducts = this.productRepository.findAllByCreatedOnBefore(LocalDate.now().minusDays(60));
+        createdOnBeforeProducts.forEach(p -> {
+            deleteProduct(p.getId(), p.getSeller().getUsername());
+        });
     }
 }

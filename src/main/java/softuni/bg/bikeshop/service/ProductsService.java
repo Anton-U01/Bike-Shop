@@ -24,4 +24,7 @@ public interface ProductsService{
 
     boolean deleteProduct(Long productId, String name);
 
+    long getProductsCount();
+
+    void deleteOldProducts();
 }

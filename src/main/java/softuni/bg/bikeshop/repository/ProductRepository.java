@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import softuni.bg.bikeshop.models.Product;
 import softuni.bg.bikeshop.models.User;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
@@ -16,4 +17,6 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
 
     @Query("SELECT u.products FROM User u WHERE u = :user")
     List<Product> getAllCurrentUserProducts(User user);
+
+    List<Product> findAllByCreatedOnBefore(LocalDate localDate);
 }

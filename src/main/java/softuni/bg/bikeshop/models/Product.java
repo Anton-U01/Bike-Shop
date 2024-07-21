@@ -2,6 +2,7 @@ package softuni.bg.bikeshop.models;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +18,8 @@ public class Product extends BaseEntity{
     private double price;
     @Column(name = "is_favourite",nullable = false)
     private boolean isFavourite;
+    @Column(nullable = false)
+    private LocalDate createdOn;
     @ManyToOne(optional = false)
     private User seller;
     @OneToMany(fetch = FetchType.EAGER)
@@ -24,6 +27,14 @@ public class Product extends BaseEntity{
     public Product() {
         pictures = new ArrayList<>();
         isFavourite = false;
+    }
+
+    public LocalDate getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(LocalDate createdOn) {
+        this.createdOn = createdOn;
     }
 
     public List<Picture> getPictures() {
