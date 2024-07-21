@@ -24,5 +24,4 @@ public interface ProductsService{
 
     boolean deleteProduct(Long productId, String name);
 
-    boolean editProduct(Long productId, String username);
 }

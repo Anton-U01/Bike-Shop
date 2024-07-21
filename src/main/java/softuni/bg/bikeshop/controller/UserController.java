@@ -1,16 +1,13 @@
 package softuni.bg.bikeshop.controller;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import softuni.bg.bikeshop.exceptions.UserNotFoundException;
 import softuni.bg.bikeshop.models.User;
 import softuni.bg.bikeshop.models.dto.ViewUserDto;
 import softuni.bg.bikeshop.service.UserService;
@@ -36,6 +33,7 @@ public class UserController {
         User currentUser = userService.getUserByUsername(principal.getName());
         ViewUserDto viewUserDto = modelMapper.map(currentUser,ViewUserDto.class);
         model.addAttribute(viewUserDto);
+
         return "profile";
     }
     @PostMapping("/user/edit-username")

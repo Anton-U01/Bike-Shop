@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import softuni.bg.bikeshop.exceptions.UserNotFoundException;
 import softuni.bg.bikeshop.models.Role;
 import softuni.bg.bikeshop.models.User;
 import softuni.bg.bikeshop.models.UserDetailEntity;
@@ -29,7 +30,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return this.userRepository
                 .findByUsername(username)
                 .map(this::map)
-                .orElseThrow(() -> new UsernameNotFoundException("User with username " + username + " is not found!"));
+                .orElseThrow(() -> new UserNotFoundException("User with username " + username + " is not found!"));
     }
 
     private UserDetails map(User user) {

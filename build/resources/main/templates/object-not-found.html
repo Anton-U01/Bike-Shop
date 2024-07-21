@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User not found</title>
+</head>
+<body>
+<div class="error-page">
+    <h1>Ooops!Something happened!</h1>
+    <h2 th:text="${errorMessage}"></h2>
+    <a th:href="@{/}" class="btn btn-lg btn-outline-primary">Go to Homepage</a>
+</div>
+</body>
+</html>

@@ -3,6 +3,8 @@ package softuni.bg.bikeshop.service.impl;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import softuni.bg.bikeshop.exceptions.ProductNotFoundException;
+import softuni.bg.bikeshop.exceptions.UserNotFoundException;
 import softuni.bg.bikeshop.models.Picture;
 import softuni.bg.bikeshop.models.User;
 import softuni.bg.bikeshop.models.dto.parts.AddPartDto;
@@ -61,11 +63,10 @@ public class PartServiceImpl implements PartService {
             }
         }
 
-        Optional<User> optional = userRepository.findByUsername(principal.getName());
-        if (optional.isEmpty()) {
-            return false;
-        }
-        User seller = optional.get();
+
+        User seller = userRepository.findByUsername(principal.getName())
+                        .orElseThrow(()->new UserNotFoundException("User with username " + principal.getName() + " was not found!"));
+
         setCommonPartFields(part,addPartDto,seller,partType);
 
 
@@ -103,11 +104,8 @@ public class PartServiceImpl implements PartService {
 
     @Override
     public boolean edit(@Valid EditPartDto editPart) {
-        Optional<Part> optionalPart = partRepository.findById(editPart.getId());
-        if(optionalPart.isEmpty()){
-            return false;
-        }
-        Part part = optionalPart.get();
+        Part part = partRepository.findById(editPart.getId())
+                .orElseThrow(()-> new ProductNotFoundException("Part with id " + editPart.getId() + " was not found!"));
 
         if(part instanceof FramePart framePart){
             framePart.setMaterial(editPart.getDynamicFields().get("material").toString());

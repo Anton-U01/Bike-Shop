@@ -31,6 +31,7 @@
                                     type="text"
                                    class="form-control"
                                    id="name"
+                                    required minlength="4" maxlength="30"
                                    name="name"
                             />
                             <small class="hidden danger p-1 bg-danger text-white rounded" style="font-size: 15px">Name error message</small>
@@ -43,6 +44,7 @@
                             <input
                                     type="text"
                                    class="form-control"
+                                    minlength="20" maxlength="200"
                                    id="description"
                                    name="description"
                             />
@@ -57,6 +59,7 @@
                                     type="number"
                                    class="form-control"
                                    id="price"
+                                    required min="0"
                                    name="price"
                                    value="0.0"
                             />
@@ -70,6 +73,7 @@
                             <input
                                     type="text"
                                    class="form-control"
+                                    required minlength="4" maxlength="30"
                                    id="manufacturer"
                                    name="manufacturer"
                             />
@@ -108,7 +112,12 @@
                                     <div class="label-holder text-white textCol d-flex justify-content-center">
                                         <label for="chainLinks" class="h4 mb-2  bg-dark text-light rounded p-1">Count of chain links</label>
                                     </div>
-                                    <input  type="number" class="form-control" id="chainLinks" name="chainLinks"/>
+                                    <input
+                                            type="number"
+                                            class="form-control"
+                                            id="chainLinks"
+                                            name="chainLinks"
+                                    />
                                     <small class="hidden danger  p-1 bg-danger text-white rounded" style="font-size: 15px">Count of chain links error message</small>
                                 </div>
                             </div>
@@ -119,7 +128,12 @@
                                     <div class="label-holder text-white textCol d-flex justify-content-center">
                                         <label for="material" class="h4 mb-2  bg-dark text-light rounded p-1">Material</label>
                                     </div>
-                                    <input type="text" class="form-control" id="material" name="material"/>
+                                    <input
+                                            type="text"
+                                            class="form-control"
+                                            id="material"
+                                            name="material"
+                                    />
                                     <small class="hidden danger p-1 bg-danger text-white rounded" style="font-size: 15px">Material error message</small>
                                 </div>
 
@@ -127,7 +141,12 @@
                                     <div class="label-holder text-white textCol d-flex justify-content-center">
                                         <label for="weight" class="h4 mb-2  bg-dark text-light rounded p-1">Weight</label>
                                     </div>
-                                    <input type="number" class="form-control" id="weight" name="weight"/>
+                                    <input
+                                            type="number"
+                                            class="form-control"
+                                            id="weight"
+                                            name="weight"
+                                    />
                                     <small class="hidden danger p-1 bg-danger text-white rounded" style="font-size: 15px">Weight error message</small>
                                 </div>
                             </div>
@@ -138,7 +157,12 @@
                                     <div class="label-holder text-white textCol d-flex justify-content-center">
                                         <label for="size" class="h4 mb-2 bg-dark text-light rounded p-1">Size</label>
                                     </div>
-                                    <input type="number" class="form-control" id="size" name="size"/>
+                                    <input
+                                            type="number"
+                                            class="form-control"
+                                            id="size"
+                                            name="size"
+                                    />
                                     <small class="hidden danger p-1 bg-danger text-white rounded" style="font-size: 15px">Size error message</small>
                                 </div>
                             </div>

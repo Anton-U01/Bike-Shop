@@ -3,12 +3,15 @@ package softuni.bg.bikeshop.service.impl;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import softuni.bg.bikeshop.exceptions.ProductNotFoundException;
+import softuni.bg.bikeshop.exceptions.UserNotFoundException;
 import softuni.bg.bikeshop.models.Bike;
 import softuni.bg.bikeshop.models.BikeType;
 import softuni.bg.bikeshop.models.Picture;
 import softuni.bg.bikeshop.models.User;
 import softuni.bg.bikeshop.models.dto.AddBikeDto;
 import softuni.bg.bikeshop.models.dto.parts.EditBikeDto;
+import softuni.bg.bikeshop.models.parts.Part;
 import softuni.bg.bikeshop.repository.BikeRepository;
 import softuni.bg.bikeshop.repository.PictureRepository;
 import softuni.bg.bikeshop.repository.ProductRepository;
@@ -44,11 +47,8 @@ public class BikeServiceImpl implements BikeService {
         Bike bike = modelMapper.map(addBikeDto, Bike.class);
         BikeType bikeType = BikeType.valueOf(addBikeDto.getType());
         bike.setType(bikeType);
-        Optional<User> optional = userRepository.findByUsername(principal.getName());
-        if (optional.isEmpty()) {
-            return false;
-        }
-        User seller = optional.get();
+        User seller = userRepository.findByUsername(principal.getName())
+                .orElseThrow(()-> new UserNotFoundException("User with username " + principal.getName() + "is not found!"));
         bike.setSeller(seller);
 
         List<Picture> pictureList = new ArrayList<>();
@@ -77,11 +77,9 @@ public class BikeServiceImpl implements BikeService {
 
     @Override
     public boolean edit(EditBikeDto editBike, Long id) {
-        Optional<Bike> optionalBike = this.bikeRepository.findById(id);
-        if(optionalBike.isEmpty()){
-            return false;
-        }
-        Bike bike = optionalBike.get();
+        Bike bike = bikeRepository.findById(editBike.getId())
+                .orElseThrow(()-> new ProductNotFoundException("Part with id " + editBike.getId() + " was not found!"));
+
         bike.setName(editBike.getName());
         bike.setDescription(editBike.getDescription());
         bike.setPrice(editBike.getPrice());

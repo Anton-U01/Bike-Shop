@@ -2,6 +2,8 @@ package softuni.bg.bikeshop.service.impl;
 ;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import softuni.bg.bikeshop.exceptions.ProductNotFoundException;
+import softuni.bg.bikeshop.exceptions.UserNotFoundException;
 import softuni.bg.bikeshop.models.*;
 import softuni.bg.bikeshop.repository.PictureRepository;
 import softuni.bg.bikeshop.repository.ProductRepository;
@@ -30,22 +32,19 @@ public class ProductsServiceImpl implements ProductsService {
     @Override
     public Product getProductById(Long id) {
         return productRepository.findById(id)
-                .orElseThrow(NoSuchElementException::new);
+                .orElseThrow(()-> new ProductNotFoundException("Product with id " + id + " is not found!"));
+
     }
 
     @Override
     @Transactional
     public boolean addToFavourites(Long id, Principal principal) {
-        Optional<Product> optionalProduct = productRepository.findById(id);
-        if(optionalProduct.isEmpty()){
-            return false;
-        }
-        Product product = optionalProduct.get();
-        Optional<User> optionalUser = userRepository.findByUsername(principal.getName());
-        if(optionalUser.isEmpty()){
-            return false;
-        }
-        User user = optionalUser.get();
+        Product product = productRepository.findById(id)
+                .orElseThrow(()-> new ProductNotFoundException("Product with id " + id + " is not found!"));
+
+        User user = userRepository.findByUsername(principal.getName())
+                .orElseThrow(()-> new UserNotFoundException("User with username " + principal.getName() + "is not found!"));
+
         if(user.getFavouriteProducts().contains(product)){
             return false;
         }
@@ -58,11 +57,9 @@ public class ProductsServiceImpl implements ProductsService {
 
     @Override
     public Set<Product> getFavourites(String username) {
-        Optional<User> optionalUser = userRepository.findByUsername(username);
-        if(optionalUser.isEmpty()){
-            return new HashSet<>();
-        }
-        User user = optionalUser.get();
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(()-> new UserNotFoundException("User with username " + username + "is not found!"));
+
         return productRepository.getFavouritesListByUser(user);
 
     }
@@ -70,17 +67,12 @@ public class ProductsServiceImpl implements ProductsService {
     @Override
     @Transactional
     public void removeFromFavourites(Long productId, String username) {
-        Optional<User> optionalUser = userRepository.findByUsername(username);
-        if(optionalUser.isEmpty()){
-            return;
-        }
-        User user = optionalUser.get();
-        Optional<Product> optionalProduct = productRepository.findById(productId);
-        if(optionalProduct.isEmpty()){
-            return;
-        }
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(()-> new UserNotFoundException("User with username " + username + "is not found!"));
 
-        Product product = optionalProduct.get();
+        Product product =  productRepository.findById(productId)
+                .orElseThrow(()-> new ProductNotFoundException("Product with id " + productId + " is not found!"));
+
         if(!user.getFavouriteProducts().contains(product)){
             return;
         }
@@ -90,27 +82,21 @@ public class ProductsServiceImpl implements ProductsService {
 
     @Override
     public List<Product> getAllCurrentUserProducts(String username) {
-        Optional<User> optionalUser = userRepository.findByUsername(username);
-        if(optionalUser.isEmpty()){
-            return new ArrayList<>();
-        }
-        User user = optionalUser.get();
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(()-> new UserNotFoundException("User with username " + username + "is not found!"));
+
         return productRepository.getAllCurrentUserProducts(user);
     }
 
     @Override
     @Transactional
-    public boolean deleteProduct(Long productId, String name) {
-        Optional<Product> optionalProduct = productRepository.findById(productId);
-        if(optionalProduct.isEmpty()){
-            return false;
-        }
-        Product product = optionalProduct.get();
-        Optional<User> optionalUser = userRepository.findByUsername(name);
-        if(optionalUser.isEmpty()){
-            return false;
-        }
-        User user = optionalUser.get();
+    public boolean deleteProduct(Long productId, String username) {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(()-> new ProductNotFoundException("Product with id " + productId + " is not found!"));
+
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(()-> new UserNotFoundException("User with username " + username + "is not found!"));
+
         if(!user.getProducts().contains(product)){
             return false;
         }
@@ -123,11 +109,5 @@ public class ProductsServiceImpl implements ProductsService {
         productRepository.deleteById(productId);
 
         return true;
-    }
-
-    @Override
-    public boolean editProduct(Long productId, String username) {
-
-        return false;
     }
 }

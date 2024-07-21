@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import softuni.bg.bikeshop.exceptions.UserNotFoundException;
 import softuni.bg.bikeshop.models.Role;
 import softuni.bg.bikeshop.models.User;
 import softuni.bg.bikeshop.models.UserDetailEntity;
@@ -94,18 +95,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserById(Long id) {
         return userRepository.findById(id).orElseThrow( () ->
-                new NullPointerException("No such user found!")
+                new UserNotFoundException("No such user with id " + id + " found!")
         );
     }
 
     @Override
     @Transactional
     public boolean addRole(String username, String role) {
-        Optional<User> optionalUser = userRepository.findByUsername(username);
-        if(optionalUser.isEmpty()){
-            return false;
-        }
-        User user = optionalUser.get();
+        User user = userRepository
+                .findByUsername(username)
+                .orElseThrow( () -> new UserNotFoundException("User with username " + username + " was not found"));
         Role addRole = roleRepository.findByName(UserRole.valueOf(role));
         user.getRoles().add(addRole);
         userRepository.saveAndFlush(user);
@@ -114,18 +113,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserByUsername(String username) {
+
         return userRepository.findByUsername(username)
-                .orElseThrow(NullPointerException::new);
+                .orElseThrow(()-> new UserNotFoundException("User with username " + username + " was not found!"));
     }
 
     @Override
     @Transactional
     public boolean removeRole(String username, String role) {
-        Optional<User> optionalUser = userRepository.findByUsername(username);
-        if(optionalUser.isEmpty()){
-            return false;
-        }
-        User user = optionalUser.get();
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(()-> new UserNotFoundException("User with username " + username + " was not found!"));
+
         Role roleForRemove = roleRepository.findByName(UserRole.valueOf(role));
         user.getRoles().remove(roleForRemove);
         userRepository.saveAndFlush(user);
@@ -135,11 +133,9 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public boolean deleteUser(String username) {
-        Optional<User> optionalUser = userRepository.findByUsername(username);
-        if(optionalUser.isEmpty()){
-            return false;
-        }
-        User user = optionalUser.get();
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(()-> new UserNotFoundException("User with username " + username + " was not found!"));
+
         if(!user.getProducts().isEmpty()){
             return false;
         }
@@ -150,7 +146,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void editUsername(String newUsername) {
         UserDetailEntity userDetails = (UserDetailEntity)  userDetailsService.loadUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        User user = userRepository.findByUsername(userDetails.getUsername()).orElseThrow(() -> new UsernameNotFoundException("User with the given username is not found!"));
+        User user = userRepository.findByUsername(userDetails.getUsername())
+                .orElseThrow(()-> new UserNotFoundException("User with username " + userDetails.getUsername() + " was not found!"));
+
+
         user.setUsername(newUsername);
         userDetails.setUsername(user.getUsername());
 

@@ -1,18 +1,16 @@
 package softuni.bg.bikeshop.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.validation.Valid;
-import org.hibernate.boot.archive.scan.internal.ScanResultImpl;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import softuni.bg.bikeshop.exceptions.ProductNotFoundException;
+import softuni.bg.bikeshop.exceptions.UserNotFoundException;
 import softuni.bg.bikeshop.models.Bike;
 import softuni.bg.bikeshop.models.Product;
-import softuni.bg.bikeshop.models.dto.parts.EditPartDto;
 import softuni.bg.bikeshop.models.parts.ChainPart;
 import softuni.bg.bikeshop.models.parts.FramePart;
 import softuni.bg.bikeshop.models.parts.Part;

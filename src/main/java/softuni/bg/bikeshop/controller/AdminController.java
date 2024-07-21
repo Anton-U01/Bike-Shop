@@ -2,12 +2,15 @@ package softuni.bg.bikeshop.controller;
 
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import softuni.bg.bikeshop.exceptions.UserNotFoundException;
 import softuni.bg.bikeshop.models.User;
 import softuni.bg.bikeshop.models.dto.UserWithRoleDto;
 import softuni.bg.bikeshop.models.dto.ViewRoleDto;
@@ -108,5 +111,13 @@ public class AdminController {
         }
         redirectAttributes.addFlashAttribute("deletedUser",username);
         return "redirect:/admin";
+    }
+    @ResponseStatus(code = HttpStatus.NOT_FOUND)
+    @ExceptionHandler(UserNotFoundException.class)
+    public ModelAndView handleUserNotFound(UserNotFoundException e){
+        ModelAndView modelAndView = new ModelAndView("object-not-found");
+        modelAndView.addObject("errorMessage",e.getMessage());
+
+        return modelAndView;
     }
 }

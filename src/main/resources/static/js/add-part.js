@@ -52,7 +52,7 @@ function submitForm(event) {
                     }
                 });
             }
-            window.location.href = "/products";
+            window.location.href = "/products/my-offers";
         })
         .catch(error => {
             console.error('Error during fetch:', error);

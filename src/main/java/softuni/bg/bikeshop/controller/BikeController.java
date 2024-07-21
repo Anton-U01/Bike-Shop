@@ -1,12 +1,16 @@
 package softuni.bg.bikeshop.controller;
 
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import softuni.bg.bikeshop.exceptions.ProductNotFoundException;
+import softuni.bg.bikeshop.exceptions.UserNotFoundException;
 import softuni.bg.bikeshop.models.BikeType;
 import softuni.bg.bikeshop.models.dto.AddBikeDto;
 import softuni.bg.bikeshop.models.dto.parts.EditBikeDto;
@@ -54,7 +58,7 @@ public class BikeController {
         }
 
 
-        return "redirect:/products";
+        return "redirect:/products/my-offers";
     }
     @PutMapping("/edit-bike/{id}")
     public String editBike(@PathVariable("id") Long id,
@@ -75,4 +79,7 @@ public class BikeController {
     public String viewEditBike(){
         return "edit-bike";
     }
+
+
+
 }

@@ -31,6 +31,7 @@
                             </div>
                             <input th:field="*{name}"
                                     type="text"
+                                   required minlength="4" maxlength="30"
                                    class="form-control"
                                    id="name"
                                    name="name"
@@ -49,6 +50,7 @@
                             <textarea
                                    th:field="*{description}"
                                    type="textarea"
+                                   minlength="20" maxlength="200"
                                    class="form-control"
                                    rows = 3
                                    placeholder="Description"
@@ -69,6 +71,7 @@
                             <input
                                     th:field="*{price}"
                                    type="number"
+                                    required min="0"
                                    class="form-control"
                                    id="price"
                                    name="price"
@@ -99,7 +102,8 @@
                             <input
                                     th:field="*{frame}"
                                     type="text"
-                                   class="form-control "
+                                    required minlength="4" maxlength="30"
+                                   class="form-control"
                                    id="frame"
                                    name="frame"
                             />
@@ -117,6 +121,7 @@
                             <input
                                     th:field="*{brakes}"
                                     type="text"
+                                    required minlength="4" maxlength="30"
                                    class="form-control"
                                    id="brakes"
                                    name="brakes"
@@ -135,6 +140,7 @@
                             <input
                                     th:field="*{wheelsSize}"
                                     type="text"
+                                    required minlength="0"
                                    class="form-control"
                                    id="wheels"
                                    name="wheels"
