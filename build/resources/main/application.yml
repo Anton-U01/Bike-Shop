@@ -1,7 +1,7 @@
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: "jdbc:mysql://localhost:3306/bikehop?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
+    url: "jdbc:mysql://localhost:3306/bikeShop?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
     username: root
     password: 1234
   servlet:
@@ -53,3 +53,6 @@ logging:
         SQL: DEBUG
       nodeValue: WARN
     blog: WARN
+reviews:
+  api:
+   baseUrl: "http://localhost:8081"

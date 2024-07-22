@@ -24,9 +24,12 @@ public class Product extends BaseEntity{
     private User seller;
     @OneToMany(fetch = FetchType.EAGER)
     private List<Picture> pictures;
+    @OneToMany(mappedBy = "product")
+    private List<Review> reviews;
     public Product() {
         pictures = new ArrayList<>();
         isFavourite = false;
+        reviews = new ArrayList<>();
     }
 
     public LocalDate getCreatedOn() {
@@ -83,5 +86,13 @@ public class Product extends BaseEntity{
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 }

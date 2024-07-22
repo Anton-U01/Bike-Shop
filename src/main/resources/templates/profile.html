@@ -6,6 +6,8 @@
     <th:block th:replace="~{/fragments/head :: head}"></th:block>
     <link rel="stylesheet" type="text/css" href="/css/navbar.css">
     <link rel="stylesheet" type="text/css" href="/css/profile.css">
+    <script src="/js/profile.js"></script>
+
 
 </head>
 <header>
@@ -56,16 +58,4 @@
 
 </div>
 </body>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const errorElement = document.getElementById('usernameError');
-        if (errorElement) {
-            editBtnClick();
-        }
-    });
-    function editBtnClick(){
-            document.getElementById('change-username').classList.remove('hidden');
-    }
-
-</script>
 </html>

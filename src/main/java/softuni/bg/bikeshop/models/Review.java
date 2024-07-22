@@ -10,7 +10,7 @@ public class Review extends BaseEntity{
     @Column(columnDefinition = "TEXT",nullable = false)
     private String content;
     @Column(nullable = false)
-    private LocalDateTime created;
+    private LocalDateTime createdOn;
     @ManyToOne
     @JoinColumn(name = "author_id",referencedColumnName = "id")
     private User author;
@@ -27,11 +27,11 @@ public class Review extends BaseEntity{
     }
 
     public LocalDateTime getCreated() {
-        return created;
+        return createdOn;
     }
 
-    public void setCreated(LocalDateTime created) {
-        this.created = created;
+    public void setCreated(LocalDateTime createdOn) {
+        this.createdOn = createdOn;
     }
 
     public User getAuthor() {
