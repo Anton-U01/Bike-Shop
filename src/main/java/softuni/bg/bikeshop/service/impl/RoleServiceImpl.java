@@ -8,6 +8,7 @@ import softuni.bg.bikeshop.models.UserRole;
 import softuni.bg.bikeshop.service.RoleService;
 import softuni.bg.bikeshop.repository.RoleRepository;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -34,7 +35,7 @@ public class RoleServiceImpl implements RoleService {
     @Override
     @Transactional
     public List<Role> getUsersOtherRoles(User user) {
-        List<Role> allRoles = roleRepository.findAll();
+        List<Role> allRoles = new ArrayList<>(roleRepository.findAll());
         Set<Role> usersRoles = user.getRoles();
         allRoles.removeAll(usersRoles);
         return allRoles;
