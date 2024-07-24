@@ -1,0 +1,17 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    background: url('/images/my-bike.png') center center/cover no-repeat fixed;
+    display: flex;
+    flex-direction: column;
+}
+.card-img-top {
+    height: 200px;
+    object-fit: contain;
+}
+
+
+

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Bike</title>
+    <th:block th:replace="~{/fragments/head :: head}"></th:block>
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/css/add-bike.css">
+
+</head>
+<header>
+  <th:block th:replace="~{fragments/navbar::navbar}"></th:block>
+</header>
+<body>
+
+
+<div class="cycle_section layout_padding">
+    <div class="container">
+        <h1 class="text-center cycle_taital">Add Bike</h1>
+        <p class="text-center cycle_text">Please fill in the form to add new bike.</p>
+        <form class="welcome login" enctype="multipart/form-data" th:method="post"
+              th:action="@{/products/add-bike}"
+              th:object="${addBike}"
+        >
+            <div class="cycle_section_2 layout_padding">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="label-holder textCol d-flex justify-content-center">
+                                <label for="name" class="h4 mb-2 text-light">Name</label>
+                            </div>
+                            <input th:field="*{name}"
+                                    type="text"
+                                   required minlength="4" maxlength="30"
+                                   class="form-control"
+                                   id="name"
+                                   name="name"
+                            />
+                            <ul class="d-flex flex-column align-items-center bg-danger text-white">
+                                <li th:each="err : ${#fields.errors('name')}"
+                                    th:text="${err}"
+                                    class="error"></li>
+                            </ul>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="label-holder textCol d-flex justify-content-center">
+                                <label for="description" class="h4 mb-2  text-white">Description</label>
+                            </div>
+                            <textarea
+                                   th:field="*{description}"
+                                   type="textarea"
+                                   minlength="20" maxlength="200"
+                                   class="form-control"
+                                   rows = 3
+                                   placeholder="Description"
+                                   id="description"
+                                   name="description"
+                            ></textarea>
+                            <ul class="d-flex flex-column align-items-center bg-danger text-white">
+                                <li th:each="err : ${#fields.errors('description')}"
+                                    th:text="${err}"
+                                    class="error"></li>
+                            </ul>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="label-holder textCol d-flex justify-content-center">
+                                <label for="price" class="h4 mb-2 text-white">Price</label>
+                            </div>
+                            <input
+                                    th:field="*{price}"
+                                   type="number"
+                                    required min="0"
+                                   class="form-control"
+                                   id="price"
+                                   name="price"
+                            />
+                            <ul class="d-flex flex-column align-items-center bg-danger text-white">
+                                <li th:each="err : ${#fields.errors('price')}"
+                                    th:text="${err}"
+                                    class="error"></li>
+                            </ul>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="text-white label-holder d-flex justify-content-center">
+                                <label for="type" class="h4 mb-2">Type</label>
+                            </div>
+                            <select th:field="*{type}" class="browser-default custom-select" id="type" name="type">
+                                <option value="">Select style</option>
+                                <option th:each="type : ${bikeTypes}"
+                                        th:value="${type}"
+                                        th:text="${type}"
+                                ></option>
+                            </select>
+
+                        <div class="form-group">
+                            <div class="label-holder text-white textCol d-flex justify-content-center">
+                                <label for="frame" class="h4 mb-2  text-white">Frame</label>
+                            </div>
+                            <input
+                                    th:field="*{frame}"
+                                    type="text"
+                                    required minlength="4" maxlength="30"
+                                   class="form-control"
+                                   id="frame"
+                                   name="frame"
+                            />
+                            <ul class="d-flex flex-column align-items-center bg-danger text-white">
+                                <li th:each="err : ${#fields.errors('frame')}"
+                                    th:text="${err}"
+                                    class="error"></li>
+                            </ul>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="label-holder text-white textCol d-flex justify-content-center">
+                                <label for="brakes" class="h4 mb-2  text-white">Brakes</label>
+                            </div>
+                            <input
+                                    th:field="*{brakes}"
+                                    type="text"
+                                    required minlength="4" maxlength="30"
+                                   class="form-control"
+                                   id="brakes"
+                                   name="brakes"
+                            />
+                            <ul class="d-flex flex-column align-items-center bg-danger text-white">
+                                <li th:each="err : ${#fields.errors('brakes')}"
+                                    th:text="${err}"
+                                    class="error"></li>
+                            </ul>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="label-holder text-white textCol d-flex justify-content-center">
+                                <label for="wheels" class="h4 mb-2  text-white">Wheels size</label>
+                            </div>
+                            <input
+                                    th:field="*{wheelsSize}"
+                                    type="text"
+                                    required minlength="0"
+                                   class="form-control"
+                                   id="wheels"
+                                   name="wheels"
+                            />
+                            <ul class="d-flex flex-column align-items-center bg-danger text-white">
+                                <li th:each="err : ${#fields.errors('wheelsSize')}"
+                                    th:text="${err}"
+                                    class="error"></li>
+                            </ul>
+                        </div>
+                        <div class="form-group">
+                            <div class="label-holder text-white textCol d-flex justify-content-center">
+                                <label for="bikeImages" class="h4 mb-2  text-white">Images</label>
+                            </div>
+                                <input type="file" multiple class="form-control" id="bikeImages" name="bikeImages">
+                            <ul class="d-flex flex-column align-items-center bg-danger text-white">
+                                <li th:if="${noImage}" th:text="${noImage}"
+                                    class="error"></li>
+                            </ul>
+                        </div>
+
+                        <div class="button-holder d-flex justify-content-center">
+                            <button type="submit" class="btn btn-light btn-lg">ADD BIKE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

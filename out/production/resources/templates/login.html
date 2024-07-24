@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{fragments/head :: head}"></th:block>
+<link rel="stylesheet" type="text/css" href="/css/login.css"/>
+<link rel="stylesheet" type="text/css" href="/css/navbar.css">
+
+<title>
+    Login
+</title>
+<body>
+<header>
+    <th:block th:replace="~{fragments/navbar::navbar}">
+
+    </th:block>
+</header>
+<main>
+    <form class="welcome login" th:action="@{/users/login}" th:method="post">
+
+        <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Login</span></h1>
+
+        <div th:if="${invalidInput}" class="p-1 bg-danger text-light rounded errors">
+            <div class="danger">Error message!</div>
+            <div class="danger">Incorrect username or password!</div>
+        </div>
+
+        <div class="form-group">
+            <div class="label-holder text-white d-flex justify-content-center">
+                <label for="username" class="h3 mb-2 text-dark">Username</label>
+            </div>
+            <input th:value="${username}" type="text" class="form-control" id="username" name="username"/>
+        </div>
+
+        <div class="form-group">
+            <div class="label-holder text-white d-flex justify-content-center">
+                <label for="password" class="h3 mb-2  text-dark">Password</label>
+            </div>
+            <input type="password" class="form-control" id="password" name="password"/>
+        </div>
+
+        <div class="button-holder d-flex justify-content-center">
+                <button type="submit" class="btn btn-dark">Login</button>
+        </div>
+
+    </form>
+</main>
+</body>
+</html>

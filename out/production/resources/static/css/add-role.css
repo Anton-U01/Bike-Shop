@@ -1,0 +1,21 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    background: url('/images/add-role.png') center center/cover no-repeat fixed;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.form-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.25rem; /* Large text size */
+}
+
+.form-select option {
+    padding: 10px;
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Detail</title>
+    <th:block th:replace="~{/fragments/head :: head}"></th:block>
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/css/product-detail.css">
+    <script src="/js/reviews.js"></script>
+
+
+</head>
+<header>
+    <th:block th:replace="~{fragments/navbar::navbar}"></th:block>
+</header>
+<body>
+<div class="container pt-5 pb-5">
+    <div class="alert alert-danger" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+    <div class="alert alert-success border border-dark" th:if="${successMessage}" th:text="${successMessage}"></div>
+    <div class="gallery border-left border-dark border-right border-dark p-4">
+        <div class="row">
+            <div th:each="pic : ${product.getPictures()}" class="col-md-4 mb-3">
+                <div class="thumbnail">
+                    <a>
+                        <img   class="border border-dark rounded"
+                               th:src="@{'data:image/jpg;base64,' + ${pic.getUrl()}}"
+                                 alt="" style="width:100%">
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="border-left border-dark border-right border-dark">
+        <div class="col-md-6">
+            <input id="idContainer" class="hidden" th:value="${product.id}">
+            <h1 th:text="${product.name}">Product Name</h1>
+            <p><strong>Description: </strong><span th:text="${product.description}">Lorem</span></p>
+            <p><strong>Price: <span th:text="${product.price}">$1200</span>$</strong></p>
+
+            <div th:if="${isBike}" id="bikeDetails" class="product-details">
+                <h2>Bike Details</h2>
+                <p><strong>Type: </strong><span th:text="${bike.type}">Mountain</span></p>
+                <p><strong>Frame: </strong><span th:text="${bike.frame}">21</span></p>
+                <p><strong>Brakes: </strong><span th:text="${bike.brakes}">Standard</span></p>
+                <p><strong>Wheels: </strong><span th:text="${bike.wheelsSize}">Standard</span></p>
+            </div>
+
+            <div th:if="${isPart}" id="partDetails" class="product-details">
+                <h2>Part Details</h2>
+                <p><strong>Part Type: </strong><span th:text="${part.type}">Chain</span></p>
+                <p><strong>Manufacturer: </strong><span th:text="${part.manufacturer}"></span></p>
+
+                <div th:if="${isChainPart}" id="chainDetails">
+                    <h3>Chain Details</h3>
+                    <p><strong>Count of speeds: </strong><span th:text="${chainPart.getSpeedsCount()}">5</span></p>
+                    <p><strong>Count of chain links: </strong><span th:text="${chainPart.getChainLinks()}">5</span></p>
+                </div>
+
+                <div th:if="${isTiresPart}" id="wheelDetails">
+                    <h3>Wheel Details</h3>
+                    <p><strong>Size: </strong><span th:text="${tiresPart.getSize()}"></span>″</p>
+                </div>
+
+                <div th:if="${isFramePart}" id="framePart">
+                    <h3>Frame Details</h3>
+                    <p><strong>Material: </strong><span th:text="${framePart.getMaterial()}">Something</span></p>
+                    <p><strong>Weight: </strong><span th:text="${framePart.getWeight()}">Something</span> kg.</p>
+                </div>
+            </div>
+
+
+            <div>
+                <a th:href="@{/products}" class="btn btn-primary mt-3">Back to Products</a>
+                <a th:href="@{/products/add-to-favourites/{id}(id = ${product.id})}" class="btn bg-warning btn-outline-light border-dark mt-3">Add To Favourites</a>
+            </div>
+
+    </div>
+        <div class="review-container border-top border-bottom border-dark p-3 col mt-4">
+            <h1 class="bg-success text-light text-center rounded">Review Section</h1>
+            <button onclick="showOrHideReviews()" id="showBtn" class="btn btn-outline-dark font-weight-bold p-2 rounded">SHOW ALL REVIEWS</button>
+            <button  onclick="showOrHideReviews()" id="hideBtn" class="hidden btn btn-outline-danger font-weight-bold p-2 rounded">HIDE ALL REVIEWS</button>
+
+            <div   id="reviewList" class="hidden container mt-4 p-3 border-top border-bottom border-dark">
+                <h3  class="border border-dark bg-success rounded text-light p-2">All reviews</h3>
+
+                <div id="reviews-section" class="mt-4">
+                    <div th:each="review : ${reviews}" class="review border p-2 mb-3">
+                        <div class="review-author text-success mt-2">
+                            <strong>Author: </strong><span th:text="${review.author}">Author Name</span>
+                        </div>
+                        <div class="review-created text-muted">
+                            <strong>Created on: </strong><span th:text="${review.createdOn}">Creation Date</span>
+                        </div>
+                        <div class="review-content bg-light p-2 border border-dark rounded">
+                            <p th:text="${review.content}"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <form th:method="POST" th:action="@{/add-review/{id}(id = ${product.id})}">
+                <label for="content" class="d-block h4 mt-4 mb-2 bg-success text-light rounded p-1">Write review for this product:</label>
+                <small th:if="${contentError}" class="danger p-1 bg-danger text-white rounded" style="font-size: 15px">Error</small>
+                <textarea class="d-block font-italic" placeholder="min 15, max 150 symbols" type="textarea" id="content" name="content" rows="4" cols="100"></textarea>
+                <div>
+                    <button type="submit" class="btn btn-outline-dark btn-m font-weight-bold mt-1">LEAVE REVIEW</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

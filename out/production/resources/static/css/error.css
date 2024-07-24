@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+}
+
+.error-page {
+    background-color: rgba(186,192,201,0.93);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.error-page h1 {
+    font-size: 6em;
+    color: #dc3545;
+    margin: 0;
+}
+
+.error-page h2 {
+    font-weight: bold;
+    font-size: 2em;
+    color: #343a40;
+    margin: 20px 0;
+}
+
+.error-page p {
+    font-size: 1.2em;
+    color: #343a40;
+}
+
