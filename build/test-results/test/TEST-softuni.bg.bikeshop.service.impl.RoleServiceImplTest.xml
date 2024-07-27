@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="softuni.bg.bikeshop.service.impl.RoleServiceImplTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2024-07-27T12:19:43" hostname="DESKTOP-RKC5M4M" time="0.134">
+  <properties/>
+  <testcase name="getUsersCurrentRolesWhenUserHasNoRoles()" classname="softuni.bg.bikeshop.service.impl.RoleServiceImplTest" time="0.128"/>
+  <testcase name="getUsersCurrentRolesTest()" classname="softuni.bg.bikeshop.service.impl.RoleServiceImplTest" time="0.002"/>
+  <testcase name="initRolesWhenRepoIsEmpty()" classname="softuni.bg.bikeshop.service.impl.RoleServiceImplTest" time="0.002"/>
+  <testcase name="getUsersOtherRolesTest()" classname="softuni.bg.bikeshop.service.impl.RoleServiceImplTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

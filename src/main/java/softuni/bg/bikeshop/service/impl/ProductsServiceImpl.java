@@ -47,7 +47,7 @@ public class ProductsServiceImpl implements ProductsService {
                 .orElseThrow(()-> new ProductNotFoundException("Product with id " + id + " is not found!"));
 
         User user = userRepository.findByUsername(principal.getName())
-                .orElseThrow(()-> new UserNotFoundException("User with username " + principal.getName() + "is not found!"));
+                .orElseThrow(()-> new UserNotFoundException("User with username " + principal.getName() + " is not found!"));
 
         if(user.getFavouriteProducts().contains(product)){
             return false;
@@ -62,7 +62,7 @@ public class ProductsServiceImpl implements ProductsService {
     @Override
     public Set<Product> getFavourites(String username) {
         User user = userRepository.findByUsername(username)
-                .orElseThrow(()-> new UserNotFoundException("User with username " + username + "is not found!"));
+                .orElseThrow(()-> new UserNotFoundException("User with username " + username + " is not found!"));
 
         return productRepository.getFavouritesListByUser(user);
 
@@ -72,7 +72,7 @@ public class ProductsServiceImpl implements ProductsService {
     @Transactional
     public void removeFromFavourites(Long productId, String username) {
         User user = userRepository.findByUsername(username)
-                .orElseThrow(()-> new UserNotFoundException("User with username " + username + "is not found!"));
+                .orElseThrow(()-> new UserNotFoundException("User with username " + username + " is not found!"));
 
         Product product =  productRepository.findById(productId)
                 .orElseThrow(()-> new ProductNotFoundException("Product with id " + productId + " is not found!"));
@@ -84,10 +84,11 @@ public class ProductsServiceImpl implements ProductsService {
         product.setFavourite(false);
     }
 
+
     @Override
     public List<Product> getAllCurrentUserProducts(String username) {
         User user = userRepository.findByUsername(username)
-                .orElseThrow(()-> new UserNotFoundException("User with username " + username + "is not found!"));
+                .orElseThrow(()-> new UserNotFoundException("User with username " + username + " is not found!"));
 
         return productRepository.getAllCurrentUserProducts(user);
     }
@@ -98,8 +99,9 @@ public class ProductsServiceImpl implements ProductsService {
         Product product = productRepository.findById(productId)
                 .orElseThrow(()-> new ProductNotFoundException("Product with id " + productId + " is not found!"));
 
+
         User user = userRepository.findByUsername(username)
-                .orElseThrow(()-> new UserNotFoundException("User with username " + username + "is not found!"));
+                .orElseThrow(()-> new UserNotFoundException("User with username " + username + " is not found!"));
 
         if(!user.getProducts().contains(product)){
             return false;

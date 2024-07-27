@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="softuni.bg.bikeshop.service.impl.ProductServiceImplTest" tests="19" skipped="0" failures="0" errors="0" timestamp="2024-07-27T12:19:43" hostname="DESKTOP-RKC5M4M" time="0.294">
+  <properties/>
+  <testcase name="addToFavouritesProductIsAlreadyInList()" classname="softuni.bg.bikeshop.service.impl.ProductServiceImplTest" time="0.112"/>
+  <testcase name="deleteProductUserDoesntHaveThisProductTest()" classname="softuni.bg.bikeshop.service.impl.ProductServiceImplTest" time="0.007"/>
+  <testcase name="deleteProductUserNotFoundTest()" classname="softuni.bg.bikeshop.service.impl.ProductServiceImplTest" time="0.01"/>
+  <testcase name="getAllCurrentUsersProductsSuccessTest()" classname="softuni.bg.bikeshop.service.impl.ProductServiceImplTest" time="0.03"/>
+  <testcase name="addToFavouritesProductNotFound()" classname="softuni.bg.bikeshop.service.impl.ProductServiceImplTest" time="0.012"/>
+  <testcase name="addToFavouritesUserNotFound()" classname="softuni.bg.bikeshop.service.impl.ProductServiceImplTest" time="0.008"/>
+  <testcase name="removeFromFavouritesProductNotFoundTest()" classname="softuni.bg.bikeshop.service.impl.ProductServiceImplTest" time="0.009"/>
+  <testcase name="getProductByIdNotFoundTest()" classname="softuni.bg.bikeshop.service.impl.ProductServiceImplTest" time="0.007"/>
+  <testcase name="getFavouritesSuccessTest()" classname="softuni.bg.bikeshop.service.impl.ProductServiceImplTest" time="0.004"/>
+  <testcase name="getAllTest()" classname="softuni.bg.bikeshop.service.impl.ProductServiceImplTest" time="0.009"/>
+  <testcase name="removeFromFavouritesUserNotFoundTest()" classname="softuni.bg.bikeshop.service.impl.ProductServiceImplTest" time="0.007"/>
+  <testcase name="removeFromFavouritesTest()" classname="softuni.bg.bikeshop.service.impl.ProductServiceImplTest" time="0.007"/>
+  <testcase name="getCurrentProductsUserNotFoundTest()" classname="softuni.bg.bikeshop.service.impl.ProductServiceImplTest" time="0.005"/>
+  <testcase name="addToFavourites()" classname="softuni.bg.bikeshop.service.impl.ProductServiceImplTest" time="0.006"/>
+  <testcase name="getProductByIdTest()" classname="softuni.bg.bikeshop.service.impl.ProductServiceImplTest" time="0.005"/>
+  <testcase name="getProductsCountTest()" classname="softuni.bg.bikeshop.service.impl.ProductServiceImplTest" time="0.006"/>
+  <testcase name="deleteProductProductNotFoundTest()" classname="softuni.bg.bikeshop.service.impl.ProductServiceImplTest" time="0.007"/>
+  <testcase name="getFavouritesUserNotFoundTest()" classname="softuni.bg.bikeshop.service.impl.ProductServiceImplTest" time="0.009"/>
+  <testcase name="deleteProductProductIsSomeonesFavouriteTest()" classname="softuni.bg.bikeshop.service.impl.ProductServiceImplTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

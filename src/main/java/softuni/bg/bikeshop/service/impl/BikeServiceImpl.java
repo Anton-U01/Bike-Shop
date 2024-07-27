@@ -50,7 +50,7 @@ public class BikeServiceImpl implements BikeService {
         bike.setType(bikeType);
         bike.setCreatedOn(LocalDate.now());
         User seller = userRepository.findByUsername(principal.getName())
-                .orElseThrow(()-> new UserNotFoundException("User with username " + principal.getName() + "is not found!"));
+                .orElseThrow(()-> new UserNotFoundException("User with username " + principal.getName() + " is not found!"));
         bike.setSeller(seller);
 
         List<Picture> pictureList = new ArrayList<>();

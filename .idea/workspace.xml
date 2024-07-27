@@ -5,21 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10f609e4-8abb-4ca9-a680-233e5e4ffb8c" name="Changes" comment="Create models">
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.controller.PartControllerIT.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/softuni.bg.bikeshop.controller.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/softuni.bg.bikeshop.controller.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.controller.PartControllerIT.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/models/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/models/BaseEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/impl/BikeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/impl/BikeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/impl/ProductsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/impl/ProductsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/softuni/bg/bikeshop/controller/PartControllerIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/softuni/bg/bikeshop/controller/PartControllerIT.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,24 +93,87 @@
     "DefaultHtmlFileTemplate": "HTML File",
     "Gradle.AdminController.executor": "Run",
     "Gradle.AdminController.getAllUsersTest.executor": "Run",
-    "Gradle.AdminControllerIT.executor": "Run",
+    "Gradle.AdminControllerIT.addRoleFailureTest.executor": "Run",
+    "Gradle.AdminControllerIT.addRoleSuccessTest.executor": "Run",
+    "Gradle.AdminControllerIT.deleteLoggedUserTest.executor": "Run",
+    "Gradle.AdminControllerIT.deleteSuccessTest.executor": "Run",
+    "Gradle.AdminControllerIT.deleteUserHasActiveOffersTest.executor": "Run",
+    "Gradle.AdminControllerIT.executor": "Coverage",
+    "Gradle.AdminControllerIT.getAddRolePageTest.executor": "Debug",
     "Gradle.AdminControllerIT.getAllUsersTest.executor": "Run",
     "Gradle.AdminControllerIT.testAccessToAdminPageDenied.executor": "Run",
+    "Gradle.AdminControllerIT.viewAdminPageTest.executor": "Coverage",
     "Gradle.BikeControllerIT.addBikePageTest.executor": "Run",
     "Gradle.BikeControllerIT.addBikeSuccessTest.executor": "Run",
     "Gradle.BikeControllerIT.addBikeTest.executor": "Run",
+    "Gradle.BikeControllerIT.editBike.executor": "Run",
+    "Gradle.BikeControllerIT.editBikeTestFail.executor": "Run",
+    "Gradle.BikeControllerIT.editBikeTestSuccessful.executor": "Run",
+    "Gradle.BikeControllerIT.executor": "Coverage",
     "Gradle.BikeControllerIT.testAddBikeWithNoImage.executor": "Run",
     "Gradle.BikeControllerIT.testAddBikeWithValidData.executor": "Run",
+    "Gradle.BikeServiceImplTest.addBikeSuccessTest.executor": "Run",
+    "Gradle.BikeServiceImplTest.addBikeTestException.executor": "Run",
+    "Gradle.BikeServiceImplTest.editBikeSuccessTest.executor": "Run",
+    "Gradle.BikeServiceImplTest.executor": "Coverage",
+    "Gradle.BikeServiceImplTest.saveProductSuccess.executor": "Run",
+    "Gradle.BikeServiceImplTest.testAddBikeUserNotFound.executor": "Run",
     "Gradle.Build BikeShop.executor": "Run",
     "Gradle.HomeControllerIT.executor": "Coverage",
     "Gradle.LoginControllerIT.executor": "Coverage",
-    "Gradle.RegisterControllerIT.executor": "Run",
+    "Gradle.PartControllerIT.editPartBindingResultHasErrorsTest.executor": "Run",
+    "Gradle.PartControllerIT.editPartIfNotSuccessTest.executor": "Run",
+    "Gradle.PartControllerIT.editPartTestSuccess.executor": "Run",
+    "Gradle.PartControllerIT.executor": "Coverage",
+    "Gradle.ProductControllerIT.addToFavouritesTestWhenFailingDetails.executor": "Run",
+    "Gradle.ProductControllerIT.addToFavouritesTestWhenSuccessInProducts.executor": "Run",
+    "Gradle.ProductControllerIT.addToFavouritesTestWhenSuccessfulDetails.executor": "Run",
+    "Gradle.ProductControllerIT.addToFavouritesWithNonDetailsRefererTest.executor": "Debug",
+    "Gradle.ProductControllerIT.bikeProductDetails.executor": "Run",
+    "Gradle.ProductControllerIT.deleteProductFailureTest.executor": "Run",
+    "Gradle.ProductControllerIT.deleteProductSuccessfulTest.executor": "Coverage",
+    "Gradle.ProductControllerIT.editProductPageForBikeTest.executor": "Run",
+    "Gradle.ProductControllerIT.editProductPageForChainTest.executor": "Run",
+    "Gradle.ProductControllerIT.executor": "Coverage",
+    "Gradle.ProductControllerIT.productDetails.executor": "Run",
+    "Gradle.ProductControllerIT.removeFromFavouritesTest.executor": "Run",
+    "Gradle.ProductControllerIT.viewAddPartPageTest.executor": "Run",
+    "Gradle.ProductControllerIT.viewAddProductPageTest.executor": "Run",
+    "Gradle.ProductControllerIT.viewEditPartTest.executor": "Run",
+    "Gradle.ProductControllerIT.viewFavouritesPageTest.executor": "Run",
+    "Gradle.ProductControllerIT.viewMyOffersPageTest.executor": "Run",
+    "Gradle.ProductControllerIT.viewProductsPage.executor": "Run",
+    "Gradle.ProductServiceImplTest.addToFavourites.executor": "Run",
+    "Gradle.ProductServiceImplTest.addToFavouritesProductIsAlreadyInList.executor": "Run",
+    "Gradle.ProductServiceImplTest.addToFavouritesProductNotFound.executor": "Run",
+    "Gradle.ProductServiceImplTest.addToFavouritesUserNotFound.executor": "Run",
+    "Gradle.ProductServiceImplTest.deleteOldProductsTest.executor": "Run",
+    "Gradle.ProductServiceImplTest.deleteProductProductIsSomeonesFavouriteTest.executor": "Run",
+    "Gradle.ProductServiceImplTest.deleteProductProductNotFoundTest.executor": "Run",
+    "Gradle.ProductServiceImplTest.deleteProductTest.executor": "Run",
+    "Gradle.ProductServiceImplTest.deleteProductUserDoesntHaveThisProductTest.executor": "Run",
+    "Gradle.ProductServiceImplTest.deleteProductUserNotFoundTest.executor": "Run",
+    "Gradle.ProductServiceImplTest.executor": "Coverage",
+    "Gradle.ProductServiceImplTest.getAllCurrentUsersProductsSuccessTest.executor": "Run",
+    "Gradle.ProductServiceImplTest.getAllTest.executor": "Coverage",
+    "Gradle.ProductServiceImplTest.getCurrentProductsUserNotFoundTest.executor": "Run",
+    "Gradle.ProductServiceImplTest.getFavouritesSuccessTest.executor": "Run",
+    "Gradle.ProductServiceImplTest.getFavouritesUserNotFoundTest.executor": "Run",
+    "Gradle.ProductServiceImplTest.getProductByIdNotFoundTest.executor": "Run",
+    "Gradle.ProductServiceImplTest.getProductByIdTest.executor": "Run",
+    "Gradle.ProductServiceImplTest.getProductsCountTest.executor": "Run",
+    "Gradle.ProductServiceImplTest.removeFromFavouritesProductNotFoundTest.executor": "Run",
+    "Gradle.ProductServiceImplTest.removeFromFavouritesTest.executor": "Run",
+    "Gradle.ProductServiceImplTest.removeFromFavouritesUserNotFoundTest.executor": "Run",
+    "Gradle.RegisterControllerIT.executor": "Coverage",
+    "Gradle.RegisterControllerIT.registerFailureTest.executor": "Run",
     "Gradle.RegisterControllerIT.registerPageTest.executor": "Coverage",
     "Gradle.RegisterControllerIT.registerTest.executor": "Run",
     "Gradle.ReviewControllerIT.addReviewTest.executor": "Run",
     "Gradle.ReviewControllerIT.executor": "Run",
     "Gradle.ReviewControllerIT.getAllReviewsOfProductTest.executor": "Run",
-    "Gradle.Tests in 'softuni.bg.bikeshop'.executor": "Run",
+    "Gradle.Tests in 'BikeShop.test'.executor": "Coverage",
+    "Gradle.Tests in 'softuni.bg.bikeshop'.executor": "Coverage",
     "Gradle.Upgrade Gradle wrapper.executor": "Run",
     "Gradle.UserController.executor": "Debug",
     "Gradle.UserControllerIT.editUsernameWithSuccessTest.executor": "Run",
@@ -124,7 +194,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.BikeShopApplication.executor": "Run",
+    "Spring Boot.BikeShopApplication.executor": "Debug",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/SOFTUNI/Final Project/BikeShop/src/main/resources/static/images",
@@ -161,8 +231,8 @@
       <recent name="softuni.bg.bikeshop.models" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.RegisterControllerIT.registerTest">
-    <configuration name="AdminController" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.Tests in 'BikeShop.test'">
+    <configuration name="AdminControllerIT" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -175,7 +245,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;softuni.bg.bikeshop.controller.AdminController&quot;" />
+            <option value="&quot;softuni.bg.bikeshop.controller.AdminControllerIT&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -186,7 +256,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="AdminControllerIT.testAccessToAdminPageDenied" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="AdminControllerIT.addRoleFailureTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -199,7 +269,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;softuni.bg.bikeshop.controller.AdminControllerIT.testAccessToAdminPageDenied&quot;" />
+            <option value="&quot;softuni.bg.bikeshop.controller.AdminControllerIT.addRoleFailureTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -210,7 +280,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="RegisterControllerIT" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="AdminControllerIT.addRoleSuccessTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -223,7 +293,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;softuni.bg.bikeshop.controller.RegisterControllerIT&quot;" />
+            <option value="&quot;softuni.bg.bikeshop.controller.AdminControllerIT.addRoleSuccessTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -234,7 +304,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="RegisterControllerIT.registerPageTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="AdminControllerIT.deleteSuccessTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -247,7 +317,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;softuni.bg.bikeshop.controller.RegisterControllerIT.registerPageTest&quot;" />
+            <option value="&quot;softuni.bg.bikeshop.controller.AdminControllerIT.deleteSuccessTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -258,7 +328,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="RegisterControllerIT.registerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Tests in 'BikeShop.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -270,8 +340,6 @@
         <option name="taskNames">
           <list>
             <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;softuni.bg.bikeshop.controller.RegisterControllerIT.registerTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -291,11 +359,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.RegisterControllerIT.registerTest" />
-        <item itemvalue="Gradle.RegisterControllerIT.registerPageTest" />
-        <item itemvalue="Gradle.RegisterControllerIT" />
-        <item itemvalue="Gradle.AdminControllerIT.testAccessToAdminPageDenied" />
-        <item itemvalue="Gradle.AdminController" />
+        <item itemvalue="Gradle.Tests in 'BikeShop.test'" />
+        <item itemvalue="Gradle.AdminControllerIT.addRoleFailureTest" />
+        <item itemvalue="Gradle.AdminControllerIT.addRoleSuccessTest" />
+        <item itemvalue="Gradle.AdminControllerIT" />
+        <item itemvalue="Gradle.AdminControllerIT.deleteSuccessTest" />
       </list>
     </recent_temporary>
   </component>
@@ -351,6 +419,9 @@
       <workItem from="1721638545924" duration="22510000" />
       <workItem from="1721727185957" duration="7730000" />
       <workItem from="1721806585016" duration="19241000" />
+      <workItem from="1721830335192" duration="8770000" />
+      <workItem from="1721977142460" duration="20996000" />
+      <workItem from="1722078606489" duration="3677000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
@@ -402,29 +473,53 @@
     <MESSAGE value="Create models" />
     <option name="LAST_COMMIT_MESSAGE" value="Create models" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/controller/AdminController.java</url>
+          <line>103</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/BikeShop$UserController.ic" NAME="UserController Coverage Results" MODIFIED="1721811935633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/BikeShop$BikeControllerIT.ic" NAME="BikeControllerIT Coverage Results" MODIFIED="1721838236272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/BikeShop$RoleServiceImplTest.ic" NAME="RoleServiceImplTest Coverage Results" MODIFIED="1721733493407" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>softuni.bg.bikeshop.service.impl.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/BikeShop$UserControllerIT_viewUserProfilePage.ic" NAME="UserControllerIT.viewUserProfilePage Coverage Results" MODIFIED="1721812911124" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/BikeShop$ProductServiceImplTest_deleteProductUserNotFoundTest.ic" NAME="ProductServiceImplTest.deleteProductUserNotFoundTest Coverage Results" MODIFIED="1721993289916" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/BikeShop$PartControllerIT.ic" NAME="PartControllerIT Coverage Results" MODIFIED="1721979323156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/BikeShop$UserDetailsServiceImplTest.ic" NAME="UserDetailsServiceImplTest Coverage Results" MODIFIED="1721734139598" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>softuni.bg.bikeshop.service.impl.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/BikeShop$softuni_bg_bikeshop_service_impl_in_BikeShop_test.ic" NAME="softuni.bg.bikeshop.service.impl in BikeShop.test Coverage Results" MODIFIED="1721734195982" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>softuni.bg.bikeshop.service.impl.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/BikeShop$LoginControllerIT_failedLoginTest.ic" NAME="LoginControllerIT.failedLoginTest Coverage Results" MODIFIED="1721810104926" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>softuni.bg.bikeshop.controller.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/BikeShop$RegisterControllerIT_registerPageTest.ic" NAME="RegisterControllerIT.registerPageTest Coverage Results" MODIFIED="1721829394210" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/BikeShop$Tests_in__softuni_bg_bikeshop_.ic" NAME="Tests in 'softuni.bg.bikeshop' Coverage Results" MODIFIED="1721831901507" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/BikeShop$RegisterControllerIT.ic" NAME="RegisterControllerIT Coverage Results" MODIFIED="1721831280901" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/BikeShop$AdminControllerIT_viewAdminPageTest.ic" NAME="AdminControllerIT.viewAdminPageTest Coverage Results" MODIFIED="1722006946192" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/BikeShop$LoginControllerIT_viewLoginPage.ic" NAME="LoginControllerIT.viewLoginPage Coverage Results" MODIFIED="1721810063776" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>softuni.bg.bikeshop.controller.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/BikeShop$HomeControllerIT.ic" NAME="HomeControllerIT Coverage Results" MODIFIED="1721817730049" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/BikeShop$ProductControllerIT_deleteProductSuccessfulTest.ic" NAME="ProductControllerIT.deleteProductSuccessfulTest Coverage Results" MODIFIED="1721834057241" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/BikeShop$ReviewControllerIT.ic" NAME="ReviewControllerIT Coverage Results" MODIFIED="1721817587266" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/BikeShop$UserControllerIT.ic" NAME="UserControllerIT Coverage Results" MODIFIED="1721814197701" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/BikeShop$BikeServiceImplTest.ic" NAME="BikeServiceImplTest Coverage Results" MODIFIED="1721985625881" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/BikeShop$Tests_in__BikeShop_test_.ic" NAME="Tests in 'BikeShop.test' Coverage Results" MODIFIED="1722078897438" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/BikeShop$LoginControllerIT.ic" NAME="LoginControllerIT Coverage Results" MODIFIED="1721817796745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/BikeShop$BikeControllerIT_testAddBikeWithValidData.ic" NAME="BikeControllerIT.testAddBikeWithValidData Coverage Results" MODIFIED="1721825598554" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/BikeShop$AdminControllerIT.ic" NAME="AdminControllerIT Coverage Results" MODIFIED="1722080717504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/BikeShop$UserController.ic" NAME="UserController Coverage Results" MODIFIED="1721811935633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/BikeShop$ProductServiceImplTest_getAllTest.ic" NAME="ProductServiceImplTest.getAllTest Coverage Results" MODIFIED="1721991021486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/BikeShop$softuni_bg_bikeshop_service_impl_in_BikeShop_test.ic" NAME="softuni.bg.bikeshop.service.impl in BikeShop.test Coverage Results" MODIFIED="1721734195982" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>softuni.bg.bikeshop.service.impl.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/BikeShop$ProductControllerIT.ic" NAME="ProductControllerIT Coverage Results" MODIFIED="1721836708390" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/BikeShop$LoginControllerIT_failedLoginTest.ic" NAME="LoginControllerIT.failedLoginTest Coverage Results" MODIFIED="1721810104926" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>softuni.bg.bikeshop.controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/BikeShop$RegisterControllerIT_registerPageTest.ic" NAME="RegisterControllerIT.registerPageTest Coverage Results" MODIFIED="1721829394210" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/BikeShop$UserControllerIT.ic" NAME="UserControllerIT Coverage Results" MODIFIED="1721814197701" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/BikeShop$ProductServiceImplTest.ic" NAME="ProductServiceImplTest Coverage Results" MODIFIED="1721994081713" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

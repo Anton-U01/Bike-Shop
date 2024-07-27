@@ -14,6 +14,10 @@ public class BaseEntity {
     public BaseEntity() {
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public long getId() {
         return id;
     }
