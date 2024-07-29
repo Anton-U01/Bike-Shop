@@ -16,6 +16,8 @@ public class Product extends BaseEntity{
     private String description;
     @Column(nullable = false)
     private double price;
+    @Column(nullable = false)
+    private Integer quantity;
     @Column(name = "is_favourite",nullable = false)
     private boolean isFavourite;
     @Column(nullable = false)
@@ -34,6 +36,14 @@ public class Product extends BaseEntity{
 
     public LocalDate getCreatedOn() {
         return createdOn;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public void setCreatedOn(LocalDate createdOn) {

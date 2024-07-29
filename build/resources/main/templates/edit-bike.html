@@ -77,6 +77,24 @@
                                     class="error"></li>
                             </ul>
                         </div>
+                        <div class="form-group">
+                            <div class="label-holder textCol d-flex justify-content-center">
+                                <label for="quantity" class="h4 mb-2 text-white">Quantity</label>
+                            </div>
+                            <input
+                                    th:field="*{quantity}"
+                                    type="number"
+                                    required min="0"
+                                    class="form-control"
+                                    id="quantity"
+                                    name="quantity"
+                            />
+                            <ul class="d-flex flex-column align-items-center bg-danger text-white">
+                                <li th:each="err : ${#fields.errors('quantity')}"
+                                    th:text="${err}"
+                                    class="error"></li>
+                            </ul>
+                        </div>
 
                         <div class="form-group">
                             <div class="text-white label-holder d-flex justify-content-center">

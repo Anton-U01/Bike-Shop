@@ -1,9 +1,12 @@
 package softuni.bg.bikeshop.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -11,6 +14,7 @@ import softuni.bg.bikeshop.exceptions.ProductNotFoundException;
 import softuni.bg.bikeshop.exceptions.UserNotFoundException;
 import softuni.bg.bikeshop.models.Bike;
 import softuni.bg.bikeshop.models.Product;
+import softuni.bg.bikeshop.models.dto.ProductBuyDto;
 import softuni.bg.bikeshop.models.parts.ChainPart;
 import softuni.bg.bikeshop.models.parts.FramePart;
 import softuni.bg.bikeshop.models.parts.Part;
@@ -26,12 +30,12 @@ import java.util.Set;
 @Controller
 public class ProductController {
     private final ProductsService productsService;
-    private final PartService partService;
+    private final ModelMapper modelMapper;
 
 
-    public ProductController(ProductsService productsService, PartService partService) {
+    public ProductController(ProductsService productsService, ModelMapper modelMapper) {
         this.productsService = productsService;
-        this.partService = partService;
+        this.modelMapper = modelMapper;
     }
 
     @GetMapping("/products/add")
@@ -45,14 +49,16 @@ public class ProductController {
     }
 
     @GetMapping("/products")
-    public String viewShop(Model model) {
+    public String viewShop(Model model,Principal principal) {
+        String username = principal.getName();
         List<Product> allProducts = productsService.getAll();
+        model.addAttribute("ownerUsername",username);
         model.addAttribute("allProducts", allProducts);
         return "all-products";
     }
 
     @GetMapping("/products/details/{id}")
-    public String viewDetail(@PathVariable("id") Long id, Model model) {
+    public String viewDetail(@PathVariable("id") Long id, Model model,Principal principal) {
         Product productById = productsService.getProductById(id);
         model.addAttribute("product", productById);
         if (productById instanceof Bike bike) {
@@ -85,6 +91,8 @@ public class ProductController {
         } else {
             model.addAttribute("isTiresPart", false);
         }
+        String username = principal.getName();
+        model.addAttribute("ownerUsername",username);
 
         return "product-details";
     }
@@ -168,4 +176,29 @@ public class ProductController {
         return "edit-part";
     }
 
+    @GetMapping("/products/buy/{id}")
+    public String buyProductView(@PathVariable("id") Long id, Model model){
+        Product product = productsService.getProductById(id);
+        ProductBuyDto productBuyDto = modelMapper.map(product, ProductBuyDto.class);
+        productBuyDto.setPicture(product.getPictures().get(0).getUrl());
+        model.addAttribute("product",productBuyDto);
+        if(productBuyDto.getQuantity() == 0){
+            model.addAttribute("soldOut","Sold out!");
+        }
+
+        return "buy-product";
+    }
+    @PostMapping("/products/buy/{id}")
+    public String buyProduct(@PathVariable("id") Long id,
+                             @RequestParam(value = "quantity", required = false, defaultValue = "0") Integer quantity,
+                             RedirectAttributes redirectAttributes){
+        Product product = productsService.getProductById(id);
+        if (quantity <= 0 || quantity > product.getQuantity()) {
+            redirectAttributes.addFlashAttribute("quantityError", "Quantity must be between " + 1 + " and " + product.getQuantity() + "!");
+            return "redirect:/products/buy/" + id;
+        }
+        productsService.buyProduct(id,quantity);
+
+        return "redirect:/products";
+    }
 }

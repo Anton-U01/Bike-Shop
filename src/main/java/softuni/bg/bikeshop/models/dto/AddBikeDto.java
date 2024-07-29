@@ -14,6 +14,9 @@ public class AddBikeDto {
     @NotNull(message = "Price should not be empty!")
     @Positive(message = "Price should be a positive number!")
     private double price;
+    @NotNull(message = "Quantity should not be empty!")
+    @Positive(message = "Quantity should be a positive number!")
+    private Integer quantity;
     @NotBlank(message = "Type should not be empty!")
     private String type;
     @NotBlank(message = "Frame should not be empty!")
@@ -81,5 +84,13 @@ public class AddBikeDto {
 
     public void setWheelsSize(double wheelsSize) {
         this.wheelsSize = wheelsSize;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }

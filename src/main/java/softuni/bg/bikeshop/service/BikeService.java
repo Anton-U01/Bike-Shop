@@ -2,7 +2,7 @@ package softuni.bg.bikeshop.service;
 
 import org.springframework.web.multipart.MultipartFile;
 import softuni.bg.bikeshop.models.dto.AddBikeDto;
-import softuni.bg.bikeshop.models.dto.parts.EditBikeDto;
+import softuni.bg.bikeshop.models.dto.EditBikeDto;
 
 import java.io.IOException;
 import java.security.Principal;

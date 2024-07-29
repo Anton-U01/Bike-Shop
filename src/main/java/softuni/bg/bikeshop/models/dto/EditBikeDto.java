@@ -1,4 +1,4 @@
-package softuni.bg.bikeshop.models.dto.parts;
+package softuni.bg.bikeshop.models.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -16,6 +16,9 @@ public class EditBikeDto {
     @NotNull(message = "Price should not be empty!")
     @Positive(message = "Price should be a positive number!")
     private double price;
+    @NotNull(message = "Quantity should not be empty!")
+    @Positive(message = "Quantity should be a positive number!")
+    private Integer quantity;
     @NotBlank(message = "Type should not be empty!")
     private String type;
     @NotBlank(message = "Frame should not be empty!")
@@ -90,5 +93,13 @@ public class EditBikeDto {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }

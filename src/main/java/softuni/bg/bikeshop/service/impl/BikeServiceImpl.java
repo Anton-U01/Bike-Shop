@@ -10,8 +10,7 @@ import softuni.bg.bikeshop.models.BikeType;
 import softuni.bg.bikeshop.models.Picture;
 import softuni.bg.bikeshop.models.User;
 import softuni.bg.bikeshop.models.dto.AddBikeDto;
-import softuni.bg.bikeshop.models.dto.parts.EditBikeDto;
-import softuni.bg.bikeshop.models.parts.Part;
+import softuni.bg.bikeshop.models.dto.EditBikeDto;
 import softuni.bg.bikeshop.repository.BikeRepository;
 import softuni.bg.bikeshop.repository.PictureRepository;
 import softuni.bg.bikeshop.repository.ProductRepository;
@@ -24,7 +23,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class BikeServiceImpl implements BikeService {
@@ -85,6 +83,7 @@ public class BikeServiceImpl implements BikeService {
         bike.setName(editBike.getName());
         bike.setDescription(editBike.getDescription());
         bike.setPrice(editBike.getPrice());
+        bike.setQuantity(editBike.getQuantity());
         bike.setBrakes(editBike.getBrakes());
         bike.setFrame(editBike.getFrame());
         bike.setWheelsSize(editBike.getWheelsSize());

@@ -27,4 +27,6 @@ public interface ProductsService{
     long getProductsCount();
 
     void deleteOldProducts();
+
+    void buyProduct(Long id, Integer quantity);
 }

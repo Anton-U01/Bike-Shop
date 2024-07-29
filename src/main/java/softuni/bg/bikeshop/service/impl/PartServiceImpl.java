@@ -98,6 +98,7 @@ public class PartServiceImpl implements PartService {
         part.setName(addPartDto.getName());
         part.setDescription(addPartDto.getDescription());
         part.setPrice(addPartDto.getPrice());
+        part.setQuantity(addPartDto.getQuantity());
         part.setManufacturer(addPartDto.getManufacturer());
         part.setSeller(seller);
         part.setCreatedOn(LocalDate.now());
@@ -121,6 +122,7 @@ public class PartServiceImpl implements PartService {
         part.setName(editPart.getName());
         part.setType(PartType.valueOf(editPart.getType()));
         part.setDescription(editPart.getDescription());
+        part.setQuantity(editPart.getQuantity());
         part.setPrice(editPart.getPrice());
         part.setManufacturer(editPart.getManufacturer());
 

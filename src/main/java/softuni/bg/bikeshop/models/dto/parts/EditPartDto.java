@@ -19,6 +19,9 @@ public class EditPartDto {
     @NotNull(message = "Price should not be empty!")
     @Positive(message = "Price should be a positive number!")
     private double price;
+    @NotNull(message = "Quantity should not be empty!")
+    @Positive(message = "Quantity should be a positive number!")
+    private Integer quantity;
     @NotBlank(message = "Name should not be empty!")
     @Size(min = 4,max = 30,message = "Name should be between 4 and 30 characters!")
     private String manufacturer;
@@ -87,6 +90,14 @@ public class EditPartDto {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }
 

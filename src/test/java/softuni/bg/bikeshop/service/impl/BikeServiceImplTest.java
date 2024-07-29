@@ -13,7 +13,7 @@ import softuni.bg.bikeshop.exceptions.UserNotFoundException;
 import softuni.bg.bikeshop.models.Bike;
 import softuni.bg.bikeshop.models.User;
 import softuni.bg.bikeshop.models.dto.AddBikeDto;
-import softuni.bg.bikeshop.models.dto.parts.EditBikeDto;
+import softuni.bg.bikeshop.models.dto.EditBikeDto;
 import softuni.bg.bikeshop.repository.BikeRepository;
 import softuni.bg.bikeshop.repository.PictureRepository;
 import softuni.bg.bikeshop.repository.ProductRepository;

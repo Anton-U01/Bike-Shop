@@ -137,4 +137,20 @@ public class ProductsServiceImpl implements ProductsService {
             deleteProduct(p.getId(), p.getSeller().getUsername());
         });
     }
+
+    @Override
+    @Transactional
+    public void buyProduct(Long id, Integer quantity) {
+        Product product = productRepository.findById(id)
+                .orElseThrow(()-> new ProductNotFoundException("Product with id " + id + " is not found!"));
+
+
+        product.setQuantity(product.getQuantity() - quantity);
+        if(product.getQuantity() == 0){
+            deleteProduct(id,product.getSeller().getUsername());
+            return;
+        }
+        productRepository.saveAndFlush(product);
+
+    }
 }

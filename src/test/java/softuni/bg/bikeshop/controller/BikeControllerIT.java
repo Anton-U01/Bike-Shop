@@ -11,7 +11,7 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.validation.BindingResult;
 import softuni.bg.bikeshop.models.BikeType;
-import softuni.bg.bikeshop.models.dto.parts.EditBikeDto;
+import softuni.bg.bikeshop.models.dto.EditBikeDto;
 import softuni.bg.bikeshop.service.BikeService;
 
 
