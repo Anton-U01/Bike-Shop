@@ -11,8 +11,6 @@ public class Picture extends BaseEntity{
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id",referencedColumnName = "id")
     private Product product;
-    @ManyToOne
-    private User author;
 
     public String getTitle() {
         return title;
@@ -38,11 +36,5 @@ public class Picture extends BaseEntity{
         this.product = product;
     }
 
-    public User getAuthor() {
-        return author;
-    }
 
-    public void setAuthor(User author) {
-        this.author = author;
-    }
 }

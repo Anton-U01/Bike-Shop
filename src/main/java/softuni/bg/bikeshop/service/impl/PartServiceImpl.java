@@ -79,7 +79,6 @@ public class PartServiceImpl implements PartService {
             Picture picture = new Picture();
             picture.setTitle(file.getName());
             picture.setUrl(image);
-            picture.setAuthor(seller);
             pictureRepository.saveAndFlush(picture);
             pictureList.add(picture);
         }

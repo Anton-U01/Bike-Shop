@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestClient;
 import softuni.bg.bikeshop.exceptions.UserNotFoundException;
 import softuni.bg.bikeshop.models.Role;
 import softuni.bg.bikeshop.models.User;
@@ -30,13 +31,15 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final ModelMapper modelMapper;
     private final UserDetailsService userDetailsService;
+    private final RestClient restClient;
 
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder, ModelMapper modelMapper, UserDetailsService userDetailsService) {
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder, ModelMapper modelMapper, UserDetailsService userDetailsService, RestClient restClient) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
         this.modelMapper = modelMapper;
         this.userDetailsService = userDetailsService;
+        this.restClient = restClient;
     }
 
     @Override
@@ -139,6 +142,12 @@ public class UserServiceImpl implements UserService {
         if(!user.getProducts().isEmpty()){
             return false;
         }
+        user.getReviews().forEach(r -> {
+                restClient
+                        .delete()
+                        .uri("http://localhost:8081/reviews/" + r.getId())
+                        .retrieve();
+        });
         userRepository.delete(user);
         return true;
     }

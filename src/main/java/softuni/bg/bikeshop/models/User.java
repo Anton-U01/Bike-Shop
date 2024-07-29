@@ -26,6 +26,8 @@ public class User extends BaseEntity {
     private List<Product> products;
     @ManyToMany
     private Set<Product> favouriteProducts;
+    @OneToMany(mappedBy = "author")
+    private List<Review> reviews;
 
     public List<Product> getProducts() {
         return products;
@@ -95,5 +97,13 @@ public class User extends BaseEntity {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 }
