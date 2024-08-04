@@ -5,68 +5,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10f609e4-8abb-4ca9-a680-233e5e4ffb8c" name="Changes" comment="Create models">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.4/checksums/checksums.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.4/checksums/md5-checksums.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.4/checksums/sha1-checksums.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.4/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.4/dependencies-accessors/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.4/fileChanges/last-build.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.4/fileHashes/resourceHashesCache.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.4/gc.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.BikeShopApplicationTests.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.controller.AdminControllerIT.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.controller.BikeControllerIT.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.controller.HomeControllerIT.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.controller.LoginControllerIT.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.controller.PartControllerIT.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.BikeShopApplicationTests.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.BikeShopApplicationTests.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.controller.AdminControllerIT.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.controller.AdminControllerIT.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.controller.BikeControllerIT.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.controller.BikeControllerIT.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.controller.HomeControllerIT.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.controller.HomeControllerIT.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.controller.LoginControllerIT.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.controller.LoginControllerIT.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.controller.PartControllerIT.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.controller.PartControllerIT.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.controller.ProductControllerIT.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.controller.ProductControllerIT.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.controller.RegisterControllerIT.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.controller.ReviewControllerIT.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.controller.UserControllerIT.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.service.impl.BikeServiceImplTest.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.service.impl.ProductServiceImplTest.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.service.impl.RoleServiceImplTest.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.service.impl.UserDetailsServiceImplTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.controller.RegisterControllerIT.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.controller.RegisterControllerIT.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.controller.ReviewControllerIT.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.controller.ReviewControllerIT.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.controller.UserControllerIT.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.controller.UserControllerIT.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.service.impl.BikeServiceImplTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.service.impl.BikeServiceImplTest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.service.impl.ProductServiceImplTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.service.impl.ProductServiceImplTest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.service.impl.RoleServiceImplTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.service.impl.RoleServiceImplTest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.service.impl.UserDetailsServiceImplTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/softuni.bg.bikeshop.service.impl.UserDetailsServiceImplTest.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/softuni.bg.bikeshop.controller.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/softuni.bg.bikeshop.controller.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/softuni.bg.bikeshop.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/softuni.bg.bikeshop.service.impl.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.BikeShopApplicationTests.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.controller.AdminControllerIT.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.controller.BikeControllerIT.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.controller.HomeControllerIT.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.controller.LoginControllerIT.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.controller.PartControllerIT.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/softuni.bg.bikeshop.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/softuni.bg.bikeshop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/softuni.bg.bikeshop.service.impl.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/softuni.bg.bikeshop.service.impl.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.BikeShopApplicationTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.BikeShopApplicationTests.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.controller.AdminControllerIT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.controller.AdminControllerIT.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.controller.BikeControllerIT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.controller.BikeControllerIT.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.controller.HomeControllerIT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.controller.HomeControllerIT.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.controller.LoginControllerIT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.controller.LoginControllerIT.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.controller.PartControllerIT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.controller.PartControllerIT.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.controller.ProductControllerIT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.controller.ProductControllerIT.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.controller.RegisterControllerIT.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.controller.ReviewControllerIT.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.controller.UserControllerIT.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.service.impl.BikeServiceImplTest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.service.impl.ProductServiceImplTest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.service.impl.RoleServiceImplTest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.service.impl.UserDetailsServiceImplTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.controller.RegisterControllerIT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.controller.RegisterControllerIT.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.controller.ReviewControllerIT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.controller.ReviewControllerIT.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.controller.UserControllerIT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.controller.UserControllerIT.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.service.impl.BikeServiceImplTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.service.impl.BikeServiceImplTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.service.impl.ProductServiceImplTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.service.impl.ProductServiceImplTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.service.impl.RoleServiceImplTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.service.impl.RoleServiceImplTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.service.impl.UserDetailsServiceImplTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-softuni.bg.bikeshop.service.impl.UserDetailsServiceImplTest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/impl/ProductsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/impl/ProductsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/softuni/bg/bikeshop/controller/AdminControllerIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/softuni/bg/bikeshop/controller/AdminControllerIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/softuni/bg/bikeshop/controller/BikeControllerIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/softuni/bg/bikeshop/controller/BikeControllerIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/softuni/bg/bikeshop/controller/PartControllerIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/softuni/bg/bikeshop/controller/PartControllerIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/softuni/bg/bikeshop/controller/ProductControllerIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/softuni/bg/bikeshop/controller/ProductControllerIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/softuni/bg/bikeshop/service/impl/ProductServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/softuni/bg/bikeshop/service/impl/ProductServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/profile.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +200,7 @@
     "Gradle.ReviewControllerIT.addReviewTest.executor": "Run",
     "Gradle.ReviewControllerIT.executor": "Run",
     "Gradle.ReviewControllerIT.getAllReviewsOfProductTest.executor": "Run",
-    "Gradle.Tests in 'BikeShop.test'.executor": "Coverage",
+    "Gradle.Tests in 'BikeShop.test'.executor": "Run",
     "Gradle.Tests in 'softuni.bg.bikeshop'.executor": "Coverage",
     "Gradle.Tests in 'softuni.bg.bikeshop.controller'.executor": "Run",
     "Gradle.Tests in 'softuni.bg.bikeshop.service.impl'.executor": "Run",
@@ -280,7 +261,7 @@
       <recent name="softuni.bg.bikeshop.models" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Tests in 'BikeShop.test'">
+  <component name="RunManager" selected="Spring Boot.BikeShopApplication">
     <configuration name="ProductControllerIT.buyProductFailTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -474,7 +455,7 @@
       <workItem from="1722156938485" duration="4734000" />
       <workItem from="1722248197803" duration="11543000" />
       <workItem from="1722696021726" duration="4524000" />
-      <workItem from="1722757023577" duration="2468000" />
+      <workItem from="1722757023577" duration="3496000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
@@ -556,7 +537,7 @@
     <SUITE FILE_PATH="coverage/BikeShop$ProductControllerIT_deleteProductSuccessfulTest.ic" NAME="ProductControllerIT.deleteProductSuccessfulTest Coverage Results" MODIFIED="1721834057241" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/BikeShop$ReviewControllerIT.ic" NAME="ReviewControllerIT Coverage Results" MODIFIED="1721817587266" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/BikeShop$BikeServiceImplTest.ic" NAME="BikeServiceImplTest Coverage Results" MODIFIED="1721985625881" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/BikeShop$Tests_in__BikeShop_test_.ic" NAME="Tests in 'BikeShop.test' Coverage Results" MODIFIED="1722757878759" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/BikeShop$Tests_in__BikeShop_test_.ic" NAME="Tests in 'BikeShop.test' Coverage Results" MODIFIED="1722759832677" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/BikeShop$LoginControllerIT.ic" NAME="LoginControllerIT Coverage Results" MODIFIED="1721817796745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/BikeShop$BikeControllerIT_testAddBikeWithValidData.ic" NAME="BikeControllerIT.testAddBikeWithValidData Coverage Results" MODIFIED="1721825598554" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/BikeShop$AdminControllerIT.ic" NAME="AdminControllerIT Coverage Results" MODIFIED="1722080717504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

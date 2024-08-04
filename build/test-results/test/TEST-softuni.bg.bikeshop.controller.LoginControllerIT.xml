@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="softuni.bg.bikeshop.controller.LoginControllerIT" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-08-04T08:20:48" hostname="DESKTOP-RKC5M4M" time="0.045">
+<testsuite name="softuni.bg.bikeshop.controller.LoginControllerIT" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-08-04T08:24:43" hostname="DESKTOP-RKC5M4M" time="0.04">
   <properties/>
-  <testcase name="failedLoginTest()" classname="softuni.bg.bikeshop.controller.LoginControllerIT" time="0.014"/>
-  <testcase name="viewLoginPage()" classname="softuni.bg.bikeshop.controller.LoginControllerIT" time="0.028"/>
-  <system-out><![CDATA[2024-08-04T11:20:48.184+03:00  INFO 21212 --- [BikeShop] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [softuni.bg.bikeshop.controller.LoginControllerIT]: LoginControllerIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-08-04T11:20:48.189+03:00  INFO 21212 --- [BikeShop] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration softuni.bg.bikeshop.BikeShopApplication for test class softuni.bg.bikeshop.controller.LoginControllerIT
+  <testcase name="failedLoginTest()" classname="softuni.bg.bikeshop.controller.LoginControllerIT" time="0.016"/>
+  <testcase name="viewLoginPage()" classname="softuni.bg.bikeshop.controller.LoginControllerIT" time="0.022"/>
+  <system-out><![CDATA[2024-08-04T11:24:43.984+03:00  INFO 9492 --- [BikeShop] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [softuni.bg.bikeshop.controller.LoginControllerIT]: LoginControllerIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-08-04T11:24:43.987+03:00  INFO 9492 --- [BikeShop] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration softuni.bg.bikeshop.BikeShopApplication for test class softuni.bg.bikeshop.controller.LoginControllerIT
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

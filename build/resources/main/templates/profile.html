@@ -47,6 +47,7 @@
             <h2  class="bg-success rounded text-light p-2" >Change Username</h2>
             <form id="form" th:action="@{/user/edit-username}" th:method="post">
                 <p id="usernameError" class="alert alert-danger" th:if="${usernameExists}" th:text="${usernameExists}"></p>
+                <p id="usernameLengthError" class="alert alert-danger" th:if="${usernameLengthError}" th:text="${usernameLengthError}"></p>
                 <div class="form-group">
                     <label class="text-dark" for="newUsername"><strong>Enter new username:</strong></label>
                     <input type="text" id="newUsername" name="newUsername" class="form-control" th:value="${viewUserDto.username}" required />

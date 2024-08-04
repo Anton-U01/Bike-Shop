@@ -1,6 +1,7 @@
     document.addEventListener('DOMContentLoaded', function() {
-    const errorElement = document.getElementById('usernameError');
-    if (errorElement) {
+    const usernameError = document.getElementById('usernameError');
+    const lengthError = document.getElementById('usernameLengthError');
+    if (usernameError || lengthError) {
     editBtnClick();
 }
 });

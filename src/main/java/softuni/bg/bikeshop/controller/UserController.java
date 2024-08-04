@@ -46,6 +46,11 @@ public class UserController {
 
             return "redirect:/user/profile";
         }
+        if(newUsername.length() < 4 || newUsername.length() > 20){
+            redirectAttributes.addFlashAttribute("usernameLengthError","Username must be between 4 and 20 symbols!");
+
+            return "redirect:/user/profile";
+        }
 
         userService.editUsername(newUsername);
         redirectAttributes.addFlashAttribute("successfulMessage","Username is successfully updated!");
