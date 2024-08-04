@@ -5,7 +5,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +16,7 @@ import softuni.bg.bikeshop.models.UserDetailEntity;
 import softuni.bg.bikeshop.models.UserRole;
 import softuni.bg.bikeshop.models.dto.UserRegisterDto;
 import softuni.bg.bikeshop.models.dto.ViewUserDto;
+import softuni.bg.bikeshop.repository.ProductRepository;
 import softuni.bg.bikeshop.repository.RoleRepository;
 import softuni.bg.bikeshop.repository.UserRepository;
 import softuni.bg.bikeshop.service.UserService;
@@ -32,14 +32,16 @@ public class UserServiceImpl implements UserService {
     private final ModelMapper modelMapper;
     private final UserDetailsService userDetailsService;
     private final RestClient restClient;
+    private final ProductRepository productRepository;
 
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder, ModelMapper modelMapper, UserDetailsService userDetailsService, RestClient restClient) {
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder, ModelMapper modelMapper, UserDetailsService userDetailsService, RestClient restClient, ProductRepository productRepository) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
         this.modelMapper = modelMapper;
         this.userDetailsService = userDetailsService;
         this.restClient = restClient;
+        this.productRepository = productRepository;
     }
 
     @Override
@@ -148,6 +150,15 @@ public class UserServiceImpl implements UserService {
                         .uri("http://localhost:8081/reviews/" + r.getId())
                         .retrieve();
         });
+        user.getFavouriteProducts().forEach(p -> {
+            p.getIsFavouriteOf().remove(user);
+            if(p.getIsFavouriteOf().isEmpty()){
+                p.setFavourite(false);
+            }
+            productRepository.saveAndFlush(p);
+        });
+        user.getFavouriteProducts().clear();
+
         userRepository.delete(user);
         return true;
     }

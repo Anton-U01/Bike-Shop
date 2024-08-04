@@ -2,9 +2,7 @@ package softuni.bg.bikeshop.controller;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,7 +13,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.validation.BindingResult;
 import softuni.bg.bikeshop.models.User;
 import softuni.bg.bikeshop.models.dto.ViewUserDto;
-import softuni.bg.bikeshop.service.RoleService;
 import softuni.bg.bikeshop.service.UserService;
 
 import java.security.Principal;

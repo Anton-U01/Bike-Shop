@@ -8,15 +8,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.web.client.RestClient;
 import softuni.bg.bikeshop.exceptions.ProductNotFoundException;
 import softuni.bg.bikeshop.exceptions.UserNotFoundException;
 import softuni.bg.bikeshop.models.Product;
 import softuni.bg.bikeshop.models.User;
-import softuni.bg.bikeshop.repository.PictureRepository;
 import softuni.bg.bikeshop.repository.ProductRepository;
 import softuni.bg.bikeshop.repository.UserRepository;
-import softuni.bg.bikeshop.service.ProductsService;
 
 import java.security.Principal;
 import java.util.*;

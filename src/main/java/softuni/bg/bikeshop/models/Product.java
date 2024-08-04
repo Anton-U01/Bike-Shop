@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "products")
@@ -28,6 +29,8 @@ public class Product extends BaseEntity{
     private List<Picture> pictures;
     @OneToMany(mappedBy = "product")
     private List<Review> reviews;
+    @ManyToMany
+    private Set<User> isFavouriteOf;
     public Product() {
         pictures = new ArrayList<>();
         isFavourite = false;
@@ -104,5 +107,13 @@ public class Product extends BaseEntity{
 
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
+    }
+
+    public Set<User> getIsFavouriteOf() {
+        return isFavouriteOf;
+    }
+
+    public void setIsFavouriteOf(Set<User> isFavouriteOf) {
+        this.isFavouriteOf = isFavouriteOf;
     }
 }

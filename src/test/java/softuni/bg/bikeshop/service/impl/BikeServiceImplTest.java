@@ -65,13 +65,6 @@ public class BikeServiceImplTest {
         addBikeDto.setWheelsSize(18);
 
         bike = new Bike();
-        addBikeDto.setName("test");
-        addBikeDto.setFrame("test");
-        addBikeDto.setType("ROAD");
-        addBikeDto.setBrakes("test");
-        addBikeDto.setPrice(156);
-        addBikeDto.setDescription("aaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-        addBikeDto.setWheelsSize(18);
 
         editBikeDto = new EditBikeDto();
         editBikeDto.setId(1L);

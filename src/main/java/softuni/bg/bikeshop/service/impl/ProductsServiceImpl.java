@@ -53,6 +53,7 @@ public class ProductsServiceImpl implements ProductsService {
             return false;
         }
         user.getFavouriteProducts().add(product);
+        product.getIsFavouriteOf().add(user);
         product.setFavourite(true);
 
         userRepository.save(user);
@@ -81,7 +82,10 @@ public class ProductsServiceImpl implements ProductsService {
             return;
         }
         user.getFavouriteProducts().remove(product);
-        product.setFavourite(false);
+        product.getIsFavouriteOf().remove(user);
+        if(product.getIsFavouriteOf().isEmpty()){
+            product.setFavourite(false);
+        }
     }
 
 

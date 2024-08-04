@@ -2,9 +2,7 @@ package softuni.bg.bikeshop.service.impl;
 
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.client.RestClient;
 import softuni.bg.bikeshop.models.dto.AddReviewDto;
 import softuni.bg.bikeshop.models.dto.ViewReviewDto;
@@ -16,11 +14,9 @@ import java.util.List;
 @Service
 public class ReviewServiceImpl implements ReviewService {
     private final RestClient restClient;
-    private final ProductRepository productRepository;
 
-    public ReviewServiceImpl(RestClient restClient, ProductRepository productRepository) {
+    public ReviewServiceImpl(RestClient restClient) {
         this.restClient = restClient;
-        this.productRepository = productRepository;
     }
 
     @Override
