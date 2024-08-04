@@ -29,15 +29,9 @@ public class ProductServiceImplTest {
     @InjectMocks
     private ProductsServiceImpl productsService;
     @Mock
-    private  ProductRepository productRepository;
+    private ProductRepository productRepository;
     @Mock
     private  UserRepository userRepository;
-    @Mock
-    private ProductsService productsServiceMock;
-    @Mock
-    private  PictureRepository pictureRepository;
-    @Mock
-    private  RestClient restClient;
     private User user;
 
     private Product product;
@@ -48,6 +42,7 @@ public class ProductServiceImplTest {
         product = new Product();
         product.setName("Product1");
         user = new User();
+        user.setUsername("test");
         principal = () -> "test";
     }
 
@@ -310,5 +305,16 @@ public class ProductServiceImplTest {
         Assertions.assertFalse(success);
         Assertions.assertTrue(product.isFavourite());
     }
+    @Test
+    void buyProductProductNotFoundTest(){
+        product.setQuantity(5);
+        when(productRepository.findById(Mockito.anyLong()))
+                .thenReturn(Optional.of(product));
+
+        productsService.buyProduct(Mockito.anyLong(),2);
+
+        assertEquals(3, product.getQuantity());
+    }
+
 
 }

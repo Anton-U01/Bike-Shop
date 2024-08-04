@@ -44,6 +44,7 @@ public class PartControllerIT {
                                 " \"description\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaa\"," +
                                 " \"name\": \"tires\"," +
                                 " \"price\": \"255\"," +
+                                " \"quantity\": \"5\"," +
                                 " \"type\": \"TIRES\"," +
                                 " \"manufacturer\": \"plovdiv tires\"," +
                                 " \"size\": \"18\" }")
@@ -65,6 +66,7 @@ public class PartControllerIT {
                                 " \"description\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaa\"," +
                                 " \"name\": \"tires\"," +
                                 " \"price\": \"255\"," +
+                                " \"quantity\": \"5\"," +
                                 " \"type\": \"TIRES\"," +
                                 " \"manufacturer\": \"plovdiv tires\"," +
                                 " \"size\": \"18\" }")

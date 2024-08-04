@@ -33,10 +33,6 @@ public class AdminControllerIT {
     MockMvc mockMvc;
     @MockBean
     private UserService userService;
-    @MockBean
-    private RoleService roleService;
-    @Mock
-    private ModelMapper modelMapper;
     private Principal principal;
     private User user;
 
