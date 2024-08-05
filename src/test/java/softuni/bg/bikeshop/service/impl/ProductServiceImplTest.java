@@ -209,6 +209,7 @@ public class ProductServiceImplTest {
     @Test
     void removeFromFavouritesTest(){
         user.getFavouriteProducts().add(product);
+
         when(productRepository.findById(Mockito.anyLong()))
                 .thenReturn(Optional.of(product));
         when(userRepository.findByUsername(Mockito.anyString()))

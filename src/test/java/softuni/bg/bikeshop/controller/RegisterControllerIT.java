@@ -10,7 +10,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.validation.BindingResult;
-import softuni.bg.bikeshop.models.dto.UserRegisterDto;
 import softuni.bg.bikeshop.service.UserService;
 
 import static org.mockito.Mockito.when;
@@ -27,6 +26,7 @@ public class RegisterControllerIT {
     @Mock
     private BindingResult bindingResult;
 
+
     @Test
     void registerPageTest() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/users/register"))
@@ -39,7 +39,6 @@ public class RegisterControllerIT {
 
 
         when(bindingResult.hasErrors()).thenReturn(false);
-        when(userService.register(Mockito.any(UserRegisterDto.class))).thenReturn(true);
 
         mockMvc.perform(MockMvcRequestBuilders.post("/users/register")
                         .param("username", "test")
@@ -57,7 +56,6 @@ public class RegisterControllerIT {
 
 
         when(bindingResult.hasErrors()).thenReturn(true);
-        when(userService.register(Mockito.any(UserRegisterDto.class))).thenReturn(true);
 
         mockMvc.perform(MockMvcRequestBuilders.post("/users/register")
                         .param("username", "t")
@@ -70,5 +68,67 @@ public class RegisterControllerIT {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/users/register"));
     }
+    @Test
+    void registerFailureWithPasswordsMisMatchTest() throws Exception {
+
+
+        when(bindingResult.hasErrors()).thenReturn(false);
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/users/register")
+                        .param("username", "test")
+                        .param("fullName", "test testov")
+                        .param("age", "20")
+                        .param("email", "test@abv.bg")
+                        .param("password", "test321")
+                        .param("confirmPassword", "test123")
+                        .with(csrf()))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(flash().attribute("passwordsMisMatch", "Passwords are not the same!"))
+                .andExpect(redirectedUrl("/users/register"));
+    }
+    @Test
+    void registerFailureWithUsernameAlreadyExistsTest() throws Exception {
+
+
+        when(bindingResult.hasErrors()).thenReturn(false);
+        Mockito.when(userService.checkIfUsernameExists(Mockito.anyString()))
+                        .thenReturn(true);
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/users/register")
+                        .param("username", "test")
+                        .param("fullName", "test testov")
+                        .param("age", "20")
+                        .param("email", "test@abv.bg")
+                        .param("password", "test123")
+                        .param("confirmPassword", "test123")
+                        .with(csrf()))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(flash().attribute("usernameExists", "This username already exists!"))
+                .andExpect(redirectedUrl("/users/register"));
+    }
+    @Test
+    void registerFailureWithEmailAlreadyExistsTest() throws Exception {
+
+
+        when(bindingResult.hasErrors()).thenReturn(false);
+
+        Mockito.when(userService.checkIfUsernameExists(Mockito.anyString()))
+                .thenReturn(false);
+        Mockito.when(userService.checkIfEmailExists(Mockito.anyString()))
+                .thenReturn(true);
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/users/register")
+                        .param("username", "test")
+                        .param("fullName", "test testov")
+                        .param("age", "20")
+                        .param("email", "test@abv.bg")
+                        .param("password", "test123")
+                        .param("confirmPassword", "test123")
+                        .with(csrf()))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(flash().attribute("emailExists","This email already exists!"))
+                .andExpect(redirectedUrl("/users/register"));
+    }
+
 }
 

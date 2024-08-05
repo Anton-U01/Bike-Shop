@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="softuni.bg.bikeshop.controller.RegisterControllerIT" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-08-04T13:51:16" hostname="DESKTOP-RKC5M4M" time="0.087">
+<testsuite name="softuni.bg.bikeshop.controller.RegisterControllerIT" tests="6" skipped="0" failures="0" errors="0" timestamp="2024-08-05T16:13:56" hostname="DESKTOP-RKC5M4M" time="0.482">
   <properties/>
-  <testcase name="registerSuccessfulTest()" classname="softuni.bg.bikeshop.controller.RegisterControllerIT" time="0.03"/>
-  <testcase name="registerFailureWithValidationTest()" classname="softuni.bg.bikeshop.controller.RegisterControllerIT" time="0.009"/>
-  <testcase name="registerPageTest()" classname="softuni.bg.bikeshop.controller.RegisterControllerIT" time="0.04"/>
-  <system-out><![CDATA[2024-08-04T16:51:16.334+03:00  INFO 10228 --- [BikeShop] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [softuni.bg.bikeshop.controller.RegisterControllerIT]: RegisterControllerIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-08-04T16:51:16.336+03:00  INFO 10228 --- [BikeShop] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration softuni.bg.bikeshop.BikeShopApplication for test class softuni.bg.bikeshop.controller.RegisterControllerIT
+  <testcase name="registerFailureWithEmailAlreadyExistsTest()" classname="softuni.bg.bikeshop.controller.RegisterControllerIT" time="0.118"/>
+  <testcase name="registerSuccessfulTest()" classname="softuni.bg.bikeshop.controller.RegisterControllerIT" time="0.05"/>
+  <testcase name="registerFailureWithValidationTest()" classname="softuni.bg.bikeshop.controller.RegisterControllerIT" time="0.028"/>
+  <testcase name="registerFailureWithPasswordsMisMatchTest()" classname="softuni.bg.bikeshop.controller.RegisterControllerIT" time="0.021"/>
+  <testcase name="registerPageTest()" classname="softuni.bg.bikeshop.controller.RegisterControllerIT" time="0.125"/>
+  <testcase name="registerFailureWithUsernameAlreadyExistsTest()" classname="softuni.bg.bikeshop.controller.RegisterControllerIT" time="0.024"/>
+  <system-out><![CDATA[2024-08-05T19:13:56.335+03:00  INFO 13416 --- [BikeShop] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [softuni.bg.bikeshop.controller.RegisterControllerIT]: RegisterControllerIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-08-05T19:13:56.360+03:00  INFO 13416 --- [BikeShop] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration softuni.bg.bikeshop.BikeShopApplication for test class softuni.bg.bikeshop.controller.RegisterControllerIT
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

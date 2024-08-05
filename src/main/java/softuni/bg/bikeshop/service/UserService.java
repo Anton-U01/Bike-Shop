@@ -9,7 +9,7 @@ import java.util.List;
 public interface UserService {
     void initFirstUserAsAdmin();
 
-    boolean register(UserRegisterDto userRegisterDto);
+    void register(UserRegisterDto userRegisterDto);
 
     List<ViewUserDto> getAllUser();
 
@@ -26,4 +26,6 @@ public interface UserService {
     void editUsername(String newUsername);
 
     boolean checkIfUsernameExists(String newUsername);
+
+    boolean checkIfEmailExists(String email);
 }

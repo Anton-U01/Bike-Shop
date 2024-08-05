@@ -32,12 +32,33 @@ public class RegisterController {
     public String doRegister(@Valid UserRegisterDto userRegisterDto,
                                BindingResult bindingResult,
                                RedirectAttributes redirectAttributes){
-        if(bindingResult.hasErrors() || !userService.register(userRegisterDto)){
+        if(bindingResult.hasErrors()){
             redirectAttributes.addFlashAttribute("userRegister",userRegisterDto);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userRegister",bindingResult);
 
             return "redirect:/users/register";
         }
+        if(!userRegisterDto.getPassword().equals(userRegisterDto.getConfirmPassword())) {
+            redirectAttributes.addFlashAttribute("userRegister", userRegisterDto);
+            redirectAttributes.addFlashAttribute("passwordsMisMatch", "Passwords are not the same!");
+
+            return "redirect:/users/register";
+        }
+
+        if(userService.checkIfUsernameExists(userRegisterDto.getUsername())){
+            redirectAttributes.addFlashAttribute("userRegister",userRegisterDto);
+            redirectAttributes.addFlashAttribute("usernameExists","This username already exists!");
+
+            return "redirect:/users/register";
+        }
+        if(userService.checkIfEmailExists(userRegisterDto.getEmail())){
+            redirectAttributes.addFlashAttribute("userRegister",userRegisterDto);
+            redirectAttributes.addFlashAttribute("emailExists","This email already exists!");
+
+            return "redirect:/users/register";
+        }
+        userService.register(userRegisterDto);
+
         return "redirect:/login";
     }
 }

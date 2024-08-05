@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="softuni.bg.bikeshop.controller.ReviewControllerIT" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-08-04T13:51:18" hostname="DESKTOP-RKC5M4M" time="0.043">
+<testsuite name="softuni.bg.bikeshop.controller.ReviewControllerIT" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-08-05T16:13:59" hostname="DESKTOP-RKC5M4M" time="0.047">
   <properties/>
-  <testcase name="addReviewTest()" classname="softuni.bg.bikeshop.controller.ReviewControllerIT" time="0.011"/>
-  <testcase name="getAllReviewsOfProductTest()" classname="softuni.bg.bikeshop.controller.ReviewControllerIT" time="0.031"/>
-  <system-out><![CDATA[2024-08-04T16:51:16.435+03:00  INFO 10228 --- [BikeShop] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [softuni.bg.bikeshop.controller.ReviewControllerIT]: ReviewControllerIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-08-04T16:51:16.441+03:00  INFO 10228 --- [BikeShop] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration softuni.bg.bikeshop.BikeShopApplication for test class softuni.bg.bikeshop.controller.ReviewControllerIT
-2024-08-04T16:51:16.563+03:00  INFO 10228 --- [BikeShop] [    Test worker] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+  <testcase name="addReviewTest()" classname="softuni.bg.bikeshop.controller.ReviewControllerIT" time="0.013"/>
+  <testcase name="getAllReviewsOfProductTest()" classname="softuni.bg.bikeshop.controller.ReviewControllerIT" time="0.033"/>
+  <system-out><![CDATA[2024-08-05T19:13:56.868+03:00  INFO 13416 --- [BikeShop] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [softuni.bg.bikeshop.controller.ReviewControllerIT]: ReviewControllerIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-08-05T19:13:56.879+03:00  INFO 13416 --- [BikeShop] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration softuni.bg.bikeshop.BikeShopApplication for test class softuni.bg.bikeshop.controller.ReviewControllerIT
+2024-08-05T19:13:56.886+03:00  INFO 13416 --- [BikeShop] [    Test worker] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
 ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
@@ -15,56 +15,56 @@
 
  :: Spring Boot ::                (v3.3.0)
 
-2024-08-04T16:51:16.629+03:00  INFO 10228 --- [BikeShop] [    Test worker] s.b.b.controller.ReviewControllerIT      : Starting ReviewControllerIT using Java 17.0.3.1 with PID 10228 (started by PC in D:\SOFTUNI\Final Project\BikeShop)
-2024-08-04T16:51:16.630+03:00  INFO 10228 --- [BikeShop] [    Test worker] s.b.b.controller.ReviewControllerIT      : No active profile set, falling back to 1 default profile: "default"
-2024-08-04T16:51:16.868+03:00  INFO 10228 --- [BikeShop] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-08-04T16:51:16.891+03:00  INFO 10228 --- [BikeShop] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 23 ms. Found 6 JPA repository interfaces.
-2024-08-04T16:51:17.079+03:00  INFO 10228 --- [BikeShop] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-08-04T16:51:17.094+03:00  INFO 10228 --- [BikeShop] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-08-04T16:51:17.123+03:00  INFO 10228 --- [BikeShop] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-08-04T16:51:17.125+03:00  INFO 10228 --- [BikeShop] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
-2024-08-04T16:51:17.130+03:00  INFO 10228 --- [BikeShop] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-7 - Added connection com.mysql.cj.jdbc.ConnectionImpl@46638272
-2024-08-04T16:51:17.131+03:00  INFO 10228 --- [BikeShop] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
-2024-08-04T16:51:17.132+03:00  WARN 10228 --- [BikeShop] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-04T16:51:17.132+03:00  WARN 10228 --- [BikeShop] [    Test worker] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2024-08-04T16:51:17.133+03:00 DEBUG 10228 --- [BikeShop] [    Test worker] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(12, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@5e1f1883) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@5b71d8bc)
-2024-08-04T16:51:17.133+03:00 DEBUG 10228 --- [BikeShop] [    Test worker] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(-9, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@16b6fa67) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@4c9c9ad1)
-2024-08-04T16:51:17.133+03:00 DEBUG 10228 --- [BikeShop] [    Test worker] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(-3, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@6ae148c1) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@3f80d919)
-2024-08-04T16:51:17.133+03:00 DEBUG 10228 --- [BikeShop] [    Test worker] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(4003, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@1e44794c) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@36a63247)
-2024-08-04T16:51:17.134+03:00 DEBUG 10228 --- [BikeShop] [    Test worker] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(4001, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@56e1d312) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@6f9090c6)
-2024-08-04T16:51:17.134+03:00 DEBUG 10228 --- [BikeShop] [    Test worker] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(4002, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@52a31a61) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@55902e78)
-2024-08-04T16:51:17.134+03:00 DEBUG 10228 --- [BikeShop] [    Test worker] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(2004, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@d311e9b) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@664cb95b)
-2024-08-04T16:51:17.134+03:00 DEBUG 10228 --- [BikeShop] [    Test worker] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(2005, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@2c76c7e1) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@7841dff9)
-2024-08-04T16:51:17.134+03:00 DEBUG 10228 --- [BikeShop] [    Test worker] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(2011, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@7d81d3ac) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@7e843b26)
-2024-08-04T16:51:17.135+03:00 DEBUG 10228 --- [BikeShop] [    Test worker] o.h.t.d.jdbc.spi.JdbcTypeRegistry        : addDescriptor(NCharTypeDescriptor) replaced previous registration(CharTypeDescriptor)
-2024-08-04T16:51:17.135+03:00 DEBUG 10228 --- [BikeShop] [    Test worker] o.h.t.d.jdbc.spi.JdbcTypeRegistry        : addDescriptor(NVarcharTypeDescriptor) replaced previous registration(VarcharTypeDescriptor)
-2024-08-04T16:51:17.135+03:00 DEBUG 10228 --- [BikeShop] [    Test worker] o.h.t.d.jdbc.spi.JdbcTypeRegistry        : addDescriptor(LongNVarcharTypeDescriptor) replaced previous registration(LongVarcharTypeDescriptor)
-2024-08-04T16:51:17.135+03:00 DEBUG 10228 --- [BikeShop] [    Test worker] o.h.t.d.jdbc.spi.JdbcTypeRegistry        : addDescriptor(NClobTypeDescriptor(DEFAULT)) replaced previous registration(ClobTypeDescriptor(DEFAULT))
-2024-08-04T16:51:17.135+03:00 DEBUG 10228 --- [BikeShop] [    Test worker] o.h.t.d.jdbc.spi.JdbcTypeRegistry        : addDescriptor(2005, ClobTypeDescriptor(STREAM_BINDING)) replaced previous registration(ClobTypeDescriptor(DEFAULT))
-2024-08-04T16:51:17.353+03:00  INFO 10228 --- [BikeShop] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-08-04T16:51:17.362+03:00 DEBUG 10228 --- [BikeShop] [    Test worker] org.hibernate.SQL                        : 
+2024-08-05T19:13:57.385+03:00  INFO 13416 --- [BikeShop] [    Test worker] s.b.b.controller.ReviewControllerIT      : Starting ReviewControllerIT using Java 17.0.3.1 with PID 13416 (started by PC in D:\SOFTUNI\Final Project\BikeShop)
+2024-08-05T19:13:57.387+03:00  INFO 13416 --- [BikeShop] [    Test worker] s.b.b.controller.ReviewControllerIT      : No active profile set, falling back to 1 default profile: "default"
+2024-08-05T19:13:58.294+03:00  INFO 13416 --- [BikeShop] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-05T19:13:58.337+03:00  INFO 13416 --- [BikeShop] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 41 ms. Found 6 JPA repository interfaces.
+2024-08-05T19:13:58.549+03:00  INFO 13416 --- [BikeShop] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-05T19:13:58.555+03:00  INFO 13416 --- [BikeShop] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-05T19:13:58.572+03:00  INFO 13416 --- [BikeShop] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-05T19:13:58.575+03:00  INFO 13416 --- [BikeShop] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2024-08-05T19:13:58.582+03:00  INFO 13416 --- [BikeShop] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-7 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4f3efccf
+2024-08-05T19:13:58.582+03:00  INFO 13416 --- [BikeShop] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
+2024-08-05T19:13:58.583+03:00  WARN 13416 --- [BikeShop] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-05T19:13:58.583+03:00  WARN 13416 --- [BikeShop] [    Test worker] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-08-05T19:13:58.583+03:00 DEBUG 13416 --- [BikeShop] [    Test worker] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(12, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@5f99ff48) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@5daa5cce)
+2024-08-05T19:13:58.584+03:00 DEBUG 13416 --- [BikeShop] [    Test worker] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(-9, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@44bf8008) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@7c5fd4d4)
+2024-08-05T19:13:58.584+03:00 DEBUG 13416 --- [BikeShop] [    Test worker] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(-3, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@6cac07a8) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@636f7adf)
+2024-08-05T19:13:58.584+03:00 DEBUG 13416 --- [BikeShop] [    Test worker] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(4003, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@5b68097a) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@59139fb7)
+2024-08-05T19:13:58.584+03:00 DEBUG 13416 --- [BikeShop] [    Test worker] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(4001, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@550e427a) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@4daf6386)
+2024-08-05T19:13:58.584+03:00 DEBUG 13416 --- [BikeShop] [    Test worker] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(4002, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@56178090) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@133c43c2)
+2024-08-05T19:13:58.584+03:00 DEBUG 13416 --- [BikeShop] [    Test worker] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(2004, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@3486de4d) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@2833808)
+2024-08-05T19:13:58.584+03:00 DEBUG 13416 --- [BikeShop] [    Test worker] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(2005, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@687a3bc8) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@19294756)
+2024-08-05T19:13:58.584+03:00 DEBUG 13416 --- [BikeShop] [    Test worker] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(2011, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@1b5f8688) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@87be93)
+2024-08-05T19:13:58.585+03:00 DEBUG 13416 --- [BikeShop] [    Test worker] o.h.t.d.jdbc.spi.JdbcTypeRegistry        : addDescriptor(NCharTypeDescriptor) replaced previous registration(CharTypeDescriptor)
+2024-08-05T19:13:58.585+03:00 DEBUG 13416 --- [BikeShop] [    Test worker] o.h.t.d.jdbc.spi.JdbcTypeRegistry        : addDescriptor(NVarcharTypeDescriptor) replaced previous registration(VarcharTypeDescriptor)
+2024-08-05T19:13:58.585+03:00 DEBUG 13416 --- [BikeShop] [    Test worker] o.h.t.d.jdbc.spi.JdbcTypeRegistry        : addDescriptor(LongNVarcharTypeDescriptor) replaced previous registration(LongVarcharTypeDescriptor)
+2024-08-05T19:13:58.585+03:00 DEBUG 13416 --- [BikeShop] [    Test worker] o.h.t.d.jdbc.spi.JdbcTypeRegistry        : addDescriptor(NClobTypeDescriptor(DEFAULT)) replaced previous registration(ClobTypeDescriptor(DEFAULT))
+2024-08-05T19:13:58.585+03:00 DEBUG 13416 --- [BikeShop] [    Test worker] o.h.t.d.jdbc.spi.JdbcTypeRegistry        : addDescriptor(2005, ClobTypeDescriptor(STREAM_BINDING)) replaced previous registration(ClobTypeDescriptor(DEFAULT))
+2024-08-05T19:13:58.979+03:00  INFO 13416 --- [BikeShop] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-05T19:13:58.994+03:00 DEBUG 13416 --- [BikeShop] [    Test worker] org.hibernate.SQL                        : 
     alter table picture 
        modify column url LONGTEXT not null
-2024-08-04T16:51:17.379+03:00 DEBUG 10228 --- [BikeShop] [    Test worker] org.hibernate.SQL                        : 
+2024-08-05T19:13:59.012+03:00 DEBUG 13416 --- [BikeShop] [    Test worker] org.hibernate.SQL                        : 
     alter table products 
        modify column description TEXT
-2024-08-04T16:51:17.410+03:00 DEBUG 10228 --- [BikeShop] [    Test worker] org.hibernate.SQL                        : 
+2024-08-05T19:13:59.048+03:00 DEBUG 13416 --- [BikeShop] [    Test worker] org.hibernate.SQL                        : 
     alter table reviews 
        modify column content TEXT not null
-2024-08-04T16:51:17.587+03:00  INFO 10228 --- [BikeShop] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-08-04T16:51:17.760+03:00  INFO 10228 --- [BikeShop] [    Test worker] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
-2024-08-04T16:51:17.776+03:00  INFO 10228 --- [BikeShop] [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
-2024-08-04T16:51:17.878+03:00  INFO 10228 --- [BikeShop] [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3e978fa4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1ecf06ae, org.springframework.security.web.context.SecurityContextHolderFilter@62593536, org.springframework.security.web.header.HeaderWriterFilter@33ea1912, org.springframework.web.filter.CorsFilter@1b322f02, org.springframework.security.web.csrf.CsrfFilter@62ef35b3, org.springframework.security.web.authentication.logout.LogoutFilter@1385e9e3, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@261b4fa, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7980c663, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5b1f3ba3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@14fb9efa, org.springframework.security.web.access.ExceptionTranslationFilter@2700b7bf, org.springframework.security.web.access.intercept.AuthorizationFilter@4e296a27]
-2024-08-04T16:51:17.994+03:00  INFO 10228 --- [BikeShop] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2024-08-04T16:51:17.995+03:00  INFO 10228 --- [BikeShop] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2024-08-04T16:51:17.997+03:00  INFO 10228 --- [BikeShop] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
-2024-08-04T16:51:18.021+03:00  INFO 10228 --- [BikeShop] [    Test worker] s.b.b.controller.ReviewControllerIT      : Started ReviewControllerIT in 1.459 seconds (process running for 29.292)
-2024-08-04T16:51:18.027+03:00 DEBUG 10228 --- [BikeShop] [    Test worker] org.hibernate.SQL                        : 
+2024-08-05T19:13:59.190+03:00  INFO 13416 --- [BikeShop] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-05T19:13:59.365+03:00  INFO 13416 --- [BikeShop] [    Test worker] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
+2024-08-05T19:13:59.378+03:00  INFO 13416 --- [BikeShop] [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-08-05T19:13:59.455+03:00  INFO 13416 --- [BikeShop] [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@63eff41c, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@619157ae, org.springframework.security.web.context.SecurityContextHolderFilter@557a2fe7, org.springframework.security.web.header.HeaderWriterFilter@31b38a32, org.springframework.web.filter.CorsFilter@1b5bd1f5, org.springframework.security.web.csrf.CsrfFilter@25850671, org.springframework.security.web.authentication.logout.LogoutFilter@539c20ed, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@51c62d81, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@58411db7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7a52df9c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7b915d3a, org.springframework.security.web.access.ExceptionTranslationFilter@3b33304b, org.springframework.security.web.access.intercept.AuthorizationFilter@6fa2a253]
+2024-08-05T19:13:59.563+03:00  INFO 13416 --- [BikeShop] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-08-05T19:13:59.563+03:00  INFO 13416 --- [BikeShop] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-08-05T19:13:59.565+03:00  INFO 13416 --- [BikeShop] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2024-08-05T19:13:59.577+03:00  INFO 13416 --- [BikeShop] [    Test worker] s.b.b.controller.ReviewControllerIT      : Started ReviewControllerIT in 2.691 seconds (process running for 42.983)
+2024-08-05T19:13:59.582+03:00 DEBUG 13416 --- [BikeShop] [    Test worker] org.hibernate.SQL                        : 
     select
         count(*) 
     from
         roles r1_0
-2024-08-04T16:51:18.047+03:00 DEBUG 10228 --- [BikeShop] [    Test worker] org.hibernate.SQL                        : 
+2024-08-05T19:13:59.590+03:00 DEBUG 13416 --- [BikeShop] [    Test worker] org.hibernate.SQL                        : 
     select
         count(*) 
     from

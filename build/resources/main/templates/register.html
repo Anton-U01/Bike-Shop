@@ -29,13 +29,22 @@
                     <div class="row justify-content-center">
                         <div class="col-md-6">
                             <div class="form-group">
+                                <div th:if="${passwordsMisMatch}" class="p-1 bg-danger text-light text-center rounded errors">
+                                    <div th:text="${passwordsMisMatch}" class="danger"></div>
+                                </div>
+                                <div th:if="${usernameExists}" class="p-1 bg-danger text-light text-center rounded errors">
+                                    <div th:text="${usernameExists}" class="danger"></div>
+                                </div>
+                                <div th:if="${emailExists}" class="p-1 bg-danger text-light text-center rounded errors">
+                                    <div th:text="${emailExists}" class="danger"></div>
+                                </div>
                                 <div class="label-holder textCol d-flex justify-content-center">
                                     <label for="username" class="h4 mb-2 text-dark">Username</label>
                                 </div>
                                 <input type="text"
                                        class="form-control"
                                        id="username"
-                                       required minlength="4" maxlength="20"
+
                                        name="username"
                                        th:field="*{username}"
                                 />
@@ -52,7 +61,7 @@
                                 </div>
                                 <input type="text"
                                        class="form-control"
-                                       required minlength="5" maxlength="40"
+
                                        id="fullName"
                                        name="fullName"
                                        th:field="*{fullName}"
@@ -71,7 +80,7 @@
                                 <input type="number"
                                        class="form-control"
                                        id="age"
-                                       required min="0"
+
                                        name="age"
                                        th:field="*{age}"
                                 />
@@ -89,7 +98,7 @@
                                 <input type="email"
                                        class="form-control "
                                        id="email"
-                                       required
+
                                        name="email"
                                        th:field="*{email}"
                                 />
@@ -107,7 +116,6 @@
                                 <input type="password"
                                        class="form-control"
                                        id="password"
-                                       required minlength="5" maxlength="20"
                                        name="password"
                                        th:field="*{password}"
                                 />
@@ -125,7 +133,6 @@
                                 <input type="password"
                                        class="form-control"
                                        id="confirmPassword"
-                                       required minlength="5" maxlength="20"
                                        name="confirmPassword"
                                        th:field="*{confirmPassword}"
                                 />

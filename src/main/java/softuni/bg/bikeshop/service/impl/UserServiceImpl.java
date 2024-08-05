@@ -67,25 +67,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean register(UserRegisterDto userRegisterDto) {
-        if(!userRegisterDto.getPassword().equals(userRegisterDto.getConfirmPassword())){
-            return false;
-        }
-        Optional<User> byUsername = userRepository.findByUsername(userRegisterDto.getUsername());
-        if(byUsername.isPresent()){
-            return false;
-        }
-        Optional<User> byEmail = userRepository.findByEmail(userRegisterDto.getEmail());
-        if (byEmail.isPresent()){
-            return false;
-        }
+    public void register(UserRegisterDto userRegisterDto) {
         User user = modelMapper.map(userRegisterDto,User.class);
         user.setPassword(passwordEncoder.encode(userRegisterDto.getPassword()));
         Role role = roleRepository.findByName(UserRole.USER);
         user.getRoles().add(role);
 
         userRepository.saveAndFlush(user);
-        return true;
     }
 
     @Override
@@ -186,11 +174,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean checkIfUsernameExists(String newUsername) {
-        List<String> usernames = userRepository.findAll()
-                .stream()
-                .map(User::getUsername)
-                .collect(Collectors.toList());
-        return usernames.contains(newUsername);
+        Optional<User> optionalUser = userRepository.findByUsername(newUsername);
+        return optionalUser.isPresent();
+    }
+
+    @Override
+    public boolean checkIfEmailExists(String email) {
+        Optional<User> optionalUser = userRepository.findByEmail(email);
+        return optionalUser.isPresent();
     }
 
 
