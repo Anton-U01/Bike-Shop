@@ -19,9 +19,11 @@ import softuni.bg.bikeshop.service.PartService;
 import java.io.IOException;
 import java.security.Principal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PartServiceImpl implements PartService {
@@ -99,7 +101,7 @@ public class PartServiceImpl implements PartService {
         part.setQuantity(addPartDto.getQuantity());
         part.setManufacturer(addPartDto.getManufacturer());
         part.setSeller(seller);
-        part.setCreatedOn(LocalDate.now());
+        part.setCreatedOn(LocalDateTime.now());
         part.setType(partType);
     }
 
@@ -128,6 +130,7 @@ public class PartServiceImpl implements PartService {
 
         return true;
     }
+
 
 
 }

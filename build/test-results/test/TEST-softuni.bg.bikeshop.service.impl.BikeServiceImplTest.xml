@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="softuni.bg.bikeshop.service.impl.BikeServiceImplTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-08-05T16:14:01" hostname="DESKTOP-RKC5M4M" time="0.611">
+<testsuite name="softuni.bg.bikeshop.service.impl.BikeServiceImplTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-08-05T16:38:11" hostname="DESKTOP-RKC5M4M" time="0.805">
   <properties/>
-  <testcase name="addBikeSuccessTest()" classname="softuni.bg.bikeshop.service.impl.BikeServiceImplTest" time="0.579"/>
-  <testcase name="editBikeSuccessTest()" classname="softuni.bg.bikeshop.service.impl.BikeServiceImplTest" time="0.016"/>
-  <testcase name="addBikeUserNotFoundTest()" classname="softuni.bg.bikeshop.service.impl.BikeServiceImplTest" time="0.012"/>
+  <testcase name="addBikeSuccessTest()" classname="softuni.bg.bikeshop.service.impl.BikeServiceImplTest" time="0.788"/>
+  <testcase name="editBikeSuccessTest()" classname="softuni.bg.bikeshop.service.impl.BikeServiceImplTest" time="0.007"/>
+  <testcase name="addBikeUserNotFoundTest()" classname="softuni.bg.bikeshop.service.impl.BikeServiceImplTest" time="0.009"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

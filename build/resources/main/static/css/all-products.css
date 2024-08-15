@@ -12,3 +12,10 @@ body {
     height: 200px;
     object-fit: contain;
 }
+.custom-container{
+    margin: 0 auto;
+    width: 80%;
+}
+.filter-group{
+    font-size: 18px;
+}

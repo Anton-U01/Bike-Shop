@@ -43,6 +43,8 @@ public class BikeController {
 
         if (files.get(0).isEmpty()) {
             redirectAttributes.addFlashAttribute("noImage", "Please select an image file to upload!");
+
+            return "redirect:/products/add-bike";
         }
 
         if(bindingResult.hasErrors() || !bikeService.add(addBikeDto,principal,files) || files.get(0).isEmpty()){

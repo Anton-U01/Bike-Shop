@@ -1,5 +1,7 @@
 package softuni.bg.bikeshop.service.impl;
 ;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestClient;
@@ -157,4 +159,26 @@ public class ProductsServiceImpl implements ProductsService {
         productRepository.saveAndFlush(product);
 
     }
+
+    @Override
+    public List<Product> getAllByPriceAsc() {
+        return this.productRepository.findAllByOrderByPriceAsc();
+    }
+
+    @Override
+    public List<Product> getAllByPriceDesc() {
+        return this.productRepository.findAllByOrderByPriceDesc();
+    }
+
+    @Override
+    public List<Product> getAllByOrderByLatest() {
+        return this.productRepository.findAllByOrderByCreatedOnDesc();
+    }
+
+    @Override
+    public Page<Product> getAll(Pageable pageable) {
+        return this.productRepository.findAll(pageable);
+    }
+
+
 }

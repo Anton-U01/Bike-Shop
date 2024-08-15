@@ -1,6 +1,9 @@
 package softuni.bg.bikeshop.service;
 
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import softuni.bg.bikeshop.models.Product;
 
 import java.security.Principal;
@@ -29,4 +32,6 @@ public interface ProductsService{
     void deleteOldProducts();
 
     void buyProduct(Long id, Integer quantity);
+
+    Page<Product> getAll(Pageable pageable);
 }

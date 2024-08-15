@@ -3,6 +3,7 @@ package softuni.bg.bikeshop.models;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -23,7 +24,7 @@ public class Product extends BaseEntity{
     @Column(name = "is_favourite",nullable = false)
     private boolean isFavourite;
     @Column(nullable = false)
-    private LocalDate createdOn;
+    private LocalDateTime createdOn;
     @ManyToOne(optional = false)
     private User seller;
     @OneToMany(fetch = FetchType.EAGER)
@@ -39,7 +40,7 @@ public class Product extends BaseEntity{
         isFavouriteOf = new HashSet<>();
     }
 
-    public LocalDate getCreatedOn() {
+    public LocalDateTime getCreatedOn() {
         return createdOn;
     }
 
@@ -51,9 +52,10 @@ public class Product extends BaseEntity{
         this.quantity = quantity;
     }
 
-    public void setCreatedOn(LocalDate createdOn) {
+    public void setCreatedOn(LocalDateTime createdOn) {
         this.createdOn = createdOn;
     }
+
 
     public List<Picture> getPictures() {
         return pictures;

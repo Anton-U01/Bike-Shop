@@ -1,6 +1,7 @@
 package softuni.bg.bikeshop.service;
 
 import org.springframework.web.multipart.MultipartFile;
+import softuni.bg.bikeshop.models.Bike;
 import softuni.bg.bikeshop.models.dto.AddBikeDto;
 import softuni.bg.bikeshop.models.dto.EditBikeDto;
 
@@ -12,4 +13,5 @@ public interface BikeService {
     boolean add(AddBikeDto addBikeDto, Principal principal, List<MultipartFile> files) throws IOException;
 
     boolean edit(EditBikeDto editBike, Long id);
+
 }

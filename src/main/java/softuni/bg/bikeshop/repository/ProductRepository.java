@@ -19,4 +19,10 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     List<Product> getAllCurrentUserProducts(User user);
 
     List<Product> findAllByCreatedOnBefore(LocalDate localDate);
+
+    List<Product> findAllByOrderByPriceAsc();
+
+    List<Product> findAllByOrderByPriceDesc();
+
+    List<Product> findAllByOrderByCreatedOnDesc();
 }

@@ -20,9 +20,11 @@ import softuni.bg.bikeshop.service.BikeService;
 import java.io.IOException;
 import java.security.Principal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class BikeServiceImpl implements BikeService {
@@ -46,7 +48,7 @@ public class BikeServiceImpl implements BikeService {
         Bike bike = modelMapper.map(addBikeDto, Bike.class);
         BikeType bikeType = BikeType.valueOf(addBikeDto.getType());
         bike.setType(bikeType);
-        bike.setCreatedOn(LocalDate.now());
+        bike.setCreatedOn(LocalDateTime.now());
         User seller = userRepository.findByUsername(principal.getName())
                 .orElseThrow(()-> new UserNotFoundException("User with username " + principal.getName() + " is not found!"));
         bike.setSeller(seller);
@@ -89,5 +91,8 @@ public class BikeServiceImpl implements BikeService {
         bikeRepository.saveAndFlush(bike);
         return true;
     }
+
+
+
 
 }

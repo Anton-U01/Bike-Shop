@@ -2,6 +2,9 @@ package softuni.bg.bikeshop.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,22 +16,31 @@ import softuni.bg.bikeshop.models.parts.ChainPart;
 import softuni.bg.bikeshop.models.parts.FramePart;
 import softuni.bg.bikeshop.models.parts.Part;
 import softuni.bg.bikeshop.models.parts.TiresPart;
+import softuni.bg.bikeshop.service.BikeService;
+import softuni.bg.bikeshop.service.PartService;
 import softuni.bg.bikeshop.service.ProductsService;
 
 import java.security.Principal;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 
 @Controller
 public class ProductController {
     private final ProductsService productsService;
+    private final BikeService bikeService;
     private final ModelMapper modelMapper;
+    private final PartService partService;
 
 
-    public ProductController(ProductsService productsService, ModelMapper modelMapper) {
+    public ProductController(ProductsService productsService, BikeService bikeService, ModelMapper modelMapper, PartService partService) {
         this.productsService = productsService;
+        this.bikeService = bikeService;
         this.modelMapper = modelMapper;
+        this.partService = partService;
     }
 
     @GetMapping("/products/add")
@@ -42,11 +54,50 @@ public class ProductController {
     }
 
     @GetMapping("/products")
-    public String viewShop(Model model,Principal principal) {
+    public String viewShop(
+                            @RequestParam(name = "page",required = false) Integer page,
+                            @RequestParam(name = "sortBy", required = false) String sortBy,
+                           Model model,
+                           Principal principal) {
         String username = principal.getName();
-        List<Product> allProducts = productsService.getAll();
+
+        Sort sort = Sort.by(Sort.Direction.DESC, "createdOn");;
+
+        int currentPage = (page != null) ? page : 1;
+        if(sortBy != null){
+                switch (sortBy){
+                    case "priceAsc":
+                        sort = Sort.by(Sort.Direction.ASC, "price");
+                        model.addAttribute("sortType", "Price: Low to High");
+                        break;
+                    case "priceDsc":
+                        sort = Sort.by(Sort.Direction.DESC, "price");
+                        model.addAttribute("sortType", "Price: High to Low");
+                        break;
+                    case "oldest":
+                        sort = Sort.by(Sort.Direction.ASC, "createdOn");
+                        model.addAttribute("sortType", "Oldest");
+                        break;
+                    default:
+                        sort = Sort.by(Sort.Direction.DESC, "createdOn");
+                        model.addAttribute("sortType", "Latest");
+                        break;
+                }
+        } else {
+            sortBy = "latest";
+            model.addAttribute("sortType", "Latest");
+        }
+
+        Page<Product> productPage = productsService.getAll(PageRequest.of(currentPage - 1, 3,sort));
+        List<Product> allProducts = productPage.getContent();
+
+
         model.addAttribute("ownerUsername",username);
         model.addAttribute("allProducts", allProducts);
+        model.addAttribute("totalPages",productPage.getTotalPages());
+        model.addAttribute("currentPage",currentPage);
+        model.addAttribute("sortBy",sortBy);
+
         return "all-products";
     }
 
