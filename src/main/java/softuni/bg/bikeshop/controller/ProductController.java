@@ -21,11 +21,8 @@ import softuni.bg.bikeshop.service.PartService;
 import softuni.bg.bikeshop.service.ProductsService;
 
 import java.security.Principal;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 
 @Controller
@@ -57,7 +54,9 @@ public class ProductController {
     public String viewShop(
                             @RequestParam(name = "page",required = false) Integer page,
                             @RequestParam(name = "sortBy", required = false) String sortBy,
-                           Model model,
+                            @RequestParam(name = "bikes", required = false) List<String> bikes,
+                            @RequestParam(name = "parts", required = false) List<String> parts,
+                            Model model,
                            Principal principal) {
         String username = principal.getName();
 
@@ -88,7 +87,14 @@ public class ProductController {
             model.addAttribute("sortType", "Latest");
         }
 
-        Page<Product> productPage = productsService.getAll(PageRequest.of(currentPage - 1, 3,sort));
+        if (bikes == null || bikes.isEmpty()) {
+            bikes = List.of("ALL");
+        }
+        if (parts == null || parts.isEmpty()) {
+            parts = List.of("ALL");
+        }
+
+        Page<Product> productPage = productsService.getAllFilteredProducts(bikes,parts,PageRequest.of(currentPage - 1, 3,sort));
         List<Product> allProducts = productPage.getContent();
 
 
@@ -97,6 +103,8 @@ public class ProductController {
         model.addAttribute("totalPages",productPage.getTotalPages());
         model.addAttribute("currentPage",currentPage);
         model.addAttribute("sortBy",sortBy);
+        model.addAttribute("bikes",bikes);
+        model.addAttribute("parts",parts);
 
         return "all-products";
     }

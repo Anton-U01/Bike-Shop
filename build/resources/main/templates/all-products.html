@@ -10,31 +10,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 </head>
-<!--<script>
-    document.getElementById('applyFilters').addEventListener('click', applyFilters);
-    function applyFilters() {
-        let filters = [];
-
-        if (document.getElementById('allBikes').checked) filters.push('allBikes');
-        if (document.getElementById('mountainBike').checked) filters.push('mountainBike');
-        if (document.getElementById('roadBike').checked) filters.push('roadBike');
-        if (document.getElementById('kidsBike').checked) filters.push('kidsBike');
-
-        if (document.getElementById('allParts').checked) filters.push('allParts');
-        if (document.getElementById('frame').checked) filters.push('frame');
-        if (document.getElementById('chain').checked) filters.push('chain');
-        if (document.getElementById('tires').checked) filters.push('tires');
-
-
-
-
-    }
-    document.getElementById('clearFilters').addEventListener('click', function() {
-        document.querySelectorAll('.form-check-input').forEach(checkbox => checkbox.checked = false);
-        applyFilters();
-    });
-</script>
--->
 <body>
 <header>
     <th:block th:replace="~{fragments/navbar::navbar}"></th:block>
@@ -71,33 +46,27 @@
                 <div class="filter-group mb-4">
                     <h5 class="font-weight-bold">Filter by Bike Type</h5>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="bikes" value="allBikes" id="allBikes">
-                        <label class="form-check-label" for="allBikes">
-                            All Bikes
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox"  name="bikes" value="MOUNTAIN" id="mountain">
+                        <input  th:checked="${#lists.contains(bikes, 'MOUNTAIN')}" class="form-check-input" type="checkbox"  name="bikes" value="MOUNTAIN" id="mountain">
                         <label class="form-check-label" for="mountain">
                             Mountain Bikes
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="bikes" value="ROAD" id="road">
+                        <input th:checked="${#lists.contains(bikes, 'ROAD')}" class="form-check-input" type="checkbox" name="bikes" value="ROAD" id="road">
                         <label class="form-check-label" for="road">
                             Road Bikes
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="bikes" value="KIDS" id="kids">
+                        <input th:checked="${#lists.contains(bikes, 'KIDS')}" class="form-check-input" type="checkbox" name="bikes" value="KIDS" id="kids">
                         <label class="form-check-label" for="kids">
                             Kids Bikes
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="electric">
+                        <input th:checked="${#lists.contains(bikes, 'ELECTRIC')}" class="form-check-input" type="checkbox" name="bikes"  value="ELECTRIC" id="electric">
                         <label class="form-check-label" for="electric">
-                            Kids Bikes
+                            Electric Bikes
                         </label>
                     </div>
                 </div>
@@ -105,25 +74,19 @@
                 <div class="filter-group mb-4">
                     <h5 class="font-weight-bold">Filter by Bike Parts</h5>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="parts" value="allParts" id="allParts">
-                        <label class="form-check-label" for="allParts">
-                            All Parts
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="parts" value="FRAME"  id="frame">
+                        <input th:checked="${#lists.contains(parts, 'FRAME')}" class="form-check-input" type="checkbox" name="parts" value="FRAME"  id="frame">
                         <label class="form-check-label" for="frame">
                             Frame
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="parts" value="CHAIN"  id="chain">
+                        <input th:checked="${#lists.contains(parts, 'CHAIN')}" class="form-check-input" type="checkbox" name="parts" value="CHAIN"  id="chain">
                         <label class="form-check-label" for="chain">
                             Chain
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="parts" value="TIRES"  id="tires">
+                        <input th:checked="${#lists.contains(parts, 'TIRES')}" class="form-check-input" type="checkbox" name="parts" value="TIRES"  id="tires">
                         <label class="form-check-label" for="tires">
                             Tires
                         </label>
@@ -131,8 +94,8 @@
                 </div>
 
                 <div class="mt-4">
-                        <button class="btn btn-success btn-block w-25" id="apply">Apply</button>
-                        <button class="btn btn-danger btn-block mt-2 w-25" id="clear">Clear</button>
+                        <button type="submit" class="btn btn-success btn-block w-25" id="apply">Apply</button>
+                        <button type="reset" class="btn btn-danger btn-block mt-2 w-25" id="clear">Clear</button>
                 </div>
                 </form>
             </div>

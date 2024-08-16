@@ -1,19 +1,24 @@
 package softuni.bg.bikeshop.service.impl;
 ;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestClient;
 import softuni.bg.bikeshop.exceptions.ProductNotFoundException;
 import softuni.bg.bikeshop.exceptions.UserNotFoundException;
 import softuni.bg.bikeshop.models.*;
-import softuni.bg.bikeshop.repository.PictureRepository;
-import softuni.bg.bikeshop.repository.ProductRepository;
-import softuni.bg.bikeshop.repository.UserRepository;
+import softuni.bg.bikeshop.models.parts.Part;
+import softuni.bg.bikeshop.repository.*;
 import softuni.bg.bikeshop.service.ProductsService;
+import softuni.bg.bikeshop.util.ProductSpecification;
+
 import java.security.Principal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Service
@@ -22,12 +27,15 @@ public class ProductsServiceImpl implements ProductsService {
     private final UserRepository userRepository;
     private final PictureRepository pictureRepository;
     private final RestClient restClient;
-
-    public ProductsServiceImpl(ProductRepository productRepository, UserRepository userRepository, PictureRepository pictureRepository, RestClient restClient) {
+    private final BikeRepository bikeRepository;
+    private final PartRepository partRepository;
+    public ProductsServiceImpl(ProductRepository productRepository, UserRepository userRepository, PictureRepository pictureRepository, RestClient restClient, BikeRepository bikeRepository, PartRepository partRepository) {
         this.productRepository = productRepository;
         this.userRepository = userRepository;
         this.pictureRepository = pictureRepository;
         this.restClient = restClient;
+        this.bikeRepository = bikeRepository;
+        this.partRepository = partRepository;
     }
 
     @Override
@@ -138,7 +146,7 @@ public class ProductsServiceImpl implements ProductsService {
     @Override
     @Transactional
     public void deleteOldProducts() {
-        List<Product> createdOnBeforeProducts = this.productRepository.findAllByCreatedOnBefore(LocalDate.now().minusDays(60));
+        List<Product> createdOnBeforeProducts = this.productRepository.findAllByCreatedOnBefore(LocalDateTime.now().minusDays(60));
         createdOnBeforeProducts.forEach(p -> {
             deleteProduct(p.getId(), p.getSeller().getUsername());
         });
@@ -159,25 +167,23 @@ public class ProductsServiceImpl implements ProductsService {
         productRepository.saveAndFlush(product);
 
     }
-
-    @Override
-    public List<Product> getAllByPriceAsc() {
-        return this.productRepository.findAllByOrderByPriceAsc();
-    }
-
-    @Override
-    public List<Product> getAllByPriceDesc() {
-        return this.productRepository.findAllByOrderByPriceDesc();
-    }
-
-    @Override
-    public List<Product> getAllByOrderByLatest() {
-        return this.productRepository.findAllByOrderByCreatedOnDesc();
-    }
-
     @Override
     public Page<Product> getAll(Pageable pageable) {
         return this.productRepository.findAll(pageable);
+    }
+
+    @Override
+    public Page<Product> getAllFilteredProducts(List<String> bikes, List<String> parts, Pageable pageable) {
+        Specification<Product> spec = Specification.where(null);
+
+        if (!bikes.contains("ALL")) {
+            spec = spec.or(ProductSpecification.hasBikeType(bikes));
+        }
+
+        if (!parts.contains("ALL")) {
+            spec = spec.or(ProductSpecification.hasPartType(parts));
+        }
+        return productRepository.findAll(spec, pageable);
     }
 
 
