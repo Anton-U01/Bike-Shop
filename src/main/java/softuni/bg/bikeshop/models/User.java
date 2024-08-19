@@ -28,22 +28,9 @@ public class User extends BaseEntity {
     private Set<Product> favouriteProducts;
     @OneToMany(mappedBy = "author")
     private List<Review> reviews;
-
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
-
-    public Set<Product> getFavouriteProducts() {
-        return favouriteProducts;
-    }
-
-    public void setFavouriteProducts(Set<Product> favouriteProducts) {
-        this.favouriteProducts = favouriteProducts;
-    }
+    @ManyToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
 
     public User() {
         products = new ArrayList<>();
@@ -105,5 +92,28 @@ public class User extends BaseEntity {
 
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
+    }
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
+    public Set<Product> getFavouriteProducts() {
+        return favouriteProducts;
+    }
+
+    public void setFavouriteProducts(Set<Product> favouriteProducts) {
+        this.favouriteProducts = favouriteProducts;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

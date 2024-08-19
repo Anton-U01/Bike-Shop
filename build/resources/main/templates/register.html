@@ -108,6 +108,73 @@
                                         class="error"></li>
                                 </ul>
                             </div>
+                            <div class="form-group">
+                                <div class="label-holder text-white textCol d-flex justify-content-center">
+                                    <label for="country" class="h4 mb-2 text-dark">Country</label>
+                                </div>
+                                <input type="text"
+                                       class="form-control "
+                                       id="country"
+                                       name="country"
+                                       th:field="*{country}"
+                                />
+                                <ul class="d-flex flex-column align-items-center bg-danger text-white">
+                                    <li th:each="err : ${#fields.errors('country')}"
+                                        th:text="${err}"
+                                        class="error"></li>
+                                </ul>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="label-holder text-white textCol d-flex justify-content-center">
+                                    <label for="city" class="h4 mb-2 text-dark">City</label>
+                                </div>
+                                <input type="text"
+                                       class="form-control "
+                                       id="city"
+                                       name="city"
+                                       th:field="*{city}"
+                                />
+                                <ul class="d-flex flex-column align-items-center bg-danger text-white">
+                                    <li th:each="err : ${#fields.errors('city')}"
+                                        th:text="${err}"
+                                        class="error"></li>
+                                </ul>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="label-holder text-white textCol d-flex justify-content-center">
+                                    <label for="street" class="h4 mb-2 text-dark">Street</label>
+                                </div>
+                                <input type="text"
+                                       class="form-control "
+                                       id="street"
+                                       name="country"
+                                       th:field="*{street}"
+                                />
+                                <ul class="d-flex flex-column align-items-center bg-danger text-white">
+                                    <li th:each="err : ${#fields.errors('street')}"
+                                        th:text="${err}"
+                                        class="error"></li>
+                                </ul>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="label-holder text-white textCol d-flex justify-content-center">
+                                    <label for="postalCode" class="h4 mb-2 text-dark">Postal Code</label>
+                                </div>
+                                <input type="number"
+                                       class="form-control "
+                                       id="postalCode"
+                                       name="country"
+                                       th:field="*{postalCode}"
+                                />
+                                <ul class="d-flex flex-column align-items-center bg-danger text-white">
+                                    <li th:each="err : ${#fields.errors('postalCode')}"
+                                        th:text="${err}"
+                                        class="error"></li>
+                                </ul>
+                            </div>
 
                             <div class="form-group">
                                 <div class="label-holder text-white textCol d-flex justify-content-center">

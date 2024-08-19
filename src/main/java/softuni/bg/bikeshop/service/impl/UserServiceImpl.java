@@ -10,12 +10,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestClient;
 import softuni.bg.bikeshop.exceptions.UserNotFoundException;
-import softuni.bg.bikeshop.models.Role;
-import softuni.bg.bikeshop.models.User;
-import softuni.bg.bikeshop.models.UserDetailEntity;
-import softuni.bg.bikeshop.models.UserRole;
+import softuni.bg.bikeshop.models.*;
 import softuni.bg.bikeshop.models.dto.UserRegisterDto;
 import softuni.bg.bikeshop.models.dto.ViewUserDto;
+import softuni.bg.bikeshop.repository.AddressRepository;
 import softuni.bg.bikeshop.repository.ProductRepository;
 import softuni.bg.bikeshop.repository.RoleRepository;
 import softuni.bg.bikeshop.repository.UserRepository;
@@ -33,8 +31,9 @@ public class UserServiceImpl implements UserService {
     private final UserDetailsService userDetailsService;
     private final RestClient restClient;
     private final ProductRepository productRepository;
+    private final AddressRepository addressRepository;
 
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder, ModelMapper modelMapper, UserDetailsService userDetailsService, RestClient restClient, ProductRepository productRepository) {
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder, ModelMapper modelMapper, UserDetailsService userDetailsService, RestClient restClient, ProductRepository productRepository, AddressRepository addressRepository) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
@@ -42,6 +41,7 @@ public class UserServiceImpl implements UserService {
         this.userDetailsService = userDetailsService;
         this.restClient = restClient;
         this.productRepository = productRepository;
+        this.addressRepository = addressRepository;
     }
 
     @Override
@@ -72,6 +72,21 @@ public class UserServiceImpl implements UserService {
         user.setPassword(passwordEncoder.encode(userRegisterDto.getPassword()));
         Role role = roleRepository.findByName(UserRole.USER);
         user.getRoles().add(role);
+
+        Address address = addressRepository.findByStreetAndCityAndPostalCode(
+                userRegisterDto.getStreet(),
+                userRegisterDto.getCity(),
+                userRegisterDto.getPostalCode()
+        ).orElseGet(() -> {
+            Address newAddress = new Address();
+            newAddress.setCountry(userRegisterDto.getCountry());
+            newAddress.setStreet(userRegisterDto.getStreet());
+            newAddress.setCity(userRegisterDto.getCity());
+            newAddress.setPostalCode(userRegisterDto.getPostalCode());
+            return addressRepository.save(newAddress);
+        });
+
+        user.setAddress(address);
 
         userRepository.saveAndFlush(user);
     }
@@ -148,6 +163,14 @@ public class UserServiceImpl implements UserService {
         user.getFavouriteProducts().clear();
 
         userRepository.delete(user);
+        Address address = user.getAddress();
+        if (address != null) {
+            List<User> usersWithAddress = userRepository.findAllByAddress(address);
+
+            if (usersWithAddress.isEmpty()) {
+                addressRepository.delete(address);
+            }
+        }
         return true;
     }
 
