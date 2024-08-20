@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -17,6 +18,7 @@ import softuni.bg.bikeshop.models.parts.FramePart;
 import softuni.bg.bikeshop.models.parts.Part;
 import softuni.bg.bikeshop.models.parts.TiresPart;
 import softuni.bg.bikeshop.service.BikeService;
+import softuni.bg.bikeshop.service.OrderService;
 import softuni.bg.bikeshop.service.PartService;
 import softuni.bg.bikeshop.service.ProductsService;
 
@@ -28,17 +30,13 @@ import java.util.Set;
 @Controller
 public class ProductController {
     private final ProductsService productsService;
-    private final BikeService bikeService;
-    private final ModelMapper modelMapper;
-    private final PartService partService;
 
 
-    public ProductController(ProductsService productsService, BikeService bikeService, ModelMapper modelMapper, PartService partService) {
+
+    public ProductController(ProductsService productsService) {
         this.productsService = productsService;
-        this.bikeService = bikeService;
-        this.modelMapper = modelMapper;
-        this.partService = partService;
     }
+
 
     @GetMapping("/products/add")
     public String viewAddProducts() {
@@ -228,29 +226,4 @@ public class ProductController {
         return "edit-part";
     }
 
-    @GetMapping("/products/buy/{id}")
-    public String buyProductView(@PathVariable("id") Long id, Model model){
-        Product product = productsService.getProductById(id);
-        ProductBuyDto productBuyDto = modelMapper.map(product, ProductBuyDto.class);
-        productBuyDto.setPicture(product.getPictures().get(0).getUrl());
-        model.addAttribute("product",productBuyDto);
-        if(productBuyDto.getQuantity() == 0){
-            model.addAttribute("soldOut","Sold out!");
-        }
-
-        return "buy-product";
-    }
-    @PostMapping("/products/buy/{id}")
-    public String buyProduct(@PathVariable("id") Long id,
-                             @RequestParam(value = "quantity", required = false, defaultValue = "0") Integer quantity,
-                             RedirectAttributes redirectAttributes){
-        Product product = productsService.getProductById(id);
-        if (quantity <= 0 || quantity > product.getQuantity()) {
-            redirectAttributes.addFlashAttribute("quantityError", "Quantity must be between " + 1 + " and " + product.getQuantity() + "!");
-            return "redirect:/products/buy/" + id;
-        }
-        productsService.buyProduct(id,quantity);
-
-        return "redirect:/products";
-    }
 }

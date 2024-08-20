@@ -5,14 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10f609e4-8abb-4ca9-a680-233e5e4ffb8c" name="Changes" comment="Create models">
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/images/cart.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/buy-product.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/buy-product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/controller/ProductController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/models/dto/UserRegisterDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/models/dto/UserRegisterDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/ProductsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/ProductsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/impl/ProductsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/impl/ProductsServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/navbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/navbar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/cart.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/buy-product.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/buy-product.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/register.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,11 +54,11 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="Interface" />
         <option value="CSS File" />
         <option value="JavaScript File" />
         <option value="HTML File" />
         <option value="Class" />
-        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -191,7 +202,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.BikeShopApplication.executor": "Run",
+    "Spring Boot.BikeShopApplication.executor": "Debug",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/SOFTUNI/Final Project/BikeShop/src/main/resources/static/images",
@@ -210,11 +221,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
-      <recent name="softuni.bg.bikeshop.exceptions" />
-      <recent name="softuni.bg.bikeshop.repository" />
-      <recent name="softuni.bg.bikeshop.controller" />
       <recent name="softuni.bg.bikeshop.models.dto" />
+      <recent name="softuni.bg.bikeshop.repository" />
       <recent name="softuni.bg.bikeshop.service" />
+      <recent name="softuni.bg.bikeshop.models.orders" />
+      <recent name="softuni.bg.bikeshop.exceptions" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\SOFTUNI\Final Project\BikeShop\src\main\resources\static\images" />
@@ -434,7 +445,9 @@
       <workItem from="1723636812268" duration="10197000" />
       <workItem from="1723703264528" duration="17823000" />
       <workItem from="1723810422657" duration="8651000" />
-      <workItem from="1724069601174" duration="4733000" />
+      <workItem from="1724069601174" duration="11145000" />
+      <workItem from="1724092420330" duration="1193000" />
+      <workItem from="1724137755325" duration="16010000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
@@ -487,15 +500,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Create models" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/impl/UserServiceImpl.java</url>
-          <line>90</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="SpringBootApplicationConfigurationType">
         <watch expression="set 'hibernate.transaction." />

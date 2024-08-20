@@ -6,6 +6,7 @@
     <title>Index</title>
     <link rel="stylesheet" type="text/css" href="/css/navbar.css">
     <link rel="stylesheet" type="text/css" href="/css/about.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 
@@ -59,9 +60,10 @@
                     <span class="p-1 bg-success text-light rounded" th:text="#{nav_bar_welcome_message(${#authentication.name})}">Welcome, <span sec:authentication="name"></span>!</span>
                 </li>
                 <li sec:authorize="isAuthenticated()">
-                    <a th:href="@{/user/cart}" class="icon-link nav-link">
+                    <a th:href="@{/user/my-bag}" class="icon-link nav-link">
                         <img class="m-r" src="/images/bag.png" alt="shopping-cart">
                         <span>My Bag</span>
+                        <span class="itemCounter badge badge-pill badge-danger" th:text="${itemCounter}"></span>
                     </a>
                 </li>
                 <li sec:authorize="isAuthenticated()">

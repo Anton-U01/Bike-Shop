@@ -53,3 +53,10 @@ nav .links ul li img {
     margin-right: 8px;
     vertical-align: middle;
 }
+.itemCounter {
+    color: white;
+    padding: 5px 10px;
+    border-radius: 50%;
+    margin-left: 5px;
+    font-size: 0.8rem;
+}

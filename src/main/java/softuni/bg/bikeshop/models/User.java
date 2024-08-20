@@ -1,6 +1,7 @@
 package softuni.bg.bikeshop.models;
 
 import jakarta.persistence.*;
+import softuni.bg.bikeshop.models.orders.Order;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -31,11 +32,14 @@ public class User extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "address_id")
     private Address address;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Order> orders = new ArrayList<>();
 
     public User() {
         products = new ArrayList<>();
         favouriteProducts = new HashSet<>();
         roles = new HashSet<>();
+        orders = new ArrayList<>();
     }
 
     public String getUsername() {
@@ -115,5 +119,13 @@ public class User extends BaseEntity {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }

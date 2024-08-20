@@ -37,4 +37,5 @@ public interface ProductsService{
     Page<Product> getAll(Pageable pageable);
 
     Page<Product> getAllFilteredProducts(List<String> bikes, List<String> parts, Pageable pageable);
+
 }

@@ -5,6 +5,7 @@
     <title>Buy Product</title>
     <th:block th:replace="~{/fragments/head :: head}"></th:block>
     <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/css/add-to-bag.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
 </head>
@@ -13,7 +14,7 @@
 </header>
 <body>
 <div class="container mt-5 bg-warning border border-dark p-5">
-    <form th:action="@{/products/buy/{id}(id=*{id})}" th:method="post" th:object="${product}">
+    <form th:action="@{/products/add-to-bag/{id}(id=*{id})}" th:method="get" th:object="${product}">
 
     <div class="row">
         <div class="col-md-4">
@@ -24,13 +25,13 @@
             <p><strong>Product Description: </strong><span th:text="*{description}"></span></p>
             <p><strong>Price: $<span th:text="*{price}">0.00</span></strong></p>
 
-            <form th:action="@{/products/buy/{id}(id=*{id})}" method="post">
+            <form th:action="@{/products/add-to-bag/{id}(id=*{id})}" method="post">
                 <small th:if="${quantityError}" th:text="${quantityError}" class="hidden danger p-1 bg-danger text-white rounded" style="font-size: 15px"></small>
                 <div class="form-group">
                     <label for="quantity"><strong>Quantity:</strong></label>
                     <input type="number" id="quantity" name="quantity" class="form-control" min="1" th:max="*{quantity}">
                 </div>
-                <button th:unless="${soldOut}" type="submit" class="btn btn-success">Buy<i class="ml-1 fa-solid fa-cart-shopping"></i></button>
+                <button th:unless="${soldOut}" type="submit" class="btn btn-success">Add to Bag<i class="ml-1 fa-solid fa-cart-shopping"></i></button>
                 <span th:if="${soldOut}" th:text="${soldOut}" class="mt-2 btn btn-secondary disabled"></span>
             </form>
         </div>
