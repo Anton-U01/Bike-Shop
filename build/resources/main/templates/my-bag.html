@@ -5,6 +5,7 @@
     <title>My Bag</title>
     <th:block th:replace="~{/fragments/head :: head}"></th:block>
     <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/css/add-to-bag.css">
     <script src="/js/quantityValidation.js"></script>
 
 
@@ -13,57 +14,56 @@
 <header>
     <th:block th:replace="~{fragments/navbar::navbar}"></th:block>
 </header>
-<div class="container">
-    <h1>My Bag</h1>
+<div class="container mt-4">
+    <h1 class="border-bottom border-dark pb-1">My Bag</h1>
 
-    <div th:if="${orderItems.size()}">
+    <div th:if="${orderItems.size() == 0}">
         <p>Your bag is empty.</p>
     </div>
 
     <form th:if="${!orderItems.isEmpty()}" th:action="@{/order/update-quantities}" method="post">
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Image</th>
-                <th>Product</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total</th>
-                <th>Action</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="item : ${orderItems}">
-                <td>
-                    <img  th:src="@{'data:image/jpg;base64,' + ${item.getPictureUrl()}}" alt="Product Image" style="width: 100px; height: auto;">
-                </td>
-                <td th:text="${item.name}">Product Name</td>
-                <td th:text="${item.description}">Product Description</td>
-                <td th:text="${item.productPrice}">Product Price</td>
-                <td>
-                    <input type="number"  th:name="${item.id}" min="1" th:max="${item.maxQuantity}"
-                           th:value="${item.quantity}" required>
-                    <small th:if="${quantityError}" class="alert alert-danger" th:text="${quantityError}"></small>
-                </td>
-                <td th:text="${item.totalAmount}">Item Total</td>
-                <td>
-                    <a th:href="@{/order/remove/{id}(id=${item.id})}" class="btn btn-danger">Remove</a>
-                </td>
-            </tr>
-            </tbody>
-            <tfoot>
-            <tr>
-                <td colspan="4"></td>
-                <td><strong>Total:</strong></td>
-                <td th:text="${totalPrice}">Total Amount</td>
-            </tr>
-            </tfoot>
-        </table>
-
-        <div class="d-flex justify-content-between">
+    <table class="table table-success table-striped">
+        <thead class="table bg-secondary text-white">
+        <tr>
+            <th>Image</th>
+            <th>Product</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${orderItems}">
+            <td>
+                <img  th:src="@{'data:image/jpg;base64,' + ${item.getPictureUrl()}}" alt="Product Image" style="width: 100px; height: auto;">
+            </td>
+            <td th:text="${item.name}">Product Name</td>
+            <td th:text="${item.description}">Product Description</td>
+            <td th:text="${item.productPrice}">Product Price</td>
+            <td>
+                <input class="text-center" type="number" th:name="${item.id}" min="1" th:max="${item.maxQuantity}"
+                       th:value="${item.quantity}" required>
+                <small th:if="${quantityError}" class="alert alert-danger" th:text="${quantityError}"></small>
+            </td>
+            <td th:text="${item.totalAmount}">Item Total</td>
+            <td>
+                <a th:href="@{/order/remove/{id}(id=${item.id})}" class="btn btn-danger">Remove</a>
+            </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="4"></td>
+            <td><strong>Total:</strong></td>
+            <td th:text="${totalPrice}">Total Amount</td>
+        </tr>
+        </tfoot>
+    </table>
+        <div class="d-flex justify-content-between border-top border-dark pt-3">
             <button type="submit" class="btn btn-primary">Update Quantities</button>
-            <a href="#" th:href="@{/order/checkout}" class="btn btn-success">Proceed to Checkout</a>
+            <a th:href="@{/order/delivery}" class="btn btn-success">Next Step</a>
         </div>
     </form>
 </div>

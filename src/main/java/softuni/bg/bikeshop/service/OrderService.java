@@ -20,4 +20,6 @@ public interface OrderService {
     List<OrderItemView> getMyBagItems(Order myBag);
 
     void updateQuantities(Map<String, String> quantities, Order myBag);
+
+    void removeItemFromBag(Order myBag, Long itemId);
 }

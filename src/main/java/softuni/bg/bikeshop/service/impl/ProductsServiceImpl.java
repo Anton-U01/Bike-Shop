@@ -1,8 +1,6 @@
 package softuni.bg.bikeshop.service.impl;
 ;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -11,13 +9,11 @@ import org.springframework.web.client.RestClient;
 import softuni.bg.bikeshop.exceptions.ProductNotFoundException;
 import softuni.bg.bikeshop.exceptions.UserNotFoundException;
 import softuni.bg.bikeshop.models.*;
-import softuni.bg.bikeshop.models.parts.Part;
 import softuni.bg.bikeshop.repository.*;
 import softuni.bg.bikeshop.service.ProductsService;
 import softuni.bg.bikeshop.util.ProductSpecification;
 
 import java.security.Principal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 

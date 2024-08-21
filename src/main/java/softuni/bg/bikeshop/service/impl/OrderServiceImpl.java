@@ -50,16 +50,18 @@ public class OrderServiceImpl implements OrderService {
             orderItem.setOrder(myBag);
             orderItem.setPrice(product.getPrice() * quantity);
             myBag.getOrderItems().add(orderItem);
-            myBag.setTotalAmount(myBag.getTotalAmount() + orderItem.getPrice());
+            product.setQuantity(product.getQuantity() - quantity);
         } else {
-            orderItem.setQuantity(orderItem.getQuantity() + quantity);
-            orderItem.setPrice(product.getPrice() * orderItem.getQuantity());
-        }
+            int newQuantity = orderItem.getQuantity() + quantity;
 
-        product.setQuantity(product.getQuantity() - quantity);
+            orderItem.setQuantity(newQuantity);
+            orderItem.setPrice(newQuantity * product.getPrice());
+
+            product.setQuantity(product.getQuantity() - quantity);
+        }
+        myBag.setTotalAmount(myBag.getTotalAmount() + orderItem.getPrice());
 
         productRepository.save(product);
-
         orderRepository.saveAndFlush(myBag);
 
     }
@@ -95,30 +97,56 @@ public class OrderServiceImpl implements OrderService {
     public void updateQuantities(Map<String, String> quantities, Order myBag) {
         double totalPrice = 0.0;
 
-        int iteration = 0;
         for (Map.Entry<String, String> entry : quantities.entrySet()) {
-            iteration++;
-            if (iteration == 1) {
+            if (entry.getKey().equals("_csrf")) {
                 continue;
             }
+
             long id = Long.parseLong(entry.getKey());
             int newQuantity = Integer.parseInt(entry.getValue());
 
-            Optional<OrderItem> optional = myBag.getOrderItems().stream().filter(item -> item.getId() == id).findFirst();
-            OrderItem orderItem = optional.get();
-            int currentQuantity = orderItem.getQuantity();
-            Product actualProduct = orderItem.getProduct();
-            if(currentQuantity < newQuantity){
-                actualProduct.setQuantity(actualProduct.getQuantity() - (newQuantity - currentQuantity));
-            } else {
-                actualProduct.setQuantity(actualProduct.getQuantity() + (currentQuantity - newQuantity));
+            Optional<OrderItem> optional = myBag.getOrderItems()
+                    .stream()
+                    .filter(item -> item.getId() == id)
+                    .findFirst();
+
+            if (optional.isPresent()) {
+                OrderItem orderItem = optional.get();
+                Product actualProduct = orderItem.getProduct();
+                int currentQuantity = orderItem.getQuantity();
+
+                int quantityDifference = newQuantity - currentQuantity;
+                actualProduct.setQuantity(actualProduct.getQuantity() - quantityDifference);
+
+                orderItem.setQuantity(newQuantity);
+                orderItem.setPrice(newQuantity * actualProduct.getPrice());
+                totalPrice += orderItem.getPrice();
+
+                productRepository.save(actualProduct);
             }
-            productRepository.saveAndFlush(actualProduct);
-            orderItem.setQuantity(newQuantity);
-            orderItem.setPrice(orderItem.getQuantity() * actualProduct.getPrice());
-            totalPrice += orderItem.getPrice();
         }
         myBag.setTotalAmount(totalPrice);
+        orderRepository.saveAndFlush(myBag);
+    }
+
+    @Override
+    @Transactional
+    public void removeItemFromBag(Order myBag, Long itemId) {
+        OrderItem itemToRemove = myBag.getOrderItems()
+                .stream()
+                .filter(item -> item.getId() == itemId)
+                .findFirst()
+                .stream()
+                .findFirst()
+                .get();
+
+        Product actualProduct = itemToRemove.getProduct();
+        actualProduct.setQuantity(actualProduct.getQuantity() + itemToRemove.getQuantity());
+        productRepository.save(actualProduct);
+
+        myBag.getOrderItems().remove(itemToRemove);
+        myBag.setTotalAmount(myBag.getTotalAmount() - itemToRemove.getPrice());
+
         orderRepository.saveAndFlush(myBag);
     }
 
@@ -131,7 +159,7 @@ public class OrderServiceImpl implements OrderService {
         dto.setProductPrice(orderItem.getProduct().getPrice());
         dto.setTotalAmount(orderItem.getPrice());
         dto.setPictureUrl(orderItem.getProduct().getPictures().get(0).getUrl());
-        dto.setMaxQuantity(orderItem.getProduct().getQuantity());
+        dto.setMaxQuantity(orderItem.getProduct().getQuantity() + orderItem.getQuantity());
         return dto;
     }
 

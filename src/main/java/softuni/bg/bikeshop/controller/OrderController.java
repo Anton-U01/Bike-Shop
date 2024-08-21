@@ -4,17 +4,14 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import softuni.bg.bikeshop.models.Product;
-import softuni.bg.bikeshop.models.dto.BagUpdateDto;
+import softuni.bg.bikeshop.models.dto.DeliveryDetailsDto;
 import softuni.bg.bikeshop.models.dto.OrderItemView;
 import softuni.bg.bikeshop.models.dto.ProductBuyDto;
 import softuni.bg.bikeshop.models.orders.Order;
-import softuni.bg.bikeshop.models.orders.OrderItem;
 import softuni.bg.bikeshop.service.OrderService;
 import softuni.bg.bikeshop.service.ProductsService;
 
@@ -79,5 +76,30 @@ public class OrderController {
         orderService.updateQuantities(quantities,myBag);
 
         return "redirect:/user/my-bag";
+    }
+    @GetMapping("/order/remove/{id}")
+    @Transactional
+    public String removeItemFromBag(@PathVariable("id") Long itemId,Principal principal){
+        Order myBag = orderService.getMyBag(principal.getName());
+        orderService.removeItemFromBag(myBag,itemId);
+
+        return "redirect:/user/my-bag";
+    }
+
+    @GetMapping("/order/delivery")
+    public String viewDeliveryDetails(Model model){
+        model.addAttribute("deliveryDetails", new DeliveryDetailsDto());
+        return "delivery-details";
+    }
+    @PostMapping("/user/submit-delivery-details")
+    public String submitDeliveryDetails(@ModelAttribute("deliveryDetails") DeliveryDetailsDto deliveryDetailsDto,
+                                        BindingResult bindingResult,
+                                        Principal principal,
+                                        RedirectAttributes redirectAttributes) {
+
+        // Optionally add a success message
+        redirectAttributes.addFlashAttribute("successMessage", "Delivery details saved successfully!");
+
+        return "redirect:/user/checkout";
     }
 }

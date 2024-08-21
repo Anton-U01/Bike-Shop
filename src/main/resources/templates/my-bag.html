@@ -21,6 +21,7 @@
         <p>Your bag is empty.</p>
     </div>
 
+    <form th:if="${!orderItems.isEmpty()}" th:action="@{/order/update-quantities}" method="post">
     <table class="table table-success table-striped">
         <thead class="table bg-secondary text-white">
         <tr>
@@ -60,7 +61,6 @@
         </tr>
         </tfoot>
     </table>
-    <form th:if="${!orderItems.isEmpty()}" th:action="@{/order/update-quantities}" method="post">
         <div class="d-flex justify-content-between border-top border-dark pt-3">
             <button type="submit" class="btn btn-primary">Update Quantities</button>
             <a th:href="@{/order/delivery}" class="btn btn-success">Next Step</a>
