@@ -1,14 +1,18 @@
 package softuni.bg.bikeshop.service.impl;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import softuni.bg.bikeshop.exceptions.UserNotFoundException;
 import softuni.bg.bikeshop.models.Product;
 import softuni.bg.bikeshop.models.User;
+import softuni.bg.bikeshop.models.dto.DeliveryDetailsDto;
 import softuni.bg.bikeshop.models.dto.OrderItemView;
+import softuni.bg.bikeshop.models.orders.DeliveryDetails;
 import softuni.bg.bikeshop.models.orders.Order;
 import softuni.bg.bikeshop.models.orders.OrderItem;
 import softuni.bg.bikeshop.models.orders.OrderStatus;
+import softuni.bg.bikeshop.repository.DeliveryDetailsRepository;
 import softuni.bg.bikeshop.repository.OrderRepository;
 import softuni.bg.bikeshop.repository.ProductRepository;
 import softuni.bg.bikeshop.repository.UserRepository;
@@ -25,11 +29,15 @@ public class OrderServiceImpl implements OrderService {
     private final UserRepository userRepository;
     private final OrderRepository orderRepository;
     private final ProductRepository productRepository;
+    private final ModelMapper modelMapper;
+    private final DeliveryDetailsRepository deliveryDetailsRepository;
 
-    public OrderServiceImpl(UserRepository userRepository, OrderRepository orderRepository, ProductRepository productRepository) {
+    public OrderServiceImpl(UserRepository userRepository, OrderRepository orderRepository, ProductRepository productRepository, ModelMapper modelMapper, DeliveryDetailsRepository deliveryDetailsRepository) {
         this.userRepository = userRepository;
         this.orderRepository = orderRepository;
         this.productRepository = productRepository;
+        this.modelMapper = modelMapper;
+        this.deliveryDetailsRepository = deliveryDetailsRepository;
     }
 
     @Override
@@ -136,8 +144,6 @@ public class OrderServiceImpl implements OrderService {
                 .stream()
                 .filter(item -> item.getId() == itemId)
                 .findFirst()
-                .stream()
-                .findFirst()
                 .get();
 
         Product actualProduct = itemToRemove.getProduct();
@@ -146,6 +152,26 @@ public class OrderServiceImpl implements OrderService {
 
         myBag.getOrderItems().remove(itemToRemove);
         myBag.setTotalAmount(myBag.getTotalAmount() - itemToRemove.getPrice());
+
+        orderRepository.saveAndFlush(myBag);
+    }
+
+    @Override
+    public DeliveryDetailsDto getUserDeliveryDetails(String username) {
+        User user = getUser(username);
+
+        DeliveryDetailsDto deliveryDetailsDto = modelMapper.map(user.getAddress(), DeliveryDetailsDto.class);
+        deliveryDetailsDto.setRecipientName(user.getFullName());
+        return deliveryDetailsDto;
+    }
+
+    @Override
+    public void saveDeliveryDetails(String username, DeliveryDetailsDto deliveryDetailsDto) {
+        Order myBag = getMyBag(username);
+
+        DeliveryDetails deliveryDetails = modelMapper.map(deliveryDetailsDto, DeliveryDetails.class);
+        deliveryDetails.setOrder(myBag);
+        myBag.setDeliveryDetails(deliveryDetails);
 
         orderRepository.saveAndFlush(myBag);
     }

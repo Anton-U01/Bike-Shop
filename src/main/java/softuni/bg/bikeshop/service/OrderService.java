@@ -3,6 +3,7 @@ package softuni.bg.bikeshop.service;
 import org.springframework.stereotype.Service;
 import softuni.bg.bikeshop.models.Product;
 import softuni.bg.bikeshop.models.User;
+import softuni.bg.bikeshop.models.dto.DeliveryDetailsDto;
 import softuni.bg.bikeshop.models.dto.OrderItemView;
 import softuni.bg.bikeshop.models.orders.Order;
 
@@ -22,4 +23,8 @@ public interface OrderService {
     void updateQuantities(Map<String, String> quantities, Order myBag);
 
     void removeItemFromBag(Order myBag, Long itemId);
+
+    DeliveryDetailsDto getUserDeliveryDetails(String username);
+
+    void saveDeliveryDetails(String name, DeliveryDetailsDto deliveryDetailsDto);
 }

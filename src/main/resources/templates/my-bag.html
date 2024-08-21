@@ -15,10 +15,15 @@
     <th:block th:replace="~{fragments/navbar::navbar}"></th:block>
 </header>
 <div class="container mt-4">
+    <div class="progress-indicator">
+        <span class="font-weight-bold">My Bag</span> > <span>Delivery Details</span> > <span>Payment</span> > <span>Confirmation</span>
+    </div>
+
     <h1 class="border-bottom border-dark pb-1">My Bag</h1>
 
-    <div th:if="${orderItems.size() == 0}">
-        <p>Your bag is empty.</p>
+    <div class="text-center bg-info rounded p-1 text-white text-uppercase font-weight-bold font-italic text-xl-center"
+         th:if="${orderItems.size() == 0}">
+        <p>Your bag is empty!</p>
     </div>
 
     <form th:if="${!orderItems.isEmpty()}" th:action="@{/order/update-quantities}" method="post">
@@ -63,7 +68,7 @@
     </table>
         <div class="d-flex justify-content-between border-top border-dark pt-3">
             <button type="submit" class="btn btn-primary">Update Quantities</button>
-            <a th:href="@{/order/delivery}" class="btn btn-success">Next Step</a>
+            <a th:href="@{/order/delivery-details}" class="btn btn-success">Next Step</a>
         </div>
     </form>
 </div>

@@ -1,5 +1,6 @@
 package softuni.bg.bikeshop.controller;
 
+import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -86,20 +87,37 @@ public class OrderController {
         return "redirect:/user/my-bag";
     }
 
-    @GetMapping("/order/delivery")
+    @GetMapping("/order/delivery-details")
     public String viewDeliveryDetails(Model model){
-        model.addAttribute("deliveryDetails", new DeliveryDetailsDto());
+        if (!model.containsAttribute("deliveryDetails")) {
+            model.addAttribute("deliveryDetails", new DeliveryDetailsDto());
+        }
         return "delivery-details";
     }
-    @PostMapping("/user/submit-delivery-details")
-    public String submitDeliveryDetails(@ModelAttribute("deliveryDetails") DeliveryDetailsDto deliveryDetailsDto,
+    @PostMapping("/order/submit-delivery-details")
+    public String submitDeliveryDetails(@Valid @ModelAttribute("deliveryDetails") DeliveryDetailsDto deliveryDetailsDto,
                                         BindingResult bindingResult,
                                         Principal principal,
                                         RedirectAttributes redirectAttributes) {
 
-        // Optionally add a success message
+        if(bindingResult.hasErrors()){
+            redirectAttributes.addFlashAttribute("deliveryDetails", deliveryDetailsDto);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.deliveryDetails",bindingResult);
+
+            return "redirect:/order/delivery-details";
+        }
+        orderService.saveDeliveryDetails(principal.getName(),deliveryDetailsDto);
         redirectAttributes.addFlashAttribute("successMessage", "Delivery details saved successfully!");
 
         return "redirect:/user/checkout";
+    }
+    @GetMapping("/order/load-delivery-details")
+    public String loadUserDeliveryDetails(Principal principal,RedirectAttributes redirectAttributes){
+        DeliveryDetailsDto deliveryDetails = orderService.getUserDeliveryDetails(principal.getName());
+        redirectAttributes.addFlashAttribute("deliveryDetails", deliveryDetails);
+
+
+        return "redirect:/order/delivery-details";
+
     }
 }

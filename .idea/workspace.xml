@@ -13,13 +13,14 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/delivery-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/delivery-details.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/templates/my-bag.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/my-bag.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/models/dto/BagUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/models/dto/DeliveryDetailsDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/models/dto/DeliveryDetailsDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/models/orders/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/models/orders/Order.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/OrderService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/impl/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/impl/ProductsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/impl/ProductsServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/delivery-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/delivery-details.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/my-bag.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/my-bag.html" afterDir="false" />
     </list>
@@ -446,7 +447,7 @@
       <workItem from="1724069601174" duration="11145000" />
       <workItem from="1724092420330" duration="1193000" />
       <workItem from="1724137755325" duration="19489000" />
-      <workItem from="1724223566341" duration="4646000" />
+      <workItem from="1724223566341" duration="10364000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
@@ -503,7 +504,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/impl/OrderServiceImpl.java</url>
-          <line>97</line>
+          <line>105</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>

@@ -17,8 +17,8 @@ public class DeliveryDetailsDto {
     @NotBlank(message = "Postal code should not be empty!")
     @Size(min = 4,max = 4,message = "Postal code should be exactly 4 characters!")
     private String postalCode;
-    @NotBlank
-    @Pattern(regexp = "(0/91)?[7-9][0-9]{9}")
+    @NotBlank(message = "Phone number should not be empty!")
+    @Pattern(regexp = "^\\d{10}$",message = "Must be a valid phone number!")
     private String phoneNumber;
 
     public String getRecipientName() {

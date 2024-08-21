@@ -25,6 +25,9 @@ public class Order extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+    private DeliveryDetails deliveryDetails;
+
     public Order() {
         items = new ArrayList<>();
         totalAmount = 0;
@@ -76,5 +79,13 @@ public class Order extends BaseEntity {
 
     public void setStatus(OrderStatus status) {
         this.status = status;
+    }
+
+    public DeliveryDetails getDeliveryDetails() {
+        return deliveryDetails;
+    }
+
+    public void setDeliveryDetails(DeliveryDetails deliveryDetails) {
+        this.deliveryDetails = deliveryDetails;
     }
 }
