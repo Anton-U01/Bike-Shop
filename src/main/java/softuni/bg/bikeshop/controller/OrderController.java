@@ -1,5 +1,9 @@
 package softuni.bg.bikeshop.controller;
 
+import com.stripe.exception.StripeException;
+import com.stripe.model.Charge;
+import com.stripe.model.PaymentIntent;
+import com.stripe.model.checkout.Session;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
@@ -17,6 +21,8 @@ import softuni.bg.bikeshop.service.OrderService;
 import softuni.bg.bikeshop.service.ProductsService;
 
 import java.security.Principal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -95,10 +101,12 @@ public class OrderController {
         return "delivery-details";
     }
     @PostMapping("/order/submit-delivery-details")
+    @Transactional
     public String submitDeliveryDetails(@Valid @ModelAttribute("deliveryDetails") DeliveryDetailsDto deliveryDetailsDto,
                                         BindingResult bindingResult,
                                         Principal principal,
-                                        RedirectAttributes redirectAttributes) {
+                                        RedirectAttributes redirectAttributes,
+                                        Model model) {
 
         if(bindingResult.hasErrors()){
             redirectAttributes.addFlashAttribute("deliveryDetails", deliveryDetailsDto);
@@ -106,10 +114,19 @@ public class OrderController {
 
             return "redirect:/order/delivery-details";
         }
-        orderService.saveDeliveryDetails(principal.getName(),deliveryDetailsDto);
-        redirectAttributes.addFlashAttribute("successMessage", "Delivery details saved successfully!");
 
-        return "redirect:/user/checkout";
+        Order myBag = orderService.getMyBag(principal.getName());
+        List<OrderItemView> myBagItems = orderService.getMyBagItems(myBag);
+        model.addAttribute("deliveryDetails",myBag.getDeliveryDetails());
+        model.addAttribute("bagItems",myBagItems);
+        model.addAttribute("totalAmount",myBag.getTotalAmount());
+        model.addAttribute("publicKey",orderService.getPublicKey());
+
+        if(orderService.myBagHasAlreadyDeliveryDetails(principal.getName())){
+            return "checkout";
+        }
+        orderService.saveDeliveryDetails(principal.getName(),deliveryDetailsDto);
+        return "checkout";
     }
     @GetMapping("/order/load-delivery-details")
     public String loadUserDeliveryDetails(Principal principal,RedirectAttributes redirectAttributes){
@@ -118,6 +135,49 @@ public class OrderController {
 
 
         return "redirect:/order/delivery-details";
-
     }
+    @GetMapping("/result")
+    public String handleResult(@RequestParam(required = false) String session_id,
+                               @RequestParam(required = false) String error,
+                               Principal principal,
+                               Model model) {
+        if (error != null) {
+            model.addAttribute("error", error);
+        } else if (session_id != null) {
+            try {
+                Session session = Session.retrieve(session_id);
+
+                PaymentIntent paymentIntent = PaymentIntent.retrieve(session.getPaymentIntent());
+
+                Long amount = paymentIntent.getAmountReceived();
+                String currency = paymentIntent.getCurrency();
+                String paymentMethod = paymentIntent.getCharges().getData().get(0).getPaymentMethodDetails().getCard().getLast4();
+                String email = session.getCustomerDetails().getEmail();
+                String receiptUrl = paymentIntent.getCharges().getData().get(0).getReceiptUrl();
+
+                Date date = new Date(paymentIntent.getCreated() * 1000L);
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String formattedDate = sdf.format(date);
+
+                model.addAttribute("id", session_id);
+                model.addAttribute("status", "succeeded");
+                model.addAttribute("amount", amount / 100.00);
+                model.addAttribute("currency", currency.toUpperCase());
+                model.addAttribute("paymentMethod", "**** **** **** " + paymentMethod);
+                model.addAttribute("email", email);
+                model.addAttribute("receiptUrl", receiptUrl);
+                model.addAttribute("transactionDate", formattedDate);
+
+            } catch (StripeException e) {
+                model.addAttribute("error", "Error retrieving payment details.");
+                e.printStackTrace();
+            }
+            orderService.setOrderToCompleted(principal.getName());
+
+        } else {
+            model.addAttribute("error", "Unknown error occurred.");
+        }
+        return "paymentResult";
+    }
+
 }

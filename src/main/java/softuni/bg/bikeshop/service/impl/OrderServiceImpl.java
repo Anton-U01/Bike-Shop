@@ -1,6 +1,9 @@
 package softuni.bg.bikeshop.service.impl;
 
+import com.stripe.Stripe;
+import jakarta.annotation.PostConstruct;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import softuni.bg.bikeshop.exceptions.UserNotFoundException;
@@ -12,7 +15,6 @@ import softuni.bg.bikeshop.models.orders.DeliveryDetails;
 import softuni.bg.bikeshop.models.orders.Order;
 import softuni.bg.bikeshop.models.orders.OrderItem;
 import softuni.bg.bikeshop.models.orders.OrderStatus;
-import softuni.bg.bikeshop.repository.DeliveryDetailsRepository;
 import softuni.bg.bikeshop.repository.OrderRepository;
 import softuni.bg.bikeshop.repository.ProductRepository;
 import softuni.bg.bikeshop.repository.UserRepository;
@@ -30,14 +32,21 @@ public class OrderServiceImpl implements OrderService {
     private final OrderRepository orderRepository;
     private final ProductRepository productRepository;
     private final ModelMapper modelMapper;
-    private final DeliveryDetailsRepository deliveryDetailsRepository;
 
-    public OrderServiceImpl(UserRepository userRepository, OrderRepository orderRepository, ProductRepository productRepository, ModelMapper modelMapper, DeliveryDetailsRepository deliveryDetailsRepository) {
+
+    @Value("${stripe.api.publicKey}")
+    private String publicKey;
+
+    @PostConstruct
+    public void init() {
+        Stripe.apiKey = publicKey;
+    }
+
+    public OrderServiceImpl(UserRepository userRepository, OrderRepository orderRepository, ProductRepository productRepository, ModelMapper modelMapper) {
         this.userRepository = userRepository;
         this.orderRepository = orderRepository;
         this.productRepository = productRepository;
         this.modelMapper = modelMapper;
-        this.deliveryDetailsRepository = deliveryDetailsRepository;
     }
 
     @Override
@@ -176,6 +185,23 @@ public class OrderServiceImpl implements OrderService {
         orderRepository.saveAndFlush(myBag);
     }
 
+    @Override
+    public boolean myBagHasAlreadyDeliveryDetails(String username) {
+        Order myBag = getMyBag(username);
+        return myBag.getDeliveryDetails() != null;
+    }
+    @Override
+    public String getPublicKey() {
+        return publicKey;
+    }
+
+    @Override
+    public void setOrderToCompleted(String username) {
+        Order myBag = getMyBag(username);
+        myBag.setStatus(OrderStatus.COMPLETED);
+        orderRepository.saveAndFlush(myBag);
+    }
+
     private OrderItemView map(OrderItem orderItem){
         OrderItemView dto = new OrderItemView();
         dto.setId(orderItem.getId());
@@ -197,5 +223,6 @@ public class OrderServiceImpl implements OrderService {
         order.setOrderDate(LocalDate.now());
         return orderRepository.saveAndFlush(order);
     }
+
 
 }

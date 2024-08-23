@@ -16,7 +16,7 @@
 </header>
 <div class="container mt-4">
     <div class="progress-indicator">
-        <span class="font-weight-bold">My Bag</span> > <span>Delivery Details</span> > <span>Payment</span> > <span>Confirmation</span>
+        <span class="font-weight-bold">My Bag</span> > <span>Delivery Details</span> > <span>Checkout</span> > <span>Payment</span>
     </div>
 
     <h1 class="border-bottom border-dark pb-1">My Bag</h1>
@@ -52,7 +52,7 @@
                        th:value="${item.quantity}" required>
                 <small th:if="${quantityError}" class="alert alert-danger" th:text="${quantityError}"></small>
             </td>
-            <td th:text="${item.totalAmount}">Item Total</td>
+            <td th:text="${item.totalAmount} + ' $'">Item Total</td>
             <td>
                 <a th:href="@{/order/remove/{id}(id=${item.id})}" class="btn btn-danger">Remove</a>
             </td>
@@ -62,7 +62,7 @@
         <tr>
             <td colspan="4"></td>
             <td><strong>Total:</strong></td>
-            <td th:text="${totalPrice}">Total Amount</td>
+            <td th:text="${totalPrice} + ' $'">Total Amount</td>
         </tr>
         </tfoot>
     </table>

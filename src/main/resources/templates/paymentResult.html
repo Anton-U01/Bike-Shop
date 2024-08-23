@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:th='http://www.thymeleaf.org'>
+<th:block th:replace="~{/fragments/head :: head}"></th:block>
+<link rel="stylesheet" type="text/css" href="/css/add-to-bag.css">
+
+<head>
+    <title>Result</title>
+</head>
+<body>
+<div th:if="${error}">
+    <h2 style="color: red;">Payment Failed!</h2>
+    <p th:text="${error}"></p>
+
+    <h3>We're sorry, but your payment could not be processed.</h3>
+</div>
+<div th:unless="${error}" class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border-success">
+                <div class="card-header bg-success text-white">
+                    <h2 class="mb-0">Payment Successful!</h2>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Thank you for your purchase! Your payment has been successfully processed.</p>
+                    <p><strong>Transaction ID:</strong> <span th:text="${id}"></span></p>
+                    <p><strong>Status:</strong> <span th:text="${status}"></span></p>
+                    <p><strong>Amount Paid:</strong> <span th:text="${amount}"></span> <span th:text="${currency}"></span></p>
+                    <p><strong>Payment Method:</strong> <span th:text="${paymentMethod}"></span></p>
+                    <p><strong>Receipt:</strong> <a th:href="${receiptUrl}" target="_blank">View Receipt</a></p>
+                    <p><strong>Transaction Date:</strong> <span th:text="${transactionDate}"></span></p>
+                    <p>You will receive a confirmation at <span class="font-weight-bold" th:text="${email}"></span> with the details of your order shortly.</p>
+                    <a href="/" class="btn btn-primary mt-3">Continue Shopping</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

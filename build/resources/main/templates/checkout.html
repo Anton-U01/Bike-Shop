@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment</title>
+    <th:block th:replace="~{/fragments/head :: head}"></th:block>
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/css/add-to-bag.css">
+    <script src="https://js.stripe.com/v3/"></script>
+
+</head>
+<body>
+<header>
+    <th:block th:replace="~{fragments/navbar::navbar}"></th:block>
+</header>
+
+<div class="container mt-5">
+    <div class="col justify-content-center">
+        <div class=" progress-indicator justify-content-center">
+            <span>Bag</span> > <span>Delivery Details</span> > <span  class="font-weight-bold">Checkout</span> > <span>Payment</span>
+        </div>
+        <div class="text-center">
+            <h2 class="text-success font-italic">Order Summary</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card border-dark">
+                <div th:object="${deliveryDetails}" class="card-body">
+                    <h3 class="text-success font-italic">Delivery Details</h3>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="recipientName">Recipient Name:</label>
+                                <p th:text="*{recipientName}" id="recipientName" class="border border-dark p-2">Name</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="city">City:</label>
+                                <p th:text="*{city}" id="city" class="border border-dark p-2">City</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="postalCode">Postal Code:</label>
+                                <p th:text="*{postalCode}" id="postalCode" class="border border-dark p-2">Postal Code</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="street">Street:</label>
+                                <p th:text="*{street}" id="street" class="border border-dark p-2">Street</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="phoneNumber">Phone Number:</label>
+                                <p th:text="*{phoneNumber}" id="phoneNumber" class="border border-dark p-2">Phone Number</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card border-dark mb-4">
+                <div class="card-body">
+                        <table class="table table-striped table-bordered">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th>Image</th>
+                                <th>Product Name</th>
+                                <th>Description</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Total</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="item : ${bagItems}">
+                                <td>
+                                    <img th:src="@{'data:image/jpg;base64,' + ${item.pictureUrl}}" alt="Product Image" style="width: 100px; height: auto;" class="img-fluid">
+                                </td>
+                                <td th:text="${item.name}">Product Name</td>
+                                <td th:text="${item.description}">Product Description</td>
+                                <td th:text="${item.quantity}">1</td>
+                                <td>$<span th:text="${item.productPrice}">0.00</span></td>
+                                <td>$<span th:text="${item.quantity * item.productPrice}">0.00</span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="text-right mt-4">
+                            <h3>Total: $<span id="totalAmount" th:text="${totalAmount}">0.00</span></h3>
+                        </div>
+
+                        <div class="text-right">
+                            <button id="checkout-button" class="btn btn-primary">Proceed to Payment</button>
+                        </div>
+                    <input type="hidden" id="publicKey" th:value="${publicKey}">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+<script>
+    const stripe = Stripe(document.getElementById("publicKey").value);
+    const totalAmount = document.getElementById("totalAmount").innerText.trim();
+    document.querySelector("#checkout-button").addEventListener("click", () => {
+        fetch('/api/create-checkout-session', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                totalAmount: totalAmount
+            }),
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then((data) => {
+                const sessionId = data.sessionId;
+                return stripe.redirectToCheckout({ sessionId: sessionId });
+            })
+            .then((result) => {
+                if (result.error) {
+                    console.error(result.error.message);
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    });
+</script>
+</html>

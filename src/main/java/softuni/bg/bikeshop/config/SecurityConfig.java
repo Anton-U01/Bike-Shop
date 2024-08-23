@@ -23,11 +23,12 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-         httpSecurity.authorizeHttpRequests(
+         httpSecurity
+                 .authorizeHttpRequests(
                         authorizeRequests -> {
                             authorizeRequests
                                     .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                                    .requestMatchers("/", "/about").permitAll()
+                                    .requestMatchers("/", "/about","/create-payment-intent").permitAll()
                                     .requestMatchers("/users/login", "/users/register","/login-error").anonymous()
                                     .requestMatchers("/admin/**").hasRole("ADMIN")
                                     .anyRequest().authenticated();
@@ -51,6 +52,7 @@ public class SecurityConfig {
                         }
                 );
             httpSecurity.csrf(csrf -> csrf.ignoringRequestMatchers("/products/add-part"));
+            httpSecurity.csrf(csrf -> csrf.ignoringRequestMatchers("/api/create-checkout-session"));
              httpSecurity.csrf(csrf -> csrf.ignoringRequestMatchers(new AntPathRequestMatcher("/edit-part/**")));
 
         return httpSecurity.build();

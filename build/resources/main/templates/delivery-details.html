@@ -13,14 +13,14 @@
 </header>
 <div class="container mt-2">
 
-    <div class="progress-indicator">
-        <span>Bag</span> > <span class="font-weight-bold">Delivery Details</span> > <span>Payment</span> > <span>Confirmation</span>
+    <div class="progress-indicator m-3">
+        <span>Bag</span> > <span class="font-weight-bold">Delivery Details</span> > <span>Checkout</span> > <span>Payment</span>
     </div>
-    <form th:action="@{/order/submit-delivery-details}" th:object="${deliveryDetails}" method="post">
+    <form class="card border-dark p-2" th:action="@{/order/submit-delivery-details}" th:object="${deliveryDetails}" method="post">
 
 
     <section id="delivery-details">
-        <h2>Delivery Details</h2>
+        <h2  class="text-success font-italic">Delivery Details</h2>
             <div class="form-group">
                 <label for="recipientName">Recipient Name</label>
                 <input type="text" id="recipientName" name="recipientName" class="form-control" th:value="*{recipientName}" >
@@ -73,7 +73,7 @@
 
 
     <div class="text-center">
-        <button type="submit" class="btn btn-primary">Proceed to Payment</button>
+        <button type="submit" class="btn btn-primary">Proceed to Checkout</button>
     </div>
     </form>
 </div>

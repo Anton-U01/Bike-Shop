@@ -56,3 +56,7 @@ logging:
 reviews:
   api:
    baseUrl: "http://localhost:8081"
+stripe:
+  api:
+    secretKey: ${STRIPE_API_KEY}
+    publicKey: ${STRIPE_PUBLIC_KEY}
