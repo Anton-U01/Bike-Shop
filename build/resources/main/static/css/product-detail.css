@@ -1,12 +1,11 @@
-html{
-    background-color: #e9ecef;
+html,.container{
+    background-color: #ffffff;
 }
-body{
-    background-color: #e9ecef;
+
+body {
+    background-color: #d4edda;
 }
-.container{
-    background-color: #e9ecef;
-}
-.hidden{
+
+.hidden {
     display: none;
 }

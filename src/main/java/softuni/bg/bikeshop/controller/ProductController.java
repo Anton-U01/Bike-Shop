@@ -111,6 +111,9 @@ public class ProductController {
     public String viewDetail(@PathVariable("id") Long id, Model model,Principal principal) {
         Product productById = productsService.getProductById(id);
         model.addAttribute("product", productById);
+        if(productById.getQuantity() == 0){
+            model.addAttribute("soldOut","Sold Out!");
+        }
         if (productById instanceof Bike bike) {
             model.addAttribute("bike", bike);
             model.addAttribute("isBike", true);

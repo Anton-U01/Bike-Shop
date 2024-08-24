@@ -33,7 +33,6 @@ spring:
   #api-key:
   #api-secret:
   #cloud-name
-
   thymeleaf: # Thymeleaf
     cache: false
     mode: HTML

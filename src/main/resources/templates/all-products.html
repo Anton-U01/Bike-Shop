@@ -117,7 +117,7 @@
                             <div class="mt-auto">
                                 <div class="buttons d-flex justify-content-between">
                                     <a th:href="@{/products/details/{id}(id=${product.id})}" class="btn btn-outline-info">Read more</a>
-                                    <a th:href="@{/products/add-to-favourites/{id}(id=${product.id})}" class="btn btn-outline-warning">Add To Favourites</a>
+                                    <a th:if="${ownerUsername != product.getSeller().username}" th:href="@{/products/add-to-favourites/{id}(id=${product.id})}" class="btn btn-outline-warning">Add To Favourites</a>
                                 </div>
                                 <a th:if="${ownerUsername != product.getSeller().username}" th:href="@{/products/buy/{id}(id=${product.id})}" class="d-block w-25 mt-2 btn btn-success">Buy<i class="ml-1 fa-solid fa-cart-shopping"></i></a>
                                 <span th:if="${ownerUsername == product.getSeller().username}" class="mt-2 btn btn-secondary disabled">Your Product</span>
