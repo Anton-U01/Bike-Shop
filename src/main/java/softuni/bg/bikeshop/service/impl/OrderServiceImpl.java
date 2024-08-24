@@ -18,6 +18,7 @@ import softuni.bg.bikeshop.models.orders.OrderStatus;
 import softuni.bg.bikeshop.repository.OrderRepository;
 import softuni.bg.bikeshop.repository.ProductRepository;
 import softuni.bg.bikeshop.repository.UserRepository;
+import softuni.bg.bikeshop.service.EmailSenderService;
 import softuni.bg.bikeshop.service.OrderService;
 
 import java.time.LocalDate;
@@ -32,6 +33,7 @@ public class OrderServiceImpl implements OrderService {
     private final OrderRepository orderRepository;
     private final ProductRepository productRepository;
     private final ModelMapper modelMapper;
+    private final EmailSenderService emailSenderService;
 
 
     @Value("${stripe.api.publicKey}")
@@ -42,11 +44,12 @@ public class OrderServiceImpl implements OrderService {
         Stripe.apiKey = publicKey;
     }
 
-    public OrderServiceImpl(UserRepository userRepository, OrderRepository orderRepository, ProductRepository productRepository, ModelMapper modelMapper) {
+    public OrderServiceImpl(UserRepository userRepository, OrderRepository orderRepository, ProductRepository productRepository, ModelMapper modelMapper, EmailSenderService emailSenderService) {
         this.userRepository = userRepository;
         this.orderRepository = orderRepository;
         this.productRepository = productRepository;
         this.modelMapper = modelMapper;
+        this.emailSenderService = emailSenderService;
     }
 
     @Override
@@ -196,10 +199,15 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    @Transactional
     public void setOrderToCompleted(String username) {
         Order myBag = getMyBag(username);
         myBag.setStatus(OrderStatus.COMPLETED);
         orderRepository.saveAndFlush(myBag);
+
+        User user = getUser(username);
+        String email = user.getEmail();
+        emailSenderService.sendOrderConfirmationEmail(email,String.valueOf(myBag.getId()),myBag.getOrderItems(),myBag.getTotalAmount());
     }
 
     private OrderItemView map(OrderItem orderItem){

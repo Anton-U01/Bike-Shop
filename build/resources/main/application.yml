@@ -44,6 +44,20 @@ spring:
       cache:
         period: 0
       static-locations: file:src/main/resources/static/
+  mail:
+    host: smtp.gmail.com
+    username: ${EMAIL}
+    password: ${APP_EMAIL_PASSWORD}
+    port: 587
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+            required: true
+          ssl:
+            trust: smtp.gmail.com
+          auth: true
 logging:
   level:
     org:

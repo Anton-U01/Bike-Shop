@@ -52,7 +52,7 @@
                        th:value="${item.quantity}" required>
                 <small th:if="${quantityError}" class="alert alert-danger" th:text="${quantityError}"></small>
             </td>
-            <td th:text="${item.totalAmount}">Item Total</td>
+            <td th:text="${item.totalAmount} + ' $'">Item Total</td>
             <td>
                 <a th:href="@{/order/remove/{id}(id=${item.id})}" class="btn btn-danger">Remove</a>
             </td>
@@ -62,7 +62,7 @@
         <tr>
             <td colspan="4"></td>
             <td><strong>Total:</strong></td>
-            <td th:text="${totalPrice}">Total Amount</td>
+            <td th:text="${totalPrice} + ' $'">Total Amount</td>
         </tr>
         </tfoot>
     </table>

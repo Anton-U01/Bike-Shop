@@ -28,7 +28,7 @@ public class SecurityConfig {
                         authorizeRequests -> {
                             authorizeRequests
                                     .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                                    .requestMatchers("/", "/about","/create-payment-intent").permitAll()
+                                    .requestMatchers("/", "/about").permitAll()
                                     .requestMatchers("/users/login", "/users/register","/login-error").anonymous()
                                     .requestMatchers("/admin/**").hasRole("ADMIN")
                                     .anyRequest().authenticated();

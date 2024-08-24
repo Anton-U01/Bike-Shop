@@ -1,7 +1,6 @@
 package softuni.bg.bikeshop.controller;
 
 import com.stripe.exception.StripeException;
-import com.stripe.model.Charge;
 import com.stripe.model.PaymentIntent;
 import com.stripe.model.checkout.Session;
 import jakarta.validation.Valid;
@@ -19,6 +18,7 @@ import softuni.bg.bikeshop.models.dto.ProductBuyDto;
 import softuni.bg.bikeshop.models.orders.Order;
 import softuni.bg.bikeshop.service.OrderService;
 import softuni.bg.bikeshop.service.ProductsService;
+import softuni.bg.bikeshop.service.UserService;
 
 import java.security.Principal;
 import java.text.SimpleDateFormat;
@@ -31,11 +31,13 @@ public class OrderController {
     private final ProductsService productsService;
     private final ModelMapper modelMapper;
     private final OrderService orderService;
+    private final UserService userService;
 
-    public OrderController(ProductsService productsService, ModelMapper modelMapper, OrderService orderService) {
+    public OrderController(ProductsService productsService, ModelMapper modelMapper, OrderService orderService, UserService userService) {
         this.productsService = productsService;
         this.modelMapper = modelMapper;
         this.orderService = orderService;
+        this.userService = userService;
     }
 
     @GetMapping("/products/buy/{id}")
@@ -149,30 +151,37 @@ public class OrderController {
 
                 PaymentIntent paymentIntent = PaymentIntent.retrieve(session.getPaymentIntent());
 
-                Long amount = paymentIntent.getAmountReceived();
-                String currency = paymentIntent.getCurrency();
-                String paymentMethod = paymentIntent.getCharges().getData().get(0).getPaymentMethodDetails().getCard().getLast4();
-                String email = session.getCustomerDetails().getEmail();
-                String receiptUrl = paymentIntent.getCharges().getData().get(0).getReceiptUrl();
+                if (paymentIntent != null) {
+                    Long amount = paymentIntent.getAmountReceived();
+                    String currency = paymentIntent.getCurrency();
+                    String paymentMethod = paymentIntent.getCharges().getData().get(0).getPaymentMethodDetails().getCard().getLast4();
+                    String receiptUrl = paymentIntent.getCharges().getData().get(0).getReceiptUrl();
+                    String email = userService.getUserByUsername(principal.getName()).getEmail();
 
-                Date date = new Date(paymentIntent.getCreated() * 1000L);
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                String formattedDate = sdf.format(date);
+                    Date date = new Date(paymentIntent.getCreated() * 1000L);
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    String formattedDate = sdf.format(date);
 
-                model.addAttribute("id", session_id);
-                model.addAttribute("status", "succeeded");
-                model.addAttribute("amount", amount / 100.00);
-                model.addAttribute("currency", currency.toUpperCase());
-                model.addAttribute("paymentMethod", "**** **** **** " + paymentMethod);
-                model.addAttribute("email", email);
-                model.addAttribute("receiptUrl", receiptUrl);
-                model.addAttribute("transactionDate", formattedDate);
+                    model.addAttribute("id", session_id);
+                    model.addAttribute("status", "succeeded");
+                    model.addAttribute("amount", amount / 100.00);
+                    model.addAttribute("currency", currency.toUpperCase());
+                    model.addAttribute("paymentMethod", "**** **** **** " + paymentMethod);
+                    model.addAttribute("email", email);
+                    model.addAttribute("receiptUrl", receiptUrl);
+                    model.addAttribute("transactionDate", formattedDate);
 
+                    orderService.setOrderToCompleted(principal.getName());
+                } else {
+                    model.addAttribute("error", "Payment intent not found.");
+                }
             } catch (StripeException e) {
                 model.addAttribute("error", "Error retrieving payment details.");
                 e.printStackTrace();
+            } catch (Exception e) {
+                model.addAttribute("error", "An unexpected error occurred.");
+                e.printStackTrace();
             }
-            orderService.setOrderToCompleted(principal.getName());
 
         } else {
             model.addAttribute("error", "Unknown error occurred.");

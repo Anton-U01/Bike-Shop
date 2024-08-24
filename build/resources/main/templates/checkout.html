@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="/css/navbar.css">
     <link rel="stylesheet" type="text/css" href="/css/add-to-bag.css">
     <script src="https://js.stripe.com/v3/"></script>
+    <script src="/static/js/stripe-checkout-session.js"></script>
 
 </head>
 <body>
@@ -106,37 +107,4 @@
 
 </div>
 </body>
-<script>
-    const stripe = Stripe(document.getElementById("publicKey").value);
-    const totalAmount = document.getElementById("totalAmount").innerText.trim();
-    document.querySelector("#checkout-button").addEventListener("click", () => {
-        fetch('/api/create-checkout-session', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                totalAmount: totalAmount
-            }),
-        })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then((data) => {
-                const sessionId = data.sessionId;
-                return stripe.redirectToCheckout({ sessionId: sessionId });
-            })
-            .then((result) => {
-                if (result.error) {
-                    console.error(result.error.message);
-                }
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-    });
-</script>
 </html>
