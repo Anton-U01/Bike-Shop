@@ -117,18 +117,16 @@ public class OrderController {
 
             return "redirect:/order/delivery-details";
         }
+        orderService.checkAndUpdateDeliveryDetails(principal.getName(), deliveryDetailsDto);
 
         Order myBag = orderService.getMyBag(principal.getName());
         List<OrderItemView> myBagItems = orderService.getMyBagItems(myBag);
-        model.addAttribute("deliveryDetails",myBag.getDeliveryDetails());
+
+        model.addAttribute("deliveryDetails",deliveryDetailsDto);
         model.addAttribute("bagItems",myBagItems);
         model.addAttribute("totalAmount",myBag.getTotalAmount());
         model.addAttribute("publicKey",orderService.getPublicKey());
 
-        if(orderService.myBagHasAlreadyDeliveryDetails(principal.getName())){
-            return "checkout";
-        }
-        orderService.saveDeliveryDetails(principal.getName(),deliveryDetailsDto);
         return "checkout";
     }
     @GetMapping("/order/load-delivery-details")

@@ -12,7 +12,12 @@
     <th:block th:replace="~{fragments/navbar::navbar}"></th:block>
 </header>
 <div class="container mt-4">
-    <div th:each="order,iterStat : ${orders}" class="mt-4">
+    <div th:unless="${orders.size() > 0}" class="no-orders">
+        <h2>No completed orders!</h2>
+        <p>You have not completed any orders yet. Check back later or start shopping now!</p>
+    </div>
+
+    <div th:if="${orders.size() > 0}" th:each="order,iterStat : ${orders}" class="mt-4">
         <h2>Order Details - Order [[${iterStat.index + 1}]]</h2>
         <div class="order-details  mb-3">
             <div class="card">

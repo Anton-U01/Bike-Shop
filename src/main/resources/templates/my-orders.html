@@ -35,14 +35,13 @@
             <div th:each="item : ${order.items}" class="card">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-2">
-                            <img th:src="@{'data:image/jpg;base64,' + ${item.pictureUrl}}" alt="Product Image" style="width: 100px; height: auto;" class="img-fluid">
+                        <div class="col-md-3">
+                            <img th:src="@{'data:image/jpg;base64,' + ${item.pictureUrl}}" alt="Product Image" style="width: 200px; height: auto;" class="img-fluid">
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-9">
                             <h5 class="card-title" th:text="${item.name}"></h5>
                             <p class="card-text"><strong>Price:</strong> $<span th:text="${item.productPrice}"></span></p>
                             <p class="card-text"><strong>Quantity:</strong> <span th:text="${item.quantity}"></span></p>
-                            <p class="card-text"><strong>Total Amount:</strong> $<span th:text="${item.totalAmount}"></span></p>
                         </div>
                     </div>
                 </div>

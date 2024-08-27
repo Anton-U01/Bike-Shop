@@ -178,19 +178,42 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void saveDeliveryDetails(String username, DeliveryDetailsDto deliveryDetailsDto) {
         Order myBag = getMyBag(username);
+        DeliveryDetails newDeliveryDetails = modelMapper.map(deliveryDetailsDto, DeliveryDetails.class);
+        newDeliveryDetails.setOrder(myBag);
 
-        DeliveryDetails deliveryDetails = modelMapper.map(deliveryDetailsDto, DeliveryDetails.class);
-        deliveryDetails.setOrder(myBag);
-        myBag.setDeliveryDetails(deliveryDetails);
+        DeliveryDetails existingDetails = myBag.getDeliveryDetails();
+        if(existingDetails == null){
+            myBag.setDeliveryDetails(newDeliveryDetails);
+        } else {
+            existingDetails.setCity(newDeliveryDetails.getCity());
+            existingDetails.setStreet(newDeliveryDetails.getStreet());
+            existingDetails.setRecipientName(newDeliveryDetails.getRecipientName());
+            existingDetails.setPostalCode(newDeliveryDetails.getPostalCode());
+            existingDetails.setPhoneNumber(newDeliveryDetails.getPhoneNumber());
+        }
 
         orderRepository.saveAndFlush(myBag);
     }
-
     @Override
-    public boolean myBagHasAlreadyDeliveryDetails(String username) {
+    public void checkAndUpdateDeliveryDetails(String username, DeliveryDetailsDto deliveryDetailsDto) {
         Order myBag = getMyBag(username);
-        return myBag.getDeliveryDetails() != null;
+
+        DeliveryDetails existingDetails = myBag.getDeliveryDetails();
+
+        if (!isSameDeliveryDetails(existingDetails, deliveryDetailsDto)) {
+            saveDeliveryDetails(username, deliveryDetailsDto);
+        }
     }
+
+    private boolean isSameDeliveryDetails(DeliveryDetails existingDetails, DeliveryDetailsDto newDetails) {
+        return existingDetails != null &&
+                existingDetails.getCity().equals(newDetails.getCity()) &&
+                existingDetails.getStreet().equals(newDetails.getStreet()) &&
+                existingDetails.getPostalCode().equals(newDetails.getPostalCode()) &&
+                existingDetails.getPhoneNumber().equals(newDetails.getPhoneNumber()) &&
+                existingDetails.getRecipientName().equals(newDetails.getRecipientName());
+    }
+
     @Override
     public String getPublicKey() {
         return publicKey;

@@ -27,10 +27,11 @@ public interface OrderService {
 
     void saveDeliveryDetails(String name, DeliveryDetailsDto deliveryDetailsDto);
 
-    boolean myBagHasAlreadyDeliveryDetails(String username);
     String getPublicKey();
 
     void setOrderToCompleted(String username);
 
     List<OrderViewDto> getCompletedOrders(String name);
+
+    void checkAndUpdateDeliveryDetails(String username, DeliveryDetailsDto deliveryDetailsDto);
 }
