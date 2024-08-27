@@ -182,6 +182,8 @@
                             <ul class="d-flex flex-column align-items-center bg-danger text-white">
                                 <li th:if="${noImage}" th:text="${noImage}"
                                     class="error"></li>
+                                <li th:if="${invalidFileType}" th:text="${invalidFileType}"
+                                    class="error"></li>
                             </ul>
                         </div>
 

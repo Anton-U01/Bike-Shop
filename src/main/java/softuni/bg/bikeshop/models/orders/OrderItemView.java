@@ -1,4 +1,4 @@
-package softuni.bg.bikeshop.models.dto;
+package softuni.bg.bikeshop.models.orders;
 
 public class OrderItemView {
     private long id;

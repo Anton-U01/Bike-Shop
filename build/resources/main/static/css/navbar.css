@@ -38,8 +38,9 @@ nav .links ul {
 }
 
 nav li {
-    display: block;
+    display: inline-block;
     align-items: center;
+    position: relative;
 }
 
 nav a {
@@ -59,4 +60,14 @@ nav .links ul li img {
     border-radius: 50%;
     margin-left: 5px;
     font-size: 0.8rem;
+}
+nav .dropdown-menu {
+    display: none;
+}
+
+.btn-group:hover .dropdown-menu {
+    display: block;
+}
+.dropdown-menu{
+    background-color: #e9ecef;
 }

@@ -9,12 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 import softuni.bg.bikeshop.exceptions.UserNotFoundException;
 import softuni.bg.bikeshop.models.Product;
 import softuni.bg.bikeshop.models.User;
-import softuni.bg.bikeshop.models.dto.DeliveryDetailsDto;
-import softuni.bg.bikeshop.models.dto.OrderItemView;
-import softuni.bg.bikeshop.models.orders.DeliveryDetails;
-import softuni.bg.bikeshop.models.orders.Order;
-import softuni.bg.bikeshop.models.orders.OrderItem;
-import softuni.bg.bikeshop.models.orders.OrderStatus;
+import softuni.bg.bikeshop.models.orders.DeliveryDetailsDto;
+import softuni.bg.bikeshop.models.orders.OrderItemView;
+import softuni.bg.bikeshop.models.orders.*;
 import softuni.bg.bikeshop.repository.OrderRepository;
 import softuni.bg.bikeshop.repository.ProductRepository;
 import softuni.bg.bikeshop.repository.UserRepository;
@@ -22,6 +19,7 @@ import softuni.bg.bikeshop.service.EmailSenderService;
 import softuni.bg.bikeshop.service.OrderService;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -208,6 +206,27 @@ public class OrderServiceImpl implements OrderService {
         User user = getUser(username);
         String email = user.getEmail();
         emailSenderService.sendOrderConfirmationEmail(email,String.valueOf(myBag.getId()),myBag.getOrderItems(),myBag.getTotalAmount());
+    }
+
+    @Override
+    @Transactional
+    public List<OrderViewDto> getCompletedOrders(String name) {
+        User user = getUser(name);
+        List<OrderViewDto> ordersList = new ArrayList<>();
+        for (Order o : user.getOrders()) {
+            if (!o.getStatus().equals(OrderStatus.ACTIVE)) {
+                OrderViewDto orderDto = modelMapper.map(o, OrderViewDto.class);
+                List<OrderItemView> itemsList = new ArrayList<>();
+                for (OrderItem orderItem : o.getOrderItems()) {
+                    OrderItemView itemDto = modelMapper.map(orderItem, OrderItemView.class);
+                    itemDto.setPictureUrl(orderItem.getProduct().getPictures().get(0).getUrl());
+                    itemsList.add(itemDto);
+                }
+                orderDto.setItems(itemsList);
+                ordersList.add(orderDto);
+            }
+        }
+        return ordersList;
     }
 
     private OrderItemView map(OrderItem orderItem){

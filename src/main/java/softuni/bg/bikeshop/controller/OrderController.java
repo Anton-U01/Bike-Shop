@@ -12,10 +12,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import softuni.bg.bikeshop.models.Product;
-import softuni.bg.bikeshop.models.dto.DeliveryDetailsDto;
-import softuni.bg.bikeshop.models.dto.OrderItemView;
+import softuni.bg.bikeshop.models.orders.DeliveryDetailsDto;
+import softuni.bg.bikeshop.models.orders.OrderItemView;
 import softuni.bg.bikeshop.models.dto.ProductBuyDto;
 import softuni.bg.bikeshop.models.orders.Order;
+import softuni.bg.bikeshop.models.orders.OrderViewDto;
 import softuni.bg.bikeshop.service.OrderService;
 import softuni.bg.bikeshop.service.ProductsService;
 import softuni.bg.bikeshop.service.UserService;
@@ -187,6 +188,13 @@ public class OrderController {
             model.addAttribute("error", "Unknown error occurred.");
         }
         return "paymentResult";
+    }
+    @GetMapping("/user/orders")
+    public String getUserOrders(Principal principal,Model model){
+        List<OrderViewDto> completedOrders = orderService.getCompletedOrders(principal.getName());
+        model.addAttribute("orders",completedOrders);
+
+        return "my-orders";
     }
 
 }

@@ -33,7 +33,7 @@ public class User extends BaseEntity {
     @JoinColumn(name = "address_id")
     private Address address;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Order> orders = new ArrayList<>();
+    private List<Order> orders;
 
     public User() {
         products = new ArrayList<>();

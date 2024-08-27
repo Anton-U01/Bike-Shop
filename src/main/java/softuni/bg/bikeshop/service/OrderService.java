@@ -1,9 +1,10 @@
 package softuni.bg.bikeshop.service;
 
 import softuni.bg.bikeshop.models.Product;
-import softuni.bg.bikeshop.models.dto.DeliveryDetailsDto;
-import softuni.bg.bikeshop.models.dto.OrderItemView;
+import softuni.bg.bikeshop.models.orders.DeliveryDetailsDto;
+import softuni.bg.bikeshop.models.orders.OrderItemView;
 import softuni.bg.bikeshop.models.orders.Order;
+import softuni.bg.bikeshop.models.orders.OrderViewDto;
 
 import java.util.List;
 import java.util.Map;
@@ -30,4 +31,6 @@ public interface OrderService {
     String getPublicKey();
 
     void setOrderToCompleted(String username);
+
+    List<OrderViewDto> getCompletedOrders(String name);
 }

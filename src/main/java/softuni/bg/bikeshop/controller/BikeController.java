@@ -47,6 +47,15 @@ public class BikeController {
             return "redirect:/products/add-bike";
         }
 
+        for (MultipartFile file : files) {
+            String contentType = file.getContentType();
+
+            if (!("image/png".equals(contentType) || "image/jpeg".equals(contentType))) {
+                redirectAttributes.addFlashAttribute("invalidFileType", "Only PNG and JPG images are allowed!");
+                return "redirect:/products/add-bike";
+            }
+        }
+
         if(bindingResult.hasErrors() || !bikeService.add(addBikeDto,principal,files) || files.get(0).isEmpty()){
 
             redirectAttributes.addFlashAttribute("addBike",addBikeDto);

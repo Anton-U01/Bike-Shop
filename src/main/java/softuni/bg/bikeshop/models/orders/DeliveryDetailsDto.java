@@ -1,4 +1,4 @@
-package softuni.bg.bikeshop.models.dto;
+package softuni.bg.bikeshop.models.orders;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
