@@ -9,6 +9,7 @@ import org.springframework.web.client.RestClient;
 import softuni.bg.bikeshop.exceptions.ProductNotFoundException;
 import softuni.bg.bikeshop.exceptions.UserNotFoundException;
 import softuni.bg.bikeshop.models.*;
+import softuni.bg.bikeshop.models.orders.OrderItem;
 import softuni.bg.bikeshop.repository.*;
 import softuni.bg.bikeshop.service.ProductsService;
 import softuni.bg.bikeshop.util.ProductSpecification;
@@ -23,15 +24,12 @@ public class ProductsServiceImpl implements ProductsService {
     private final UserRepository userRepository;
     private final PictureRepository pictureRepository;
     private final RestClient restClient;
-    private final BikeRepository bikeRepository;
-    private final PartRepository partRepository;
-    public ProductsServiceImpl(ProductRepository productRepository, UserRepository userRepository, PictureRepository pictureRepository, RestClient restClient, BikeRepository bikeRepository, PartRepository partRepository) {
+
+    public ProductsServiceImpl(ProductRepository productRepository, UserRepository userRepository, PictureRepository pictureRepository, RestClient restClient) {
         this.productRepository = productRepository;
         this.userRepository = userRepository;
         this.pictureRepository = pictureRepository;
         this.restClient = restClient;
-        this.bikeRepository = bikeRepository;
-        this.partRepository = partRepository;
     }
 
     @Override
@@ -129,7 +127,8 @@ public class ProductsServiceImpl implements ProductsService {
                     .retrieve();
         });
 
-        productRepository.deleteById(productId);
+
+        productRepository.delete(product);
 
         return true;
     }

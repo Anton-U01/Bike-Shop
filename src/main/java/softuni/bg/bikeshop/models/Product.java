@@ -1,6 +1,7 @@
 package softuni.bg.bikeshop.models;
 
 import jakarta.persistence.*;
+import softuni.bg.bikeshop.models.orders.OrderItem;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -120,4 +121,5 @@ public class Product extends BaseEntity{
     public void setIsFavouriteOf(Set<User> isFavouriteOf) {
         this.isFavouriteOf = isFavouriteOf;
     }
+
 }

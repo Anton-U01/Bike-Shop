@@ -75,6 +75,7 @@ public class OrderController {
         List<OrderItemView> orderItems = orderService.getMyBagItems(myBag);
         model.addAttribute("orderItems", orderItems);
         model.addAttribute("totalPrice", myBag.getTotalAmount());
+        model.addAttribute("hasInactiveItems", orderItems.stream().anyMatch(OrderItemView::isInactive));
         return "my-bag";
     }
     @PostMapping("/order/update-quantities")

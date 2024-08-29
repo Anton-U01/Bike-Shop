@@ -9,6 +9,11 @@ public class OrderItemView {
     private int maxQuantity;
     private String pictureUrl;
     private double totalAmount;
+    private boolean isInactive;
+
+    public OrderItemView() {
+        isInactive = false;
+    }
 
     public long getId() {
         return id;
@@ -72,5 +77,13 @@ public class OrderItemView {
 
     public void setTotalAmount(double totalAmount) {
         this.totalAmount = totalAmount;
+    }
+
+    public boolean isInactive() {
+        return isInactive;
+    }
+
+    public void setInactive(boolean isInactive) {
+        this.isInactive = isInactive;
     }
 }

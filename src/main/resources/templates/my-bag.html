@@ -40,16 +40,19 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="item : ${orderItems}">
+        <tr th:each="item : ${orderItems}" th:classappend="${item.isInactive()} ? 'table-danger' : ''">
             <td>
-                <img  th:src="@{'data:image/jpg;base64,' + ${item.getPictureUrl()}}" alt="Product Image" style="width: 100px; height: auto;">
+                <img th:src="@{'data:image/jpg;base64,' + ${item.pictureUrl}}" alt="Product Image" style="width: 100px; height: auto;">
             </td>
-            <td th:text="${item.name}">Product Name</td>
+            <td>
+                <span th:text="${item.name}">Product Name</span>
+                <p th:if="${item.isInactive()}" class="text-danger mt-2">This item is no longer available. Please remove it from your bag.</p>
+            </td>
             <td th:text="${item.description}">Product Description</td>
             <td th:text="${item.productPrice}">Product Price</td>
             <td>
                 <input class="text-center" type="number" th:name="${item.id}" min="1" th:max="${item.maxQuantity}"
-                       th:value="${item.quantity}" required>
+                       th:value="${item.quantity}" th:disabled="${item.isInactive()}" required>
                 <small th:if="${quantityError}" class="alert alert-danger" th:text="${quantityError}"></small>
             </td>
             <td th:text="${item.totalAmount} + ' $'">Item Total</td>
@@ -67,8 +70,10 @@
         </tfoot>
     </table>
         <div class="d-flex justify-content-between border-top border-dark pt-3">
-            <button type="submit" class="btn btn-primary">Update Quantities</button>
-            <a th:href="@{/order/delivery-details}" class="btn btn-success">Next Step</a>
+            <button type="submit" class="btn btn-primary" th:disabled="${hasInactiveItems}">Update Quantities</button>
+            <a th:href="@{/order/delivery-details}"
+               class="btn btn-success" th:classappend="${hasInactiveItems} ? 'disabled-link' : ''"
+               th:onclick="${hasInactiveItems} ? 'return false;' : ''">Next Step</a>
         </div>
     </form>
 </div>

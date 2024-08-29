@@ -13,13 +13,20 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/add-to-bag.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/css/add-to-bag.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/my-orders.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/css/my-orders.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/my-bag.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/my-bag.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/templates/my-orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/my-orders.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/models/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/models/orders/OrderItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/models/orders/OrderItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/models/orders/OrderItemView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/models/orders/OrderItemView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/impl/EmailSenderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/impl/EmailSenderServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/impl/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/my-orders.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/my-orders.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/my-orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/my-orders.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/impl/ProductsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/impl/ProductsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/add-to-bag.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/add-to-bag.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/my-bag.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/my-bag.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,11 +57,11 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Interface" />
         <option value="JavaScript File" />
         <option value="Class" />
         <option value="HTML File" />
         <option value="CSS File" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -469,7 +476,10 @@
       <workItem from="1724753164431" duration="374000" />
       <workItem from="1724753560593" duration="69000" />
       <workItem from="1724755402404" duration="61000" />
-      <workItem from="1724755487720" duration="10786000" />
+      <workItem from="1724755487720" duration="11051000" />
+      <workItem from="1724836383798" duration="3189000" />
+      <workItem from="1724914677866" duration="4096000" />
+      <workItem from="1724919155862" duration="3235000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />

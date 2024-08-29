@@ -38,10 +38,10 @@ public class EmailSenderServiceImpl implements EmailSenderService {
         body.append("Order Details:\n");
 
         for (OrderItem item : orderItems) {
-            body.append("Product Name: ").append(item.getProduct().getName()).append("\n");
+            body.append("Product Name: ").append(item.getProductName()).append("\n");
             body.append("Quantity: ").append(item.getQuantity()).append("\n");
-            body.append("Price: $").append(item.getProduct().getPrice()).append("\n");
-            body.append("Total: $").append(item.getQuantity() * item.getProduct().getPrice()).append("\n\n");
+            body.append("Price: $").append(item.getProductPrice()).append("\n");
+            body.append("Total: $").append(item.getQuantity() * item.getProductPrice()).append("\n\n");
         }
 
         body.append("Total Amount: $").append(totalAmount).append("\n\n");

@@ -6,6 +6,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import softuni.bg.bikeshop.exceptions.ProductNotFoundException;
 import softuni.bg.bikeshop.exceptions.UserNotFoundException;
 import softuni.bg.bikeshop.models.Product;
 import softuni.bg.bikeshop.models.User;
@@ -58,12 +59,17 @@ public class OrderServiceImpl implements OrderService {
 
         OrderItem orderItem = myBag.getOrderItems()
                 .stream()
-                .filter(item -> item.getProduct().getId() == product.getId())
+                .filter(item -> item.getProductId() == product.getId())
                 .findFirst()
                 .orElse(null);
         if(orderItem == null){
             orderItem = new OrderItem();
-            orderItem.setProduct(product);
+            orderItem.setProductId(product.getId());
+            orderItem.setProductName(product.getName());
+            orderItem.setProductDescription(product.getDescription());
+            orderItem.setProductPictureUrl(product.getPictures().get(0).getUrl());
+            orderItem.setProductQuantity(product.getQuantity());
+            orderItem.setProductPrice(product.getPrice());
             orderItem.setQuantity(quantity);
             orderItem.setOrder(myBag);
             orderItem.setPrice(product.getPrice() * quantity);
@@ -130,7 +136,9 @@ public class OrderServiceImpl implements OrderService {
 
             if (optional.isPresent()) {
                 OrderItem orderItem = optional.get();
-                Product actualProduct = orderItem.getProduct();
+                Product actualProduct = productRepository.findById(orderItem.getProductId())
+                        .orElseThrow(()-> new ProductNotFoundException("Product with id " + orderItem.getProductId() + " is not found!"));
+
                 int currentQuantity = orderItem.getQuantity();
 
                 int quantityDifference = newQuantity - currentQuantity;
@@ -156,10 +164,13 @@ public class OrderServiceImpl implements OrderService {
                 .findFirst()
                 .get();
 
-        Product actualProduct = itemToRemove.getProduct();
-        actualProduct.setQuantity(actualProduct.getQuantity() + itemToRemove.getQuantity());
-        productRepository.save(actualProduct);
+        Optional<Product> optionalProduct = productRepository.findById(itemToRemove.getProductId());
 
+        if(optionalProduct.isPresent()){
+            Product actualProduct = optionalProduct.get();
+            actualProduct.setQuantity(actualProduct.getQuantity() + itemToRemove.getQuantity());
+            productRepository.save(actualProduct);
+        }
         myBag.getOrderItems().remove(itemToRemove);
         myBag.setTotalAmount(myBag.getTotalAmount() - itemToRemove.getPrice());
 
@@ -242,7 +253,7 @@ public class OrderServiceImpl implements OrderService {
                 List<OrderItemView> itemsList = new ArrayList<>();
                 for (OrderItem orderItem : o.getOrderItems()) {
                     OrderItemView itemDto = modelMapper.map(orderItem, OrderItemView.class);
-                    itemDto.setPictureUrl(orderItem.getProduct().getPictures().get(0).getUrl());
+                    itemDto.setPictureUrl(orderItem.getProductPictureUrl());
                     itemsList.add(itemDto);
                 }
                 orderDto.setItems(itemsList);
@@ -255,13 +266,17 @@ public class OrderServiceImpl implements OrderService {
     private OrderItemView map(OrderItem orderItem){
         OrderItemView dto = new OrderItemView();
         dto.setId(orderItem.getId());
-        dto.setName(orderItem.getProduct().getName());
-        dto.setDescription(orderItem.getProduct().getDescription());
+        dto.setName(orderItem.getProductName());
+        dto.setDescription(orderItem.getProductDescription());
         dto.setQuantity(orderItem.getQuantity());
-        dto.setProductPrice(orderItem.getProduct().getPrice());
+        dto.setProductPrice(orderItem.getProductPrice());
         dto.setTotalAmount(orderItem.getPrice());
-        dto.setPictureUrl(orderItem.getProduct().getPictures().get(0).getUrl());
-        dto.setMaxQuantity(orderItem.getProduct().getQuantity() + orderItem.getQuantity());
+        dto.setPictureUrl(orderItem.getProductPictureUrl());
+        dto.setMaxQuantity(orderItem.getProductQuantity() + orderItem.getQuantity());
+        Optional<Product> optionalProduct = productRepository.findById(orderItem.getProductId());
+        if(optionalProduct.isEmpty()){
+            dto.setInactive(true);
+        }
         return dto;
     }
 
