@@ -2,10 +2,9 @@ package softuni.bg.bikeshop.service;
 
 
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
 import softuni.bg.bikeshop.models.Product;
+import softuni.bg.bikeshop.models.dto.ProductSearchDto;
 
 import java.security.Principal;
 import java.util.List;
@@ -38,4 +37,5 @@ public interface ProductsService{
 
     Page<Product> getAllFilteredProducts(List<String> bikes, List<String> parts, Pageable pageable);
 
+    List<ProductSearchDto> searchProducts(String query);
 }

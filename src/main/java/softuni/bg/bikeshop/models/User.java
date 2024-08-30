@@ -1,5 +1,6 @@
 package softuni.bg.bikeshop.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import softuni.bg.bikeshop.models.orders.Order;
 

@@ -5,43 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10f609e4-8abb-4ca9-a680-233e5e4ffb8c" name="Changes" comment="Create models">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/i18n/messages_bg.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/i18n/messages_bg.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/i18n/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/i18n/messages_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/my-offers.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/product-detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/css/product-detail.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/add-part.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/js/add-part.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/all-products.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/all-products.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/fragments/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/fragments/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/my-bag.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/my-bag.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/my-offers.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/product-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/product-details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/controller/BikeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/controller/BikeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/controller/PartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/controller/PartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/i18n/messages_bg.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/i18n/messages_bg.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/i18n/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/i18n/messages_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/my-offers.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/product-management.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/product-detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/product-detail.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/add-part.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/add-part.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/all-products.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/all-products.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/navbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/navbar.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/my-offers.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/product-management.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/product-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/product-details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/softuni/bg/bikeshop/controller/BikeControllerIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/softuni/bg/bikeshop/controller/BikeControllerIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/softuni/bg/bikeshop/controller/PartControllerIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/softuni/bg/bikeshop/controller/PartControllerIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/softuni/bg/bikeshop/controller/ProductControllerIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/softuni/bg/bikeshop/controller/ProductControllerIT.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -495,7 +461,7 @@
       <workItem from="1724836383798" duration="3189000" />
       <workItem from="1724914677866" duration="4096000" />
       <workItem from="1724919155862" duration="13823000" />
-      <workItem from="1725015340907" duration="304000" />
+      <workItem from="1725015340907" duration="1528000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />

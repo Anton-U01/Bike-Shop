@@ -1,5 +1,6 @@
 package softuni.bg.bikeshop.service.impl;
 ;
+import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -9,7 +10,8 @@ import org.springframework.web.client.RestClient;
 import softuni.bg.bikeshop.exceptions.ProductNotFoundException;
 import softuni.bg.bikeshop.exceptions.UserNotFoundException;
 import softuni.bg.bikeshop.models.*;
-import softuni.bg.bikeshop.models.orders.OrderItem;
+import softuni.bg.bikeshop.models.dto.ProductSearchDto;
+import softuni.bg.bikeshop.models.parts.PartType;
 import softuni.bg.bikeshop.repository.*;
 import softuni.bg.bikeshop.service.ProductsService;
 import softuni.bg.bikeshop.util.ProductSpecification;
@@ -24,12 +26,18 @@ public class ProductsServiceImpl implements ProductsService {
     private final UserRepository userRepository;
     private final PictureRepository pictureRepository;
     private final RestClient restClient;
+    private final ModelMapper modelMapper;
+    private final BikeRepository bikeRepository;
+    private final PartRepository partRepository;
 
-    public ProductsServiceImpl(ProductRepository productRepository, UserRepository userRepository, PictureRepository pictureRepository, RestClient restClient) {
+    public ProductsServiceImpl(ProductRepository productRepository, UserRepository userRepository, PictureRepository pictureRepository, RestClient restClient, ModelMapper modelMapper, BikeRepository bikeRepository, PartRepository partRepository) {
         this.productRepository = productRepository;
         this.userRepository = userRepository;
         this.pictureRepository = pictureRepository;
         this.restClient = restClient;
+        this.modelMapper = modelMapper;
+        this.bikeRepository = bikeRepository;
+        this.partRepository = partRepository;
     }
 
     @Override
@@ -181,7 +189,31 @@ public class ProductsServiceImpl implements ProductsService {
         return productRepository.findAll(spec, pageable);
     }
 
+    @Override
+    public List<ProductSearchDto> searchProducts(String query) {
+        BikeType bikeType = null;
+        PartType partType = null;
 
+        try {
+            bikeType = BikeType.valueOf(query.toUpperCase());
+        } catch (IllegalArgumentException e) {
+        }
+
+        try {
+            partType = PartType.valueOf(query.toUpperCase());
+        } catch (IllegalArgumentException e) {
+        }
+
+        List<Product> products = productRepository.findProductByQuery(query);
+        List<ProductSearchDto> productsList = products.stream().map(p -> {
+                    ProductSearchDto map = modelMapper.map(p, ProductSearchDto.class);
+                    return map;
+                }
+        ).toList();
+
+        return productsList;
+
+    }
 
 
 }

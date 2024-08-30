@@ -7,10 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import softuni.bg.bikeshop.models.Bike;
-import softuni.bg.bikeshop.models.Product;
-import softuni.bg.bikeshop.models.Review;
-import softuni.bg.bikeshop.models.User;
+import softuni.bg.bikeshop.models.*;
+import softuni.bg.bikeshop.models.parts.PartType;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -28,4 +26,12 @@ public interface ProductRepository extends JpaRepository<Product,Long>, JpaSpeci
     List<Product> findAllByCreatedOnBefore(LocalDateTime createdOn);
 
     Page<Product> findAll(Specification<Product> bikeSpec, Pageable pageable);
+
+    @Query("SELECT p FROM Product p " +
+            "LEFT JOIN Bike b ON p.id = b.id " +
+            "LEFT JOIN Part pa ON p.id = pa.id " +
+            "WHERE p.name LIKE %:query% " +
+            "OR (b IS NOT NULL AND (:query = '' OR CAST(b.type AS string) LIKE %:query%)) " +
+            "OR (pa IS NOT NULL AND (:query = '' OR CAST(pa.type AS string) LIKE %:query%))")
+    List<Product> findProductByQuery(String query);
 }
