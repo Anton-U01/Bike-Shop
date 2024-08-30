@@ -101,10 +101,10 @@ public class ProductControllerIT {
 
         when(productsService.getAllCurrentUserProducts(Mockito.anyString())).thenReturn(productList);
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/products/my-offers"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/products/product-management"))
                 .andExpect(model().attribute("productList",productList))
                 .andExpect(status().isOk())
-                .andExpect(view().name("my-offers"));
+                .andExpect(view().name("product-management"));
     }
     @Test
     @WithMockUser(username = "test")
@@ -115,7 +115,7 @@ public class ProductControllerIT {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/products/delete/{id}",productId))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/products/my-offers"))
+                .andExpect(redirectedUrl("/products/product-management"))
                 .andExpect(flash().attributeExists("successMessage"));
     }
     @Test
@@ -127,7 +127,7 @@ public class ProductControllerIT {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/products/delete/{id}",productId))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/products/my-offers"))
+                .andExpect(redirectedUrl("/products/product-management"))
                 .andExpect(flash().attributeExists("errorMessage"));
     }
     @Test

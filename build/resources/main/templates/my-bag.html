@@ -44,7 +44,10 @@
             <td>
                 <img th:src="@{'data:image/jpg;base64,' + ${item.pictureUrl}}" alt="Product Image" style="width: 100px; height: auto;">
             </td>
-            <td th:text="${item.name}">Product Name</td>
+            <td>
+                <span th:text="${item.name}">Product Name</span>
+                <p th:if="${item.isInactive()}" class="text-danger mt-2">This item is no longer available. Please remove it from your bag.</p>
+            </td>
             <td th:text="${item.description}">Product Description</td>
             <td th:text="${item.productPrice}">Product Price</td>
             <td>

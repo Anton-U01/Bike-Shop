@@ -71,7 +71,7 @@ public class PartController {
             return ResponseEntity.badRequest().body("noPartWithThisId");
         }
 
-        return ResponseEntity.ok(Map.of("redirectUrl", "/products/my-offers"));
+        return ResponseEntity.ok(Map.of("redirectUrl", "/products/product-management"));
 
     }
 

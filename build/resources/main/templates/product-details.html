@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Product Detail</title>
@@ -35,10 +35,6 @@
                         alt="Product Image"
                         style="max-height: 500px; object-fit: contain;"
                 >
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Slide <span th:text="${iterStat.index + 1}">1</span></h5>
-                    <p>Your caption here for slide <span th:text="${iterStat.index + 1}">1</span>.</p>
-                </div>
             </div>
         </div>
 
@@ -98,11 +94,11 @@
             </div>
 
             <div>
-                <a  th:if="${ownerUsername != product.getSeller().username}" th:unless="${soldOut}" th:href="@{/products/buy/{id}(id=${product.id})}" type="submit" class="d-block w-25 btn btn-lg btn-success">Buy<i class="ml-1 fa-solid fa-cart-shopping"></i></a>
-                <span th:if="${ownerUsername == product.getSeller().username}" class="d-block w-25 btn mt-2 btn btn-secondary disabled">Your Product</span>
+                <a sec:authorize="hasRole('USER')" th:if="${ownerUsername != product.getSeller().username}" th:unless="${soldOut}" th:href="@{/products/buy/{id}(id=${product.id})}" type="submit" class="d-block w-25 btn btn-lg btn-success">Buy<i class="ml-1 fa-solid fa-cart-shopping"></i></a>
+                <span sec:authorize="!hasRole('USER')" th:if="${ownerUsername == product.getSeller().username}" class="d-block w-25 btn mt-2 btn btn-secondary disabled">Buy</span>
                 <span th:if="${soldOut}" th:text="${soldOut}" class="d-block w-25 mt-2 btn btn-secondary disabled"></span>
                 <a th:href="@{/products}" class="btn btn-primary mt-3">Back to Products</a>
-                <a th:if="${ownerUsername != product.getSeller().username}" th:href="@{/products/add-to-favourites/{id}(id = ${product.id})}" class="btn bg-warning btn-outline-light border-dark mt-3">Add To Favourites</a>
+                <a sec:authorize="hasRole('USER')" th:if="${ownerUsername != product.getSeller().username}" th:href="@{/products/add-to-favourites/{id}(id = ${product.id})}" class="btn bg-warning btn-outline-light border-dark mt-3">Add To Favourites</a>
             </div>
 
     </div>

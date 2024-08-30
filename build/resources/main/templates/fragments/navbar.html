@@ -38,13 +38,13 @@
                     <a th:href="@{/about}" th:text="#{nav_bar_about}">About</a>
                 </li>
                 <li>
-                    <a th:href="@{/products/add}" sec:authorize="isAuthenticated()" th:text="#{nav_bar_add_product}">Add Product</a>
+                    <a th:href="@{/products/add}" sec:authorize="hasRole('ADMIN')" th:text="#{nav_bar_add_product}">Add Product</a>
                 </li>
                 <li>
                     <a th:href="@{/products}" sec:authorize="isAuthenticated()" th:text="#{nav_bar_all_offers}">All Offers</a>
                 </li>
                 <li>
-                    <a th:href="@{/products/my-offers}" sec:authorize="isAuthenticated()" th:text="#{nav_bar_my_offers}">My Offers</a>
+                    <a th:href="@{/products/product-management}" sec:authorize="hasRole('ADMIN')" th:text="#{nav_bar_my_offers}">Product Management</a>
                 </li>
                 <li  sec:authorize="hasRole('ADMIN')">
                     <a th:href="@{/admin}" th:text="#{nav_bar_admin}">Admin</a>
@@ -58,14 +58,14 @@
                 <li sec:authorize="isAuthenticated()">
                     <span class="p-1 bg-success text-light rounded" th:text="#{nav_bar_welcome_message(${#authentication.name})}">Welcome, <span sec:authentication="name"></span>!</span>
                 </li>
-                <li sec:authorize="isAuthenticated()">
+                <li sec:authorize="hasRole('USER')">
                     <a th:href="@{/user/my-bag}" class="icon-link nav-link">
                         <img class="m-r" src="/images/bag.png" alt="shopping-cart">
                         <span th:text="#{nav_bar_my_bag}">My Bag</span>
                         <span class="itemCounter badge badge-pill badge-danger" th:text="${itemCounter}"></span>
                     </a>
                 </li>
-                <li sec:authorize="isAuthenticated()">
+                <li sec:authorize="hasRole('USER')">
                     <a th:href="@{/products/favourites}" class="icon-link nav-link">
                         <img class="m-r" src="/images/favorite-icon.jpg" alt="shopping-cart">
                         <span th:text="#{nav_bar_favourites}">My Favourites</span>
@@ -79,7 +79,7 @@
                         </button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" th:href="@{/user/profile}">Profile Details</a>
-                            <a class="dropdown-item" th:href="@{/user/orders}">My orders</a>
+                            <a class="dropdown-item" sec:authorize="hasRole('USER')" th:href="@{/user/orders}">My orders</a>
                         </div>
                     </div>
                 </li>

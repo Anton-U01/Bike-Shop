@@ -60,7 +60,7 @@ public class BikeControllerIT {
                         .param("wheelsSize","18")
                         .with(csrf()))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/products/my-offers"));
+                .andExpect(redirectedUrl("/products/product-management"));
     }
     @Test
     @WithMockUser(username = "test")

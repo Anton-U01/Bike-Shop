@@ -3,7 +3,10 @@ html,.container{
 }
 
 body {
-    background-color: #d4edda;
+    min-height: 100vh;
+    background: url('/images/my-bike.png') center center/cover no-repeat fixed;
+    display: flex;
+    flex-direction: column;
 }
 
 .hidden {

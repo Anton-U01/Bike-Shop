@@ -65,7 +65,7 @@ public class BikeController {
         }
 
 
-        return "redirect:/products/my-offers";
+        return "redirect:/products/product-management";
     }
     @PutMapping("/edit-bike/{id}")
     public String editBike(@PathVariable("id") Long id,
@@ -80,7 +80,7 @@ public class BikeController {
             return "redirect:/products/edit-bike";
         }
 
-        return "redirect:/products/my-offers";
+        return "redirect:/products/product-management";
     }
     @GetMapping("/products/edit-bike")
     public String viewEditBike(){

@@ -1,25 +1,19 @@
 package softuni.bg.bikeshop.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
-import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import softuni.bg.bikeshop.models.Bike;
 import softuni.bg.bikeshop.models.Product;
-import softuni.bg.bikeshop.models.dto.ProductBuyDto;
 import softuni.bg.bikeshop.models.parts.ChainPart;
 import softuni.bg.bikeshop.models.parts.FramePart;
 import softuni.bg.bikeshop.models.parts.Part;
 import softuni.bg.bikeshop.models.parts.TiresPart;
-import softuni.bg.bikeshop.service.BikeService;
-import softuni.bg.bikeshop.service.OrderService;
-import softuni.bg.bikeshop.service.PartService;
 import softuni.bg.bikeshop.service.ProductsService;
 
 import java.security.Principal;
@@ -182,22 +176,21 @@ public class ProductController {
         productsService.removeFromFavourites(id,principal.getName());
         return "redirect:/products/favourites";
     }
-
-    @GetMapping("/products/my-offers")
+    @GetMapping("/products/product-management")
     public String viewMyOffers(Model model,Principal principal){
         List<Product> productList = productsService.getAllCurrentUserProducts(principal.getName());
         model.addAttribute("productList",productList);
-        return "my-offers";
+        return "product-management";
     }
     @GetMapping("/products/delete/{id}")
     public String deleteProduct(@PathVariable("id") Long id, Principal principal, RedirectAttributes redirectAttributes){
         boolean success = productsService.deleteProduct(id, principal.getName());
         if(!success){
             redirectAttributes.addFlashAttribute("errorMessage","Unable to delete product. Тhis product may have been added to someone else's favorites list. Please try again.");
-            return "redirect:/products/my-offers";
+            return "redirect:/products/product-management";
         }
         redirectAttributes.addFlashAttribute("successMessage","This product is successfully deleted.");
-        return "redirect:/products/my-offers";
+        return "redirect:/products/product-management";
     }
     @GetMapping("/products/edit/{id}")
     public String editProduct(@PathVariable("id")Long id,

@@ -28,9 +28,26 @@ public class SecurityConfig {
                         authorizeRequests -> {
                             authorizeRequests
                                     .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                                    .requestMatchers("/", "/about").permitAll()
+                                    .requestMatchers("/", "/about","/products", "/products/details/**").permitAll()
                                     .requestMatchers("/users/login", "/users/register","/login-error").anonymous()
-                                    .requestMatchers("/admin/**").hasRole("ADMIN")
+
+
+                                    .requestMatchers("/admin/**","/products/add-bike", "/edit-bike/**",
+                                            "/products/add-part", "/edit-part",
+                                            "/products/add", "/products/delete/**",
+                                            "/products/product-management", "/products/edit/**",
+                                            "/products/edit-part").hasRole("ADMIN")
+
+
+                                    .requestMatchers("/products/add-to-favourites/**", "/products/favourites",
+                                            "/products/remove-from-favourites/**", "/products/buy/**",
+                                            "/products/add-to-bag/**", "/user/my-bag",
+                                            "/order/update-quantities", "/order/remove/**",
+                                            "/order/delivery-details", "/order/submit-delivery-details",
+                                            "/order/load-delivery-details", "/result",
+                                            "/user/orders").hasRole("USER")
+
+
                                     .anyRequest().authenticated();
                         })
                 .formLogin(

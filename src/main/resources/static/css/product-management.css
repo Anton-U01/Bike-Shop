@@ -4,7 +4,8 @@ html, body {
 
 body {
     min-height: 100vh;
-    background: url('/images/my-bike.png') center center/cover no-repeat fixed;
+    background: url('/images/management.png') center center repeat fixed;
+    background-size: 500px;
     display: flex;
     flex-direction: column;
 }
@@ -12,6 +13,8 @@ body {
     height: 200px;
     object-fit: contain;
 }
-
+.h1{
+    background-color: #006d7b;
+}
 
 

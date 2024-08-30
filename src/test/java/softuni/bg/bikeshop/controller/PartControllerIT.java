@@ -50,7 +50,7 @@ public class PartControllerIT {
                                 " \"size\": \"18\" }")
                         .with(csrf()))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.redirectUrl").value("/products/my-offers"));
+                .andExpect(jsonPath("$.redirectUrl").value("/products/product-management"));
     }
     @Test
     @WithMockUser(username = "test")
