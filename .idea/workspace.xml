@@ -5,9 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10f609e4-8abb-4ca9-a680-233e5e4ffb8c" name="Changes" comment="Create models">
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/navbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/navbar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/product-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/product-details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/models/orders/OrderStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/models/orders/OrderStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/repository/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/repository/OrderRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/EmailSenderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/EmailSenderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/impl/EmailSenderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/impl/EmailSenderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softuni/bg/bikeshop/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/i18n/messages_bg.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/i18n/messages_bg.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/i18n/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/i18n/messages_en.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/my-orders.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/my-orders.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/product-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/product-details.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,11 +56,11 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="JavaScript File" />
-        <option value="Class" />
-        <option value="HTML File" />
         <option value="CSS File" />
         <option value="Interface" />
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -69,140 +87,140 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Gradle.AdminController.executor": "Run",
-    "Gradle.AdminController.getAllUsersTest.executor": "Run",
-    "Gradle.AdminControllerIT.addRoleFailureTest.executor": "Run",
-    "Gradle.AdminControllerIT.addRoleSuccessTest.executor": "Run",
-    "Gradle.AdminControllerIT.deleteLoggedUserTest.executor": "Run",
-    "Gradle.AdminControllerIT.deleteSuccessTest.executor": "Run",
-    "Gradle.AdminControllerIT.deleteUserHasActiveOffersTest.executor": "Run",
-    "Gradle.AdminControllerIT.executor": "Coverage",
-    "Gradle.AdminControllerIT.getAddRolePageTest.executor": "Debug",
-    "Gradle.AdminControllerIT.getAllUsersTest.executor": "Run",
-    "Gradle.AdminControllerIT.testAccessToAdminPageDenied.executor": "Run",
-    "Gradle.AdminControllerIT.viewAdminPageTest.executor": "Coverage",
-    "Gradle.BikeControllerIT.addBikePageTest.executor": "Run",
-    "Gradle.BikeControllerIT.addBikeSuccessTest.executor": "Run",
-    "Gradle.BikeControllerIT.addBikeTest.executor": "Run",
-    "Gradle.BikeControllerIT.editBike.executor": "Run",
-    "Gradle.BikeControllerIT.editBikeTestFail.executor": "Run",
-    "Gradle.BikeControllerIT.editBikeTestSuccessful.executor": "Run",
-    "Gradle.BikeControllerIT.executor": "Coverage",
-    "Gradle.BikeControllerIT.testAddBikeWithNoImage.executor": "Run",
-    "Gradle.BikeControllerIT.testAddBikeWithValidData.executor": "Run",
-    "Gradle.BikeServiceImplTest.addBikeSuccessTest.executor": "Run",
-    "Gradle.BikeServiceImplTest.addBikeTestException.executor": "Run",
-    "Gradle.BikeServiceImplTest.editBikeSuccessTest.executor": "Run",
-    "Gradle.BikeServiceImplTest.executor": "Run",
-    "Gradle.BikeServiceImplTest.saveProductSuccess.executor": "Run",
-    "Gradle.BikeServiceImplTest.testAddBikeUserNotFound.executor": "Run",
-    "Gradle.Build BikeShop.executor": "Run",
-    "Gradle.HomeControllerIT.executor": "Coverage",
-    "Gradle.LoginControllerIT.executor": "Coverage",
-    "Gradle.PartControllerIT.editPartBindingResultHasErrorsTest.executor": "Run",
-    "Gradle.PartControllerIT.editPartIfNotSuccessTest.executor": "Run",
-    "Gradle.PartControllerIT.editPartTestSuccess.executor": "Run",
-    "Gradle.PartControllerIT.executor": "Run",
-    "Gradle.ProductControllerIT.addToFavouritesTestWhenFailingDetails.executor": "Run",
-    "Gradle.ProductControllerIT.addToFavouritesTestWhenSuccessInProducts.executor": "Run",
-    "Gradle.ProductControllerIT.addToFavouritesTestWhenSuccessfulDetails.executor": "Run",
-    "Gradle.ProductControllerIT.addToFavouritesWithNonDetailsRefererTest.executor": "Debug",
-    "Gradle.ProductControllerIT.bikeProductDetails.executor": "Run",
-    "Gradle.ProductControllerIT.buyProductFailTest.executor": "Run",
-    "Gradle.ProductControllerIT.buyProductSuccessTest.executor": "Run",
-    "Gradle.ProductControllerIT.buyProductViewTest.executor": "Coverage",
-    "Gradle.ProductControllerIT.deleteProductFailureTest.executor": "Run",
-    "Gradle.ProductControllerIT.deleteProductSuccessfulTest.executor": "Coverage",
-    "Gradle.ProductControllerIT.editProductPageForBikeTest.executor": "Run",
-    "Gradle.ProductControllerIT.editProductPageForChainTest.executor": "Run",
-    "Gradle.ProductControllerIT.executor": "Run",
-    "Gradle.ProductControllerIT.productDetails.executor": "Run",
-    "Gradle.ProductControllerIT.removeFromFavouritesTest.executor": "Run",
-    "Gradle.ProductControllerIT.viewAddPartPageTest.executor": "Run",
-    "Gradle.ProductControllerIT.viewAddProductPageTest.executor": "Run",
-    "Gradle.ProductControllerIT.viewEditPartPageTest.executor": "Coverage",
-    "Gradle.ProductControllerIT.viewEditPartTest.executor": "Run",
-    "Gradle.ProductControllerIT.viewFavouritesPageTest.executor": "Run",
-    "Gradle.ProductControllerIT.viewMyOffersPageTest.executor": "Run",
-    "Gradle.ProductControllerIT.viewProductsPage.executor": "Run",
-    "Gradle.ProductServiceImplTest.addToFavourites.executor": "Run",
-    "Gradle.ProductServiceImplTest.addToFavouritesProductIsAlreadyInList.executor": "Run",
-    "Gradle.ProductServiceImplTest.addToFavouritesProductNotFound.executor": "Run",
-    "Gradle.ProductServiceImplTest.addToFavouritesUserNotFound.executor": "Run",
-    "Gradle.ProductServiceImplTest.buyProductProductNotFoundTest.executor": "Coverage",
-    "Gradle.ProductServiceImplTest.buyProductQuantityZeroTest.executor": "Run",
-    "Gradle.ProductServiceImplTest.deleteOldProductsTest.executor": "Run",
-    "Gradle.ProductServiceImplTest.deleteProductProductIsSomeonesFavouriteTest.executor": "Run",
-    "Gradle.ProductServiceImplTest.deleteProductProductNotFoundTest.executor": "Run",
-    "Gradle.ProductServiceImplTest.deleteProductTest.executor": "Run",
-    "Gradle.ProductServiceImplTest.deleteProductUserDoesntHaveThisProductTest.executor": "Run",
-    "Gradle.ProductServiceImplTest.deleteProductUserNotFoundTest.executor": "Run",
-    "Gradle.ProductServiceImplTest.executor": "Coverage",
-    "Gradle.ProductServiceImplTest.getAllCurrentUsersProductsSuccessTest.executor": "Run",
-    "Gradle.ProductServiceImplTest.getAllTest.executor": "Coverage",
-    "Gradle.ProductServiceImplTest.getCurrentProductsUserNotFoundTest.executor": "Run",
-    "Gradle.ProductServiceImplTest.getFavouritesSuccessTest.executor": "Run",
-    "Gradle.ProductServiceImplTest.getFavouritesUserNotFoundTest.executor": "Run",
-    "Gradle.ProductServiceImplTest.getProductByIdNotFoundTest.executor": "Run",
-    "Gradle.ProductServiceImplTest.getProductByIdTest.executor": "Run",
-    "Gradle.ProductServiceImplTest.getProductsCountTest.executor": "Run",
-    "Gradle.ProductServiceImplTest.removeFromFavouritesProductNotFoundTest.executor": "Run",
-    "Gradle.ProductServiceImplTest.removeFromFavouritesTest.executor": "Run",
-    "Gradle.ProductServiceImplTest.removeFromFavouritesUserNotFoundTest.executor": "Run",
-    "Gradle.ProductServiceImplTest.testBuyProductQuantityZero.executor": "Run",
-    "Gradle.RegisterControllerIT.executor": "Run",
-    "Gradle.RegisterControllerIT.registerFailureTest.executor": "Run",
-    "Gradle.RegisterControllerIT.registerFailureWithPasswordsMisMatchTest.executor": "Run",
-    "Gradle.RegisterControllerIT.registerFailureWithUsernameAlreadyExistsTest.executor": "Run",
-    "Gradle.RegisterControllerIT.registerPageTest.executor": "Coverage",
-    "Gradle.RegisterControllerIT.registerTest.executor": "Run",
-    "Gradle.ReviewControllerIT.addReviewTest.executor": "Run",
-    "Gradle.ReviewControllerIT.executor": "Run",
-    "Gradle.ReviewControllerIT.getAllReviewsOfProductTest.executor": "Run",
-    "Gradle.Tests in 'BikeShop.test'.executor": "Coverage",
-    "Gradle.Tests in 'softuni.bg.bikeshop'.executor": "Coverage",
-    "Gradle.Tests in 'softuni.bg.bikeshop.controller'.executor": "Run",
-    "Gradle.Tests in 'softuni.bg.bikeshop.service.impl'.executor": "Run",
-    "Gradle.Upgrade Gradle wrapper.executor": "Run",
-    "Gradle.UserController.executor": "Debug",
-    "Gradle.UserControllerIT.editUsernameWithSuccessTest.executor": "Run",
-    "Gradle.UserControllerIT.executor": "Coverage",
-    "Gradle.UserControllerIT.viewUserProfilePage.executor": "Run",
-    "JUnit.All in BikeShop.test.executor": "Run",
-    "JUnit.HomeControllerIT.executor": "Coverage",
-    "JUnit.LoginControllerIT.failedLoginTest.executor": "Run",
-    "JUnit.LoginControllerIT.viewLoginPage.executor": "Coverage",
-    "JUnit.RoleServiceImplTest.executor": "Coverage",
-    "JUnit.RoleServiceImplTest.getUsersOtherRolesTest.executor": "Run",
-    "JUnit.UserDetailsServiceImplTest.executor": "Coverage",
-    "JUnit.softuni.bg.bikeshop.service.impl in BikeShop.test.executor": "Coverage",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.BikeShopApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/SOFTUNI/Final Project/BikeShop/src/main/resources/static/images",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "File.Encoding",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Gradle.AdminController.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AdminController.getAllUsersTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AdminControllerIT.addRoleFailureTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AdminControllerIT.addRoleSuccessTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AdminControllerIT.deleteLoggedUserTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AdminControllerIT.deleteSuccessTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AdminControllerIT.deleteUserHasActiveOffersTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AdminControllerIT.executor&quot;: &quot;Coverage&quot;,
+    &quot;Gradle.AdminControllerIT.getAddRolePageTest.executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.AdminControllerIT.getAllUsersTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AdminControllerIT.testAccessToAdminPageDenied.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AdminControllerIT.viewAdminPageTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;Gradle.BikeControllerIT.addBikePageTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.BikeControllerIT.addBikeSuccessTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.BikeControllerIT.addBikeTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.BikeControllerIT.editBike.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.BikeControllerIT.editBikeTestFail.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.BikeControllerIT.editBikeTestSuccessful.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.BikeControllerIT.executor&quot;: &quot;Coverage&quot;,
+    &quot;Gradle.BikeControllerIT.testAddBikeWithNoImage.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.BikeControllerIT.testAddBikeWithValidData.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.BikeServiceImplTest.addBikeSuccessTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.BikeServiceImplTest.addBikeTestException.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.BikeServiceImplTest.editBikeSuccessTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.BikeServiceImplTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.BikeServiceImplTest.saveProductSuccess.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.BikeServiceImplTest.testAddBikeUserNotFound.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Build BikeShop.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HomeControllerIT.executor&quot;: &quot;Coverage&quot;,
+    &quot;Gradle.LoginControllerIT.executor&quot;: &quot;Coverage&quot;,
+    &quot;Gradle.PartControllerIT.editPartBindingResultHasErrorsTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PartControllerIT.editPartIfNotSuccessTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PartControllerIT.editPartTestSuccess.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PartControllerIT.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductControllerIT.addToFavouritesTestWhenFailingDetails.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductControllerIT.addToFavouritesTestWhenSuccessInProducts.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductControllerIT.addToFavouritesTestWhenSuccessfulDetails.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductControllerIT.addToFavouritesWithNonDetailsRefererTest.executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.ProductControllerIT.bikeProductDetails.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductControllerIT.buyProductFailTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductControllerIT.buyProductSuccessTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductControllerIT.buyProductViewTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;Gradle.ProductControllerIT.deleteProductFailureTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductControllerIT.deleteProductSuccessfulTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;Gradle.ProductControllerIT.editProductPageForBikeTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductControllerIT.editProductPageForChainTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductControllerIT.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductControllerIT.productDetails.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductControllerIT.removeFromFavouritesTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductControllerIT.viewAddPartPageTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductControllerIT.viewAddProductPageTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductControllerIT.viewEditPartPageTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;Gradle.ProductControllerIT.viewEditPartTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductControllerIT.viewFavouritesPageTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductControllerIT.viewMyOffersPageTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductControllerIT.viewProductsPage.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductServiceImplTest.addToFavourites.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductServiceImplTest.addToFavouritesProductIsAlreadyInList.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductServiceImplTest.addToFavouritesProductNotFound.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductServiceImplTest.addToFavouritesUserNotFound.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductServiceImplTest.buyProductProductNotFoundTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;Gradle.ProductServiceImplTest.buyProductQuantityZeroTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductServiceImplTest.deleteOldProductsTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductServiceImplTest.deleteProductProductIsSomeonesFavouriteTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductServiceImplTest.deleteProductProductNotFoundTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductServiceImplTest.deleteProductTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductServiceImplTest.deleteProductUserDoesntHaveThisProductTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductServiceImplTest.deleteProductUserNotFoundTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductServiceImplTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;Gradle.ProductServiceImplTest.getAllCurrentUsersProductsSuccessTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductServiceImplTest.getAllTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;Gradle.ProductServiceImplTest.getCurrentProductsUserNotFoundTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductServiceImplTest.getFavouritesSuccessTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductServiceImplTest.getFavouritesUserNotFoundTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductServiceImplTest.getProductByIdNotFoundTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductServiceImplTest.getProductByIdTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductServiceImplTest.getProductsCountTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductServiceImplTest.removeFromFavouritesProductNotFoundTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductServiceImplTest.removeFromFavouritesTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductServiceImplTest.removeFromFavouritesUserNotFoundTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductServiceImplTest.testBuyProductQuantityZero.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.RegisterControllerIT.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.RegisterControllerIT.registerFailureTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.RegisterControllerIT.registerFailureWithPasswordsMisMatchTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.RegisterControllerIT.registerFailureWithUsernameAlreadyExistsTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.RegisterControllerIT.registerPageTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;Gradle.RegisterControllerIT.registerTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ReviewControllerIT.addReviewTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ReviewControllerIT.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ReviewControllerIT.getAllReviewsOfProductTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Tests in 'BikeShop.test'.executor&quot;: &quot;Coverage&quot;,
+    &quot;Gradle.Tests in 'softuni.bg.bikeshop'.executor&quot;: &quot;Coverage&quot;,
+    &quot;Gradle.Tests in 'softuni.bg.bikeshop.controller'.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Tests in 'softuni.bg.bikeshop.service.impl'.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Upgrade Gradle wrapper.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.UserController.executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.UserControllerIT.editUsernameWithSuccessTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.UserControllerIT.executor&quot;: &quot;Coverage&quot;,
+    &quot;Gradle.UserControllerIT.viewUserProfilePage.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.All in BikeShop.test.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.HomeControllerIT.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.LoginControllerIT.failedLoginTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LoginControllerIT.viewLoginPage.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.RoleServiceImplTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.RoleServiceImplTest.getUsersOtherRolesTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserDetailsServiceImplTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.softuni.bg.bikeshop.service.impl in BikeShop.test.executor&quot;: &quot;Coverage&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.BikeShopApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/SOFTUNI/Final Project/BikeShop/src/main/resources/static/images&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.i18nally.jetbrainsideplugin.settings.AllyProjectConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="softuni.bg.bikeshop.models.orders" />
@@ -461,7 +479,11 @@
       <workItem from="1724836383798" duration="3189000" />
       <workItem from="1724914677866" duration="4096000" />
       <workItem from="1724919155862" duration="13823000" />
-      <workItem from="1725015340907" duration="1528000" />
+      <workItem from="1725015340907" duration="10838000" />
+      <workItem from="1725034950497" duration="1741000" />
+      <workItem from="1725116754393" duration="1876000" />
+      <workItem from="1725118822284" duration="922000" />
+      <workItem from="1725273308318" duration="15053000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />

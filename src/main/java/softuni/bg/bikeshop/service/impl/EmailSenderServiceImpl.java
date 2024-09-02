@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 import softuni.bg.bikeshop.models.orders.OrderItem;
 import softuni.bg.bikeshop.service.EmailSenderService;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -50,5 +53,20 @@ public class EmailSenderServiceImpl implements EmailSenderService {
         body.append("BikeShopStore");
 
         sendEmail(to, "Order Confirmation - " + orderId, body.toString());
+    }
+
+    @Override
+    public void sendOrderDeliveredEmail(String to, String orderId, String recipientName) {
+        StringBuilder body = new StringBuilder();
+        body.append("Dear ").append(recipientName).append(",\n\n");
+        body.append("We are pleased to inform you that your order has been successfully delivered.\n\n");
+        body.append("Order ID: ").append(orderId).append("\n");
+        body.append("Delivery Date: ").append(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(LocalDateTime.now())).append("\n\n");
+        body.append("Thank you for choosing BikeShopStore!\n");
+        body.append("We hope you enjoy your purchase.\n\n");
+        body.append("Best Regards,\n");
+        body.append("BikeShopStore");
+
+        sendEmail(to, "Order Delivered - " + orderId, body.toString());
     }
 }

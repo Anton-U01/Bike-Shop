@@ -1,11 +1,9 @@
 package softuni.bg.bikeshop.service;
 
 import softuni.bg.bikeshop.models.Product;
-import softuni.bg.bikeshop.models.orders.DeliveryDetailsDto;
-import softuni.bg.bikeshop.models.orders.OrderItemView;
-import softuni.bg.bikeshop.models.orders.Order;
-import softuni.bg.bikeshop.models.orders.OrderViewDto;
+import softuni.bg.bikeshop.models.orders.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -31,7 +29,21 @@ public interface OrderService {
 
     void setOrderToCompleted(String username);
 
-    List<OrderViewDto> getCompletedOrders(String name);
+    List<OrderViewDto> getCompletedAndDeliveredOrdersOfUser(String name);
 
     void checkAndUpdateDeliveryDetails(String username, DeliveryDetailsDto deliveryDetailsDto);
+
+    List<OrderWithDeliveryDetailsDto> getAllCompletedAndDeliveredOrders();
+
+    void setOrderToDelivered(Long id);
+
+    void archive(Long id);
+
+    List<OrderWithDeliveryDetailsDto> getArchivedOrders();
+
+    void restoreOrderFromArchive(Long id);
+
+    List<Order> findArchivedOrdersOlderThan(LocalDate sixtyDaysAgo);
+
+    void deleteOrder(long id);
 }

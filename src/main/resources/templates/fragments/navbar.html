@@ -45,6 +45,9 @@
                 <li>
                     <a th:href="@{/products/product-management}" sec:authorize="hasRole('ADMIN')" th:text="#{nav_bar_my_offers}">Product Management</a>
                 </li>
+                <li>
+                    <a th:href="@{/admin/orders}" sec:authorize="hasRole('ADMIN')" th:text="#{nav_bar_orders}">Orders</a>
+                </li>
                 <li  sec:authorize="hasRole('ADMIN')">
                     <a th:href="@{/admin}" th:text="#{nav_bar_admin}">Admin</a>
                 </li>

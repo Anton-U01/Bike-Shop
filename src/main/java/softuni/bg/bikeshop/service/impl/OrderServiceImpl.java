@@ -6,6 +6,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import softuni.bg.bikeshop.exceptions.OrderNotFoundException;
 import softuni.bg.bikeshop.exceptions.ProductNotFoundException;
 import softuni.bg.bikeshop.exceptions.UserNotFoundException;
 import softuni.bg.bikeshop.models.Product;
@@ -20,6 +21,7 @@ import softuni.bg.bikeshop.service.EmailSenderService;
 import softuni.bg.bikeshop.service.OrderService;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -216,6 +218,7 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
+
     private boolean isSameDeliveryDetails(DeliveryDetails existingDetails, DeliveryDetailsDto newDetails) {
         return existingDetails != null &&
                 existingDetails.getCity().equals(newDetails.getCity()) &&
@@ -244,12 +247,15 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     @Transactional
-    public List<OrderViewDto> getCompletedOrders(String name) {
+    public List<OrderViewDto> getCompletedAndDeliveredOrdersOfUser(String name) {
         User user = getUser(name);
         List<OrderViewDto> ordersList = new ArrayList<>();
         for (Order o : user.getOrders()) {
             if (!o.getStatus().equals(OrderStatus.ACTIVE)) {
                 OrderViewDto orderDto = modelMapper.map(o, OrderViewDto.class);
+                if(orderDto.getStatus().equals("ARCHIVED")){
+                    orderDto.setStatus("DELIVERED");
+                }
                 List<OrderItemView> itemsList = new ArrayList<>();
                 for (OrderItem orderItem : o.getOrderItems()) {
                     OrderItemView itemDto = modelMapper.map(orderItem, OrderItemView.class);
@@ -262,6 +268,76 @@ public class OrderServiceImpl implements OrderService {
         }
         return ordersList;
     }
+    @Override
+    @Transactional
+    public List<OrderWithDeliveryDetailsDto> getAllCompletedAndDeliveredOrders() {
+        List<Order> orders = orderRepository.findByStatusIn(List.of(OrderStatus.COMPLETED,OrderStatus.DELIVERED));
+        List<OrderWithDeliveryDetailsDto> list = new ArrayList<>();
+
+        for (Order order : orders) {
+            OrderWithDeliveryDetailsDto dto = new OrderWithDeliveryDetailsDto();
+            OrderViewDto orderViewDto = modelMapper.map(order, OrderViewDto.class);
+            DeliveryDetailsDto deliveryDetailsDto = modelMapper.map(order.getDeliveryDetails(), DeliveryDetailsDto.class);
+            dto.setOrder(orderViewDto);
+            dto.setDeliverDetails(deliveryDetailsDto);
+            list.add(dto);
+        }
+        return list;
+    }
+
+    @Override
+    public void setOrderToDelivered(Long id) {
+        Order order = orderRepository.findById(id)
+                .orElseThrow(()-> new OrderNotFoundException("Order with id " + id + " is not found!"));
+
+        order.setStatus(OrderStatus.DELIVERED);
+        orderRepository.save(order);
+        emailSenderService.sendOrderDeliveredEmail(order.getUser().getEmail(),String.valueOf(order.getId()),order.getDeliveryDetails().getRecipientName());
+    }
+
+    @Override
+    public void archive(Long id) {
+        Order orderForArchive = orderRepository.findById(id)
+                .orElseThrow(() -> new OrderNotFoundException("Order with id " + id + " is not found!"));
+        orderForArchive.setStatus(OrderStatus.ARCHIVED);
+        orderRepository.save(orderForArchive);
+    }
+
+    @Override
+    @Transactional
+    public List<OrderWithDeliveryDetailsDto> getArchivedOrders() {
+        List<Order> orders = orderRepository.findByStatusIn(List.of(OrderStatus.ARCHIVED));
+        List<OrderWithDeliveryDetailsDto> list = new ArrayList<>();
+
+        for (Order order : orders) {
+            OrderWithDeliveryDetailsDto dto = new OrderWithDeliveryDetailsDto();
+            OrderViewDto orderViewDto = modelMapper.map(order, OrderViewDto.class);
+            DeliveryDetailsDto deliveryDetailsDto = modelMapper.map(order.getDeliveryDetails(), DeliveryDetailsDto.class);
+            dto.setOrder(orderViewDto);
+            dto.setDeliverDetails(deliveryDetailsDto);
+            list.add(dto);
+        }
+        return list;
+    }
+
+    @Override
+    public void restoreOrderFromArchive(Long id) {
+        Order orderForRestore = orderRepository.findById(id)
+                .orElseThrow(() -> new OrderNotFoundException("Order with id " + id + " is not found!"));
+        orderForRestore.setStatus(OrderStatus.DELIVERED);
+        orderRepository.save(orderForRestore);
+    }
+
+    @Override
+    public List<Order> findArchivedOrdersOlderThan(LocalDate sixtyDaysAgo) {
+        return orderRepository.findByStatusAndOrderDateBefore(OrderStatus.ARCHIVED,sixtyDaysAgo);
+    }
+
+    @Override
+    public void deleteOrder(long id) {
+        orderRepository.deleteById(id);
+    }
+
 
     private OrderItemView map(OrderItem orderItem){
         OrderItemView dto = new OrderItemView();

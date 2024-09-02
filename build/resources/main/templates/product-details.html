@@ -51,6 +51,7 @@
 
     <div class="border-left border-dark border-right border-dark">
         <div class="col-md-6">
+            <a sec:authorize="hasRole('ADMIN')" th:href="@{/products/edit/{id}(id = ${product.id})}" class="btn btn-danger mt-4 mb-2">Edit Product</a>
             <input id="idContainer" class="hidden" th:value="${product.id}">
             <h1 class="font-weight-bold font-italic" th:text="${product.name}">Product Name</h1>
             <p><strong>Description: </strong><span th:text="${product.description}">Lorem</span></p>
@@ -95,6 +96,7 @@
 
             <div>
                 <a sec:authorize="hasRole('USER')" th:if="${ownerUsername != product.getSeller().username}" th:unless="${soldOut}" th:href="@{/products/buy/{id}(id=${product.id})}" type="submit" class="d-block w-25 btn btn-lg btn-success">Buy<i class="ml-1 fa-solid fa-cart-shopping"></i></a>
+
                 <span sec:authorize="!hasRole('USER')" th:if="${ownerUsername == product.getSeller().username}" class="d-block w-25 btn mt-2 btn btn-secondary disabled">Buy</span>
                 <span th:if="${soldOut}" th:text="${soldOut}" class="d-block w-25 mt-2 btn btn-secondary disabled"></span>
                 <a th:href="@{/products}" class="btn btn-primary mt-3">Back to Products</a>

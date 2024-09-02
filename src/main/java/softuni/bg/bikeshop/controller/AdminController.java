@@ -10,11 +10,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import softuni.bg.bikeshop.exceptions.OrderNotFoundException;
 import softuni.bg.bikeshop.exceptions.UserNotFoundException;
 import softuni.bg.bikeshop.models.User;
 import softuni.bg.bikeshop.models.dto.UserWithRoleDto;
 import softuni.bg.bikeshop.models.dto.ViewRoleDto;
 import softuni.bg.bikeshop.models.dto.ViewUserDto;
+import softuni.bg.bikeshop.models.orders.OrderWithDeliveryDetailsDto;
+import softuni.bg.bikeshop.service.OrderService;
 import softuni.bg.bikeshop.service.RoleService;
 import softuni.bg.bikeshop.service.UserService;
 
@@ -27,11 +30,13 @@ public class AdminController {
     private final UserService userService;
     private final RoleService roleService;
     private final ModelMapper modelMapper;
+    private final OrderService orderService;
 
-    public AdminController(UserService userService, RoleService roleService, ModelMapper modelMapper) {
+    public AdminController(UserService userService, RoleService roleService, ModelMapper modelMapper, OrderService orderService) {
         this.userService = userService;
         this.roleService = roleService;
         this.modelMapper = modelMapper;
+        this.orderService = orderService;
     }
 
     @GetMapping("/admin")
@@ -112,9 +117,48 @@ public class AdminController {
         redirectAttributes.addFlashAttribute("deletedUser",username);
         return "redirect:/admin";
     }
+    @GetMapping("/admin/orders")
+    public String viewOrders(Model model){
+        List<OrderWithDeliveryDetailsDto> allCompletedOrders = orderService.getAllCompletedAndDeliveredOrders();
+        model.addAttribute("orders",allCompletedOrders);
+
+        return "orders";
+    }
+    @GetMapping("/admin/orders/deliver/{id}")
+    public String markOrderAsDelivered(@PathVariable("id") Long id){
+        orderService.setOrderToDelivered(id);
+        return "redirect:/admin/orders";
+    }
+    @PostMapping("/admin/orders/delete/{id}")
+    public String deleteOrder(@PathVariable("id") Long id,RedirectAttributes redirectAttributes){
+        orderService.archive(id);
+        redirectAttributes.addFlashAttribute("deleteMessage","This order is successfully deleted!");
+        return "redirect:/admin/orders";
+    }
+    @GetMapping("/admin/orders/archived")
+    public String viewArchivedOrders(Model model){
+        List<OrderWithDeliveryDetailsDto> archivedOrders = orderService.getArchivedOrders();
+        model.addAttribute("orders",archivedOrders);
+        return "orders";
+    }
+    @PostMapping("/admin/orders/restore/{id}")
+    public String restoreOrder(@PathVariable("id") Long id,RedirectAttributes redirectAttributes){
+        orderService.restoreOrderFromArchive(id);
+        redirectAttributes.addFlashAttribute("restoredMessage","This order is successfully restored from archive!");
+        return "redirect:/admin/orders/archived";
+    }
+
     @ResponseStatus(code = HttpStatus.NOT_FOUND)
     @ExceptionHandler(UserNotFoundException.class)
     public ModelAndView handleUserNotFound(UserNotFoundException e){
+        ModelAndView modelAndView = new ModelAndView("object-not-found");
+        modelAndView.addObject("errorMessage",e.getMessage());
+
+        return modelAndView;
+    }
+    @ResponseStatus(code = HttpStatus.NOT_FOUND)
+    @ExceptionHandler(OrderNotFoundException.class)
+    public ModelAndView handleOrderNotFound(OrderNotFoundException e){
         ModelAndView modelAndView = new ModelAndView("object-not-found");
         modelAndView.addObject("errorMessage",e.getMessage());
 

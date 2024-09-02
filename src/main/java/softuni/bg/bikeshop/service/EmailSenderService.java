@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface EmailSenderService {
     void sendOrderConfirmationEmail(String to, String orderId, List<OrderItem> orderItems, double totalAmount);
+    void sendOrderDeliveredEmail(String to, String orderId, String recipientName);
 }

@@ -5,7 +5,6 @@ import com.stripe.model.PaymentIntent;
 import com.stripe.model.checkout.Session;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -191,7 +190,7 @@ public class OrderController {
     }
     @GetMapping("/user/orders")
     public String getUserOrders(Principal principal,Model model){
-        List<OrderViewDto> completedOrders = orderService.getCompletedOrders(principal.getName());
+        List<OrderViewDto> completedOrders = orderService.getCompletedAndDeliveredOrdersOfUser(principal.getName());
         model.addAttribute("orders",completedOrders);
 
         return "my-orders";

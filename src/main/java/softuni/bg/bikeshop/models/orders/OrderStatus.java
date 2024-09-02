@@ -1,5 +1,5 @@
 package softuni.bg.bikeshop.models.orders;
 
 public enum OrderStatus {
-    ACTIVE,COMPLETED
+    ACTIVE,COMPLETED,DELIVERED,ARCHIVED
 }
