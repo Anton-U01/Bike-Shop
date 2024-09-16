@@ -25,7 +25,7 @@ public interface ProductRepository extends JpaRepository<Product,Long>, JpaSpeci
 
     List<Product> findAllByCreatedOnBefore(LocalDateTime createdOn);
 
-    Page<Product> findAll(Specification<Product> bikeSpec, Pageable pageable);
+    Page<Product> findAll(Specification<Product> spec, Pageable pageable);
 
     @Query("SELECT p FROM Product p " +
             "LEFT JOIN Bike b ON p.id = b.id " +

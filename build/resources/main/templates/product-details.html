@@ -88,11 +88,6 @@
                 </div>
             </div>
 
-            <div class="author-info">
-                <h2>Author Information</h2>
-                <p><strong>Author: </strong><span th:text="${product.getSeller().username}">Author Name</span></p>
-                <p><strong>Email: </strong><span th:text="${product.getSeller().email}">Author Email</span></p>
-            </div>
 
             <div>
                 <a sec:authorize="hasRole('USER')" th:if="${ownerUsername != product.getSeller().username}" th:unless="${soldOut}" th:href="@{/products/buy/{id}(id=${product.id})}" type="submit" class="d-block w-25 btn btn-lg btn-success">Buy<i class="ml-1 fa-solid fa-cart-shopping"></i></a>

@@ -88,7 +88,7 @@ public class ProductController {
             parts = List.of("ALL");
         }
 
-        Page<Product> productPage = productsService.getAllFilteredProducts(bikes,parts,PageRequest.of(currentPage - 1, 3,sort));
+        Page<Product> productPage = productsService.getAllFilteredProducts(bikes,parts,PageRequest.of(currentPage - 1, 6,sort));
         List<Product> allProducts = productPage.getContent();
 
 

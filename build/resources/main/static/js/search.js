@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 .then(data => {
                     searchResults.innerHTML = '';
                     searchResults.style.display = 'block';
-                    console.log(data);
+
 
                     if (data.length > 0) {
                         data.forEach(product => {

@@ -50,7 +50,7 @@
                   class="btn btn-success me-2 disabled">Delivered</span>
 
             <form th:if="${orderDetails.order.status == 'DELIVERED'}" th:method='POST' th:action="@{'/admin/orders/delete/' + ${orderDetails.order.id}}" class="mb-0">
-                <button type="submit" class="btn btn-danger ml-2">Delete Order</button>
+                <button type="submit" class="btn btn-danger ml-2">Archive Order</button>
             </form>
         </div>
         <div th:if="${orderDetails.order.status == 'ARCHIVED'}">

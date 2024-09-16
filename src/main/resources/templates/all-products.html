@@ -128,7 +128,7 @@
         </div>
 
 
-        <div th:if="${totalPages > 1}" class="container w-25 mt-5 p-2 bg-white rounded border border-dark">
+        <div th:if="${totalPages > 1}" class="container w-25 mt-5 p-2 bg-white rounded border border-dark mb-5">
             <div th:with="bikeParams=${#lists.isEmpty(bikes) ? '' : '&bikes=' + #strings.listJoin(bikes, '&bikes=')},
                  partParams=${#lists.isEmpty(parts) ? '' : '&parts=' + #strings.listJoin(parts, '&parts=')}" class="row">
                 <div class="col-sm">
