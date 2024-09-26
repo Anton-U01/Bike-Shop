@@ -16,3 +16,8 @@ Admin can add new products by filling necessary forms with product information. 
 After an order is processed and shipped, he can mark it as delivered, and upon marking an order as delivered, the system automatically sends an email notification to the user informing him that the order has been successfully delivered.
 After successful delivery, admin can archive the orders. The administrator has the ability to add and remove user roles, giving them control over the access rights and actions each user can perform in the application. 
 Additionally, the administrator can delete users from the system.
+Link to the separate service for the reviews: https://github.com/Anton-U01/Reviews---Separate-service-with-Rest-Controller;
+Used environment variables:
+1. EMAIL - valid email for the smpt server
+2. APP_EMAIL_PASSWORD - app password generated from the google account with the same email
+3. STRIPE_API_KEY, STRIPE_PUBLIC_KEY - personal keys given from the Stripe system
